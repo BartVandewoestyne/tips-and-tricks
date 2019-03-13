@@ -1,3 +1,3 @@
 Using robocopy on Windows:
 --------------------------
-robocopy src_dir mirror_dir
+robocopy "src_dir" "mirror_dir" /MIR
