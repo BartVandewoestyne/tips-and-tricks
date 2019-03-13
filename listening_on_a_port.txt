@@ -1,0 +1,12 @@
+Using netcat
+------------
+
+Start listening on your.server.com:
+
+    nc -lv 4444
+
+Connect:
+
+    netcat your.server.com 4444
+
+=> Now you can send data and it will be printed.
