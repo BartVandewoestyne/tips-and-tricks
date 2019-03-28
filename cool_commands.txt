@@ -1,0 +1,731 @@
+# mkdir -p /mnt/hda2
+# mount -o dev /dev/hda2 /mnt/hda2
+# chroot /mnt/hda2 /sbin/lilo
+# exit
+# sync; umount /dev/hda2
+# reboot
+
+Get full file path
+------------------
+readlink -f file.txt
+
+Youtube Playlists downloaden
+----------------------------
+youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
+
+Find corrupted JPG files in a directory
+---------------------------------------
+find -iname "*.jpg" -print0 | xargs -0 jpeginfo -c | grep -e WARNING -e ERROR
+(see http://watson-net.com/blog/checking-the-integrity-of-all-jpg-files-in-a-directory/)
+
+Get EXIF data from a picture
+----------------------------
+exif mypicture.jpg
+exiftran -d kolonisten_van_catan_bus.jpg
+
+Set EXIF data in a picture
+--------------------------
+exif --output=myoutput.jpg -t 0x013b --ifd=0 --set-value='Foo Bar' --no-fixup myinput.jpg
+
+???
+---
+sed -e '0,/\\begin\{document\}/d;s/\\begin\{[^}]*\}//g;s/\\[^{]*\{//g;s/\}//g'
+
+sed -e 's/[ \t\n]/\n/g' | sed -e 's/[^0-9a-zA-Z]//g' | sort | uniq -c
+
+file=$(cat inputfile); echo $file|sed -e 's/[\.!?] /\n/g' | wc -l
+
+
+Om te kijken of 2 remote directories verschillend zijn:
+-------------------------------------------------------
+
+Manier 1:
+        Op de remote:
+                find . -print | xargs md5sum > file
+
+        Op de locale host in zelfde dir gaan staan en:
+                md5sum -c file
+
+Manier 2:
+
+        find . -print | xargs md5sum | ssh $host '(cd $dir; md5sum -c)'
+
+
+Om een find/xargs commando op te roepen op files met spaties:
+-------------------------------------------------------------
+find . -print0 | xargs -0 <command>
+
+
+Om te zien of je duplicate .m files hebt:
+-----------------------------------------
+find subversion/ -type f -name '*.m' | sort | uniq -d > duplicate_files
+
+Finding duplicate files
+-----------------------
+fdupes -r mydir > ~/duplicate_files.txt
+
+cpu frequentie opvragen:
+------------------------
+grep MHz /proc/cpuinfo | cut -d ":" -f 2
+
+
+???
+---
+als user: xhost +LOCAL:
+als root: export DISPLAY=:0
+          gq
+
+
+Listing geven van bijvoorbeeld alle .JPG en .jpg files
+------------------------------------------------------
+Manier 1:
+        ls | grep -i \.jpg$
+Manier 2:
+        ls *.[jJ][pP][gG]
+
+Listing geven van enkel directories
+-----------------------------------
+ls -d */
+
+
+Foto's omzetten naar een kleiner formaat:
+-----------------------------------------
+# For paraglide.be      -> 1600x1600 met -quality 80
+# For parapentebelge.be -> 800x800
+# Zie ook http://www.imagemagick.org/script/command-line-options.php
+# Check also
+#   -resize: http://www.imagemagick.org/script/command-line-options.php#resize
+#   -scale: http://www.imagemagick.org/script/command-line-options.php#scale
+#   -geometry: http://www.imagemagick.org/script/command-line-options.php#geometry
+#   -size: http://www.imagemagick.org/script/command-line-options.php#size
+# Image Geometry specification:
+#   http://www.imagemagick.org/script/command-line-processing.php#geometry
+#
+for file in `ls *.JPG`
+do
+  echo -n "Converting $file to resized/$file... "
+  convert -resize 1600x1600 -quality 80 $file resized/$file
+  echo "done."
+done
+
+
+Om te zien welke Debian packages de grootste zijn:
+--------------------------------------------------
+
+Mogelijkheid 1:
+        wajig size
+
+Mogelijkheid 2:
+        dpkg-query -W --showformat='${Installed-Size} ${Package}\n' | sort -n
+
+Mogelijkheid 3:
+        dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | sort -n | grep installed
+
+Om te zien tot welke package een file behoort:
+----------------------------------------------
+$ dpkg -S /my/file
+
+Om packages te zoeken en info op te vragen:
+-------------------------------------------
+$ aptitude search <packages>
+-> only searches in package names
+
+$ aptitude search ~d"RegEx"
+-> Matches packages whose description matches the regular expression
+   RegEx. 
+-> See http://algebraicthunk.net/~dburrows/projects/aptitude/doc/en/ch02s03s05.html
+
+$ apt-cache search zoekterm
+$ apt-cache search "een zoekterm"
+
+$ aptitide show <packages>
+
+
+Om beschrijving van packages te zien:
+-------------------------------------
+$ aptitude show packagename
+
+Om alle packages te verwijderen waarvan het systeem kan detecteren dat ze
+niet meer nodig zijn:
+------------------------------------------------------------------------
+# apt-get autoremove --purge
+
+Om Debian packages (libs en data) te verwijderen die niet meer
+gebruikt worden of in de rc-state zijn:
+----------------------------------------------------------
+# deborphan --find-config | xargs aptitude -y purge
+# dpkg -l | grep ^rc | cut -d' ' -f3 | xargs aptitude -y purge
+# deborphan | xargs aptitude -y purge
+# deborphan --guess-data | xargs aptitude -y purge
+
+Om transitional Debian packages te verwijderen:
+----------------------------------------------
+# dpkg -l | grep transitional | cut -c5-39 | xargs aptitude -y purge
+
+-> In al het bovenstaande kan je ook aptitude -y purge vervangen
+   door dpkg --purge
+
+Om packages op hold of unhold te zetten via aptitude:
+-----------------------------------------------------
+# aptitude hold packagename
+# aptitude unhold packagename
+# aptitude search ~ahold
+
+Om packages op hold of unhold te zetten via dpkg/apt-get:
+---------------------------------------------------------
+# echo 'packagename hold' | dpkg --set-selections       -> op hold zetten
+# echo 'packagename install' | dpkg --set-selections    -> op unhold zetten
+# dpkg --get-selections | grep hold                     -> lijst hold packages
+
+
+uitzoeken welke Linux-distributie je juist hebt
+------------------------------------------
+mogelijkheid 1:
+        lsb_release -a
+
+mogelijkheid 2:
+        cat /etc/issue.net
+
+
+codec informatie opvragen, analoog als in gspot voor windows.
+-------------------------------------------------------------
+1) mediainfo file.avi
+2) avprobe file.avi
+3) tcprobe -i file.avi
+
+See also http://www.fourcc.org/codecs.php for a list of codecs and their
+four character code.
+
+mpeg info opvragen
+------------------
+mpgtx -i file.mpg
+
+mp3-info opvragen en aanpassen
+------------------------------
+For ID3 versions 1.0 and 1.1 only, not ID3V2:
+
+  mp3info file.mp3
+
+For ID3 versions 1.0, 1.1, 2.3 and 2.4:
+
+  eyeD3 file.mp3
+
+For automated batch tagging, use the program easytag, btag or kid3 (on KDE) or
+kid3-qt (on Gnome).
+
+Opmerking: Android Music Player zou moeten werken met ID3v2.3.0, maar
+           ID3v2.4.0 is niet helemaal zeker???
+
+
+gpx file in Google Earth bekijken met hoogte info
+-------------------------------------------------
+By default zet Google Earth de altitudemode op "clamped to ground".  Je kan
+dat op "absolute" zetten via de opties van je tracks, of door je gpx file
+naar een kml te converteren en daarbij de altitudemode op "absolute" te
+zetten:
+
+gpsbabel -i gpx -f myfile.gpx -o kml,floating=1 -F myfile.kml
+
+http://www.gpsbabel.org/htmldoc-development/fmt_kml.html#fmt_kml_o_floating
+
+
+convert pdf file to booklet
+---------------------------
+mijn manier:
+
+  pdftops file.pdf
+  psbook file.ps | psnup -2 -pa4 | a2ps -1 -s tumble -o booklet.ps
+  -> en dan printen op een duplex printer.
+
+alternatief 1:
+
+  pdf2ps -spapersize=a4 file.pdf file.ps
+  psbook file.ps | psnup -2 | a2ps -1 -s tumble -o booklet.ps
+  -> print on both side with the option "long edge (standard)".
+  
+alternatief 2: if the original document is not in the a4 format (for
+instance 14,88 cm x 20,98 cm), we have to do then:
+
+  pdf2ps file.pdf file.ps
+  psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
+
+or
+
+hexdump command examples
+------------------------
+  hexdump -v -c file.bin
+  hexdump -v -d Model.msh
+  hexdump -v -e '1/4 "%d\n"' -n 4 Model.msh
+  hexdump -v -e '1/8 "%10.5f\n"' -s 20 Model.msh
+  hexdump -v -e '1/8 "%_ad%10.5f\n"' -s 20 Model.msh
+Show header of 12 bytes (3 four byte integers):
+  hexdump -v -e '"[" 3/4 "%u " "]\n"' -n  12 reso2~dad.mat
+Show data following this header (4 byte floats following each other):
+  hexdump -v -e '"[" 1/4 "%f " "]\n"' -s  12 reso2~dad.mat
+
+-> A good hexeditor for Linux is ghex2.  For windows, you can use wxhexeditor.
+
+Java commands
+-------------
+Find out class file version:
+  $ javap -verbose HelloServlet | grep major
+  
+
+Print commands
+--------------
+Print only odd sides pages in a certain range:
+$ lp -o page-set=odd -o sides=two-sided-long-edge -o media=a4 -o fitplot -P 3-5 file.pdf
+
+Eerst oneven:
+$ lp -o page-set=odd -o sides=two-sided-long-edge -o media=a4 -o fitplot -P 1-5
+PaulVanHoutte.pdf
+Dan even (in reverse order):
+$ lp -o page-set=even -o outputorder=reverse -o sides=two-sided-long-edge -o
+media=a4 -o fitplot -P 2-6 PaulVanHoutte.pdf
+\linebreak kan in LaTeX helpen om lijnen te breken
+
+Grepping only in .tex files recursively
+---------------------------------------
+grep -r '\$I\^.*\$' --include=*.tex .
+
+Sending data `tar-bz2d on the fly' over the network
+---------------------------------------------------
+tar cjf - test.txt | ssh bartv@vonneumann.cs.kuleuven.be "cd /home/bartv/temp/ ;
+tar xjf -"
+
+
+Renaming a whole bunch of files using a regular expression
+----------------------------------------------------------
+rename 's/old/new/' *.tex
+
+
+Selecting selected pages from a PostScript document
+---------------------------------------------------
+psselect -p18,31,32 file_in.ps file_out.ps
+
+
+Combining PostScript files into one document
+--------------------------------------------
+ghostscript -dNOPAUSE -sDEVICE=pswrite -dBATCH -sOutputFile=out.ps file1.ps
+file2.ps
+
+psjoin
+
+psmerge -oout.ps file.ps
+(only works if the files were created using the same application, with the
+ same device setup and resources (fonts, procsets, patterns, files, etc) loaded.
+
+
+Replacing a piece of text in a lot of files in the current directory
+--------------------------------------------------------------------
+for file in `ls *.tex`
+do
+  sed -e "s/chapter/part/g" <$file >$file.new
+  mv $file.new $file
+done
+
+OR
+
+perl -pi.bak -e 's/foo/bar/g' *.whatever
+
+OR
+
+sed -i.bak -e 's/foo/bar/g' *.whatever
+
+
+Append a line after a certain matching line
+-------------------------------------------
+sed '/myregex/ a\myline' myfile.txt
+
+
+Replacing a piece of text in a lot of files, including subdirs
+--------------------------------------------------------------
+find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
+
+
+Finding out with what options gnuplot is built:
+-----------------------------------------------
+gnuplot> show version long
+
+
+Finding the biggest directories in the current directory
+--------------------------------------------------------
+du -s * | sort -n
+du -s * .[a-zA-Z]* | sort -n
+
+Finding the top 10 largest files names (not directories) in a particular
+directory and its subdirectories
+------------------------------------------------------------------------
+find . -printf '%s %p\n' | sort -nr | head
+
+Finding the smallest file in the current directory and sub directories
+----------------------------------------------------------------------
+find . -type f -exec ls -s {} \; | sort -n -r | tail -1
+find . -type f -exec ls -s {} \; | sort -n  | head -1
+
+Printing sourcecode in color:
+-----------------------------
+
+With `enscript`:
+
+  enscript -Ec -G -U2 --color -Pkleur <file>
+  
+    -E            -> filter (autodetectie meestal, hier c-code)
+    -G            -> fancy header 
+    -U2           -> 2 paginas op bladzijde
+    --color       -> kleur
+
+With `a2ps`:
+
+  a2ps --prologue=color -2 <file>
+
+    -> includes color.pro as PostScript prologue
+    -> predefined font size and layout for 2 virtual
+
+
+Plotting points from sequences:
+-------------------------------
+$ gnuplot
+plot "filename.seq" using ($15):($16)
+
+$ echo 'plot "filename.seq" using ($1):($2); pause 10' | gnuplot
+
+
+Dictionary:
+-----------
+dict myword
+
+
+Profiling:
+----------
+* compileer met -pg optie
+* voer sourcecode uit, je bekomt een gmon.out
+* gprof binary gmon.out 
+
+
+X
+-
+Starting another X:
+	export WINDOWMANAGER=kde
+	startx -- :2
+
+
+CVS
+---
+* Een eerste, verse checkout doen:
+  cvs -q -d :ext:bartv@radon.cs.kuleuven.be:/export/home2/cvs co qmcpack
+
+
+Maple input files
+-----------------
+1) start maple in console modus
+2) read("myfile.mpl")
+
+
+CVS stuff
+---------
+Bij een `cvs update' kan je hebben:
+ M - Modified - this file had been modified on YOUR local machine and needed to
+                be uploaded to server.  Bij een commit zullen alle files
+                waar een M bij stond getoond worden in de commit lijst.
+ P - Patched - minor changes from the server had been patched to your files
+ U - Updated - your file is overwritten by the latest version due to major
+               changes
+ C - Conflict - Er is een conflict en je moet het eerst oplossen
+
+-------------------------------------------------------------------------------
+for d in `seq 1 15`;
+do
+  convert -append niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg - | display -
+done
+
+for d in `seq 1 15`;
+do
+  montage -geometry 640x480 niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg jpg:- | display -
+done
+
+--------------------------------------------------------------------------------
+cancellen op printer wit:
+/usr/local/lib/cs-lprng/lprm.wrapper -Pwit 87
+--------------------------------------------------------------------------------
+
+Convert an EPS to a PNG:
+
+  mogrify -format png *.eps
+or
+  convert foo.ps foo.png
+
+Convert PDF to EPS
+
+        pdftops -eps file.pdf
+
+Create a PDF file from an Asymptote script:
+
+        asy myfile.asy -f pdf
+
+--------------------------------------------------------------------------------
+Add a graphicspath in LaTeX:
+
+  \graphicspath{{<path_to_pictures>}}
+
+Convert a latex file to Word or ODT:
+
+  mk4ht oolatex file.tex
+  http://johnmacfarlane.net/pandoc/
+    pandoc -s math.tex -o math.docx
+  http://dlmf.nist.gov/LaTeXML/
+
+-------------------------------------------------------------------------------
+ispell gebruikt by default american checking.  Als je british wil, dan gebruik
+je
+ispell -d british file.txt
+
+\frac{-w_{N_s}f_k(s_{N_s})}{s_{N_s}-a_1} & \hdots & \frac{-w_{N_s}f_k(s_{N_s})}{s_{N_s}-a_N}
+XFig figures met LaTeX fonts:
+-----------------------------
+* Create or open your .fig file in xfig.
+* Add text with the Text Input tool (the same way you always add text). You
+  can use mathematical formulas as in LaTeX, including the dollar sings (e.g.,
+  $f(x)=x^3$).
+* Using the Edit tool, edit the properties of the text field you have just
+  added. Set the following properties:
+
+    * Special Flag: special
+    * Font: use LaTex fonts (bottom of dialog), Default
+
+* fig2eps --bbox=dvips test.fig
+
+Cancellen print jobs
+--------------------
+Precies is het cancellen van jobs op p1c alleen mogelijk op scorpius
+(=cups-server2.cs.kueluven.be) met lprm
+
+Rasterizing an EPS figure
+------------------------
+gs -r300 -dEPSCrop -dTextAlphaBits=4 -sDEVICE=png16m -sOutputFile=fig.png -dBATCH -dNOPAUSE fig.eps
+(wel uitvoeren op archimedes met gs versie 8.61, versie 7.07.1 cropte niet...)
+(-r300 is de resolutie)
+
+Pasting together rar files
+--------------------------
+If you have a bunch of files like
+
+  file.r00
+  ...
+  file.r25
+  file.rar
+
+then you can stitch them together with
+
+  unrar e file.rar
+
+Check if your processor supports 64-bit
+---------------------------------------
+-> Look at /proc/cpuinfo and see if the 'lm' flag is present.
+   If it is, then your CPU supports 64 bits and you can run a
+   64 bit kernel if you'd like to. If doesn't have lm, but it supports cmov
+   (Conditional move instruction), then it's only a 32 bit cpu, but you can run
+   a i686 kernel. If you don't even see cmov, then it's a fairly old / basic cpu
+   (eg an older low power via), and you'll need to run an i386 / i486 kernel
+
+Is the running kernel 32 bit or 64 bit?
+---------------------------------------
+
+If we do find the lm flag, then how do we tell if the running kernel is 32 bit
+or 64 bit? Possibly uname -a will give us a hint, but alas not always (look for
+x86_64 in the output for 64 bit, or i686 for 32 bit). If that isn't conclusive,
+then run getconf LONG_BIT - that should return either 64 or 32, that being your
+answer.
+
+Other method:
+
+  file /sbin/init
+
+GUI-method:
+
+  Hit Windows key and search for 'Details', then see under 'OS type'
+
+Find a file on your linux system
+--------------------------------
+locate
+
+$ find / -name 'program.c' 2>/dev/null
+$ find / -name 'program.c' 2>errors.txt
+
+Mail versturen vanaf de command line
+------------------------------------
+mail -a "From: Bart.Vandewoestyne@telenet.be" -a "Reply-To: test@test.com" -s
+"Een subject" foo@bar.com < body.txt
+
+Compare two directories
+-----------------------
+See http://linuxcommando.blogspot.com/2008/05/compare-directories-using-diff-in-linux.html
+
+Best method I have found so far:
+
+  diff -qr dir1 dir2 | tee dir_cmps.txt
+  
+  -> This also shows if symlinks in dir1 and dir2 are different.
+
+Other possibilities:
+
+  rsync -avnc --delete dir1/ dir2/
+
+    -a        archive mode; equals -rlptgoD (no -H,-A,-X)
+              -r        recurse into directories
+              -l        copy symlinks as symlinks
+              -p        preserve permissions
+              -t        preserve modification times
+              -g        preserve group
+              -o        preserve owner (super-user only)
+              -D        same as --devices --specials
+                         --devices  recreate character and block devices
+                         --specials transfer special files such as named
+                                    sockets and fifos
+    -v        increase verbosity
+    -n        perform a trial run with no changes made
+    -c        skip based on checksum, not mod-time & size
+              (this option seems better than mod-time & size to me...)
+    --delete  delete extraneous files from dest dirs
+
+Backups with rsync
+------------------
+First test with a dry-run to see what files are going to be deleted in dest:
+
+  rsync -avzn --delete src_dir/ dest_dir
+
+Then do the real work:
+
+  rsync -avz --delete src_dir/ dest_dir
+
+
+Foto-album maken
+----------------
+photon --sizelist=640x480 --resize-plugin=gimp -o myoutputdir mypicturesdir/
+
+
+Creating a patch
+----------------
+Assume original source code at folder dir1 and latest source code at folder
+dir2.  And there can be multiple subdirectories:
+
+  diff -crB dir1 dir2 > Tb02.patch
+
+  -c context
+  -r recursive (multiple levels dir)
+  -B is to ignore Blank Lines.
+
+Testing the patch:
+
+  patch --dry-run -p1 -i Tb02.patch
+
+Applying the patch:
+
+  patch -p1 -i Tb02.patch
+
+To create a patch from CVS:
+
+  cvs diff -uN > patch.txt
+
+Or if you added files:
+
+  cvs add newfile
+  cvs diff -uNa > patch.txt
+
+
+To get the size or other info from an image
+-------------------------------------------
+  identify -verbose sample.png
+  pnginfo sample.png
+  tiffinfo sample.tif
+
+Having two versions of gcc side by side
+---------------------------------------
+sudo apt-get install gcc-4.3 g++-4.3
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.3 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.3
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.4
+
+Now, if you want to change between gcc versions, simply run
+sudo update-alternatives --config gcc
+
+PDF commands:
+-------------
+Paste together PDF's:
+
+  pdftk file1.pdf file2.pdf cat output totaal.pdf
+
+Extract pages from PDF:
+  Method 1:
+    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+           -dFirstPage=22 -dLastPage=36 \
+                  -sOutputFile=outfile_p22-p36.pdf 100p-inputfile.pdf
+  Method 2:
+    pdftk inputfile.pdf cat 1-10 output outputfile.pdf
+
+  Method 2 (pdftk with handles):
+    pdftk A=100p-inputfile.pdf cat A22-36 output outfile_p22-p36.pdf
+
+Rotating a PDF document:
+
+  pdftk input.pdf cat 1-endwest output output.pdf
+
+tcpdump commands
+----------------
+capture all sip traffic
+  tcpdump -pi eth1 -n -s 0 port 5060 and host 192.168.1.138 -w mydump.pcap
+
+sniff network
+  tcpdump -pi eth1 -n -s 0 net 10.1.176.0/24 and not host 10.1.176.41 -w mydump.pcap
+
+Terminal weer goed krijgen als hij fucked up is
+-----------------------------------------------
+tset
+tput init
+tput reset
+
+Convert .wav to .mp3
+--------------------
+# lame –h –b 192 Test.wav Test.mp3
+
+$ for FILE in *.wav; do lame -h -b 192 "$FILE"; done
+
+# for FILE in "`ls *.wav`"; do `which lame` –h –b 192 "$FILE" "${FILE//\.wav}.mp3"; done
+
+#!/bin/sh
+# name of this script: wav2mp3.sh
+# wav to mp3
+for i in *.wav; do
+ if [ -e "$i" ]; then
+   file=`basename "$i" .wav`
+   lame -h -b 192 "$i" "$file.mp3"
+ fi
+done
+
+Checking if an mpg file is corrupt or not
+-----------------------------------------
+ffmpeg -v 5 -i file.avi -f null - 2>error.log
+
+Downloading a stream
+--------------------
+ffmpeg -i videourl.m3u8 -c:v copy -c:a copy video.ts
+
+Joining .avi files
+------------------
+mencoder -ovc copy -oac copy -o completevideos.avi video1.avi video2.avi
+(eventueel ook avimerge?)
+
+Joining Mpeg:
+-------------
+mpgjoin file1.mpg file2.mpg file3.mpg -o newfile.mpg
+OF
+mpgjoin *.mpg -o test.mpg
+OF
+cat file1.mpg file2.mpg file3.mpg > totalfile.mpg
+OF
+mencoder -of mpeg -ovc copy -oac copy *.mpg -o totalfile.mpg
+(dit leek te werken voor de mpg files van traficon)
+
+Pretty print JSON
+-----------------
+cat file.json | python -mjson.tool
