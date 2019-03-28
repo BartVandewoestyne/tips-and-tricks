@@ -13,11 +13,6 @@ Youtube Playlists downloaden
 ----------------------------
 youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
 
-Find corrupted JPG files in a directory
----------------------------------------
-find -iname "*.jpg" -print0 | xargs -0 jpeginfo -c | grep -e WARNING -e ERROR
-(see http://watson-net.com/blog/checking-the-integrity-of-all-jpg-files-in-a-directory/)
-
 Get EXIF data from a picture
 ----------------------------
 exif mypicture.jpg
@@ -34,35 +29,6 @@ sed -e '0,/\\begin\{document\}/d;s/\\begin\{[^}]*\}//g;s/\\[^{]*\{//g;s/\}//g'
 sed -e 's/[ \t\n]/\n/g' | sed -e 's/[^0-9a-zA-Z]//g' | sort | uniq -c
 
 file=$(cat inputfile); echo $file|sed -e 's/[\.!?] /\n/g' | wc -l
-
-
-Om te kijken of 2 remote directories verschillend zijn:
--------------------------------------------------------
-
-Manier 1:
-        Op de remote:
-                find . -print | xargs md5sum > file
-
-        Op de locale host in zelfde dir gaan staan en:
-                md5sum -c file
-
-Manier 2:
-
-        find . -print | xargs md5sum | ssh $host '(cd $dir; md5sum -c)'
-
-
-Om een find/xargs commando op te roepen op files met spaties:
--------------------------------------------------------------
-find . -print0 | xargs -0 <command>
-
-
-Om te zien of je duplicate .m files hebt:
------------------------------------------
-find subversion/ -type f -name '*.m' | sort | uniq -d > duplicate_files
-
-Finding duplicate files
------------------------
-fdupes -r mydir > ~/duplicate_files.txt
 
 cpu frequentie opvragen:
 ------------------------
@@ -338,30 +304,9 @@ Append a line after a certain matching line
 sed '/myregex/ a\myline' myfile.txt
 
 
-Replacing a piece of text in a lot of files, including subdirs
---------------------------------------------------------------
-find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
-
-
 Finding out with what options gnuplot is built:
 -----------------------------------------------
 gnuplot> show version long
-
-
-Finding the biggest directories in the current directory
---------------------------------------------------------
-du -s * | sort -n
-du -s * .[a-zA-Z]* | sort -n
-
-Finding the top 10 largest files names (not directories) in a particular
-directory and its subdirectories
-------------------------------------------------------------------------
-find . -printf '%s %p\n' | sort -nr | head
-
-Finding the smallest file in the current directory and sub directories
-----------------------------------------------------------------------
-find . -type f -exec ls -s {} \; | sort -n -r | tail -1
-find . -type f -exec ls -s {} \; | sort -n  | head -1
 
 Printing sourcecode in color:
 -----------------------------
@@ -544,13 +489,6 @@ Other method:
 GUI-method:
 
   Hit Windows key and search for 'Details', then see under 'OS type'
-
-Find a file on your linux system
---------------------------------
-locate
-
-$ find / -name 'program.c' 2>/dev/null
-$ find / -name 'program.c' 2>errors.txt
 
 Mail versturen vanaf de command line
 ------------------------------------
