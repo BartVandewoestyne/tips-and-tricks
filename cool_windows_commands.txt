@@ -1,0 +1,3 @@
+Find text in files:
+
+    findstr /s /i /m "MyClass" *.cpp
