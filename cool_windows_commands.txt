@@ -1,3 +1,7 @@
 Find text in files:
 
     findstr /s /i /m "MyClass" *.cpp
+
+Show the contents of your PATH environment variable line by line:
+
+    echo %path:;=&echo.%
