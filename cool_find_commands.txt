@@ -19,6 +19,10 @@ Case sensitive match:
 Using case insensitive match:
 
     find . -type f -iname '*.pl'
+    
+Finding both .h and .cpp files:
+
+    find . -type f -iname '*.h' -o -iname '*.cpp'
 
 Finding text in files
 ---------------------
