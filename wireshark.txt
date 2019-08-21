@@ -1,0 +1,17 @@
+Tips
+----
+
+* To be able to capture loopback traffic:
+  -> Make sure you don't have WinPcap installed.
+  -> Make sure your install Wireshark with NpCap, not in WinPcap compatibility
+     mode.
+  -> It can be that you have to select another 'Ethernet X' adapter instead of
+     the 'Npcap Loopback Adapter' in order to see traffic on 127.0.0/8 hosts.
+
+Useful capture filters:
+-----------------------
+
+* To see TCP or UDP packets that contain a certain string:
+
+    tcp contains foobar
+    udp contains foobar
