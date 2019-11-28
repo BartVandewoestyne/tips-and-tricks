@@ -10,8 +10,16 @@ Tips
 
 Useful capture filters:
 -----------------------
+* To see only TCP traffic
 
+    tcp
+    
 * To see TCP or UDP packets that contain a certain string:
 
     tcp contains foobar
     udp contains foobar
+
+* To see TCP or UDP packets that match a certain string:
+
+    tcp matches "foo.*bar"
+    udp matches "foo.*bar"
