@@ -5,3 +5,7 @@ Find text in files:
 Show the contents of your PATH environment variable line by line:
 
     echo %path:;=&echo.%
+    
+Time a command (see https://stackoverflow.com/questions/673523/how-do-i-measure-execution-time-of-a-command-on-the-windows-command-line)
+
+    powershell -Command "Measure-Command {echo hi | Out-Default}"
