@@ -3,3 +3,7 @@
     winsat disk -drive c
   
   (Run winsat with Administrator privileges)
+
+* Timing commands:
+
+    powershell -Command "Measure-Command {echo test | Out-Default}" 
