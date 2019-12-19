@@ -1,0 +1,5 @@
+* Checking disk performance:
+
+    winsat disk -drive c
+  
+  (Run winsat with Administrator privileges)
