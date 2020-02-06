@@ -1,0 +1,5 @@
+* Check if a library is static or shared/import/dynamic
+    Windows:
+      lib /list foo.lib
+      => If the lib is static, lib will show you a pile of .obj files inside.  Not so if its an import lib.
+      => See https://docs.microsoft.com/en-us/cpp/build/reference/managing-a-library
