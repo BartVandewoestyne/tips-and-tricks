@@ -16,9 +16,17 @@
 
     powershell -Command "Measure-Command {echo hi | Out-Default}"
 
+* Checking your disk:
+
+    chkdsk D: => does not fix any errors
+    chkdsk /f => fixes errors
+      /f => fix errors
+      /r => locates bad sectors and recovers readable info
+      /x => forces the volume to dismount first.  All open handles to the drive are invalidated.
+
 * Using robocopy for backup:
 
-    robocopy "D:\src\dir" "E:\mirror\dir" /MIR
+    robocopy F: G:\2020XXYY_BACKUP /MIR
 
   See also:
     https://adamtheautomator.com/robocopy-the-ultimate/
