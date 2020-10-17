@@ -1,5 +1,0 @@
-Using robocopy on Windows:
---------------------------
-One-way mirroring:
-
-  robocopy "src_dir" "mirror_dir" /MIR

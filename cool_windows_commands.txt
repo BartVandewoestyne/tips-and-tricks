@@ -15,3 +15,12 @@
 * Time a command (see https://stackoverflow.com/questions/673523/how-do-i-measure-execution-time-of-a-command-on-the-windows-command-line)
 
     powershell -Command "Measure-Command {echo hi | Out-Default}"
+
+* Using robocopy for backup:
+
+    robocopy "D:\src\dir" "E:\mirror\dir" /MIR
+
+  See also:
+    https://adamtheautomator.com/robocopy-the-ultimate/
+    https://superuser.com/questions/814102/robocopy-command-to-do-an-incremental-backup
+    https://www.techrepublic.com/article/how-to-quickly-back-up-just-your-data-in-windows-10-with-robocopys-multi-threaded-feature/
