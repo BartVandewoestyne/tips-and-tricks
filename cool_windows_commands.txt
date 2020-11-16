@@ -24,6 +24,10 @@
       /r => locates bad sectors and recovers readable info
       /x => forces the volume to dismount first.  All open handles to the drive are invalidated.
 
+  See also:
+    https://www.dell.com/support/article/fr-be/sln86661/het-hulpprogramma-chkdsk-gebruiken?lang=nl
+    https://www.clickx.be/tips/168591/repareer-je-harde-schijf/
+
 * Using robocopy for backup:
 
     robocopy F: G:\2020XXYY_BACKUP /MIR
