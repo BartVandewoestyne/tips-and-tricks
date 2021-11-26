@@ -1,3 +1,11 @@
+# GNU core utilities
+These utilities are expected to exist on every operating system.
+
+Getting the full path to a file:
+```
+readlink -f file.txt
+```
+
 ```
 # mkdir -p /mnt/hda2
 # mount -o dev /dev/hda2 /mnt/hda2
@@ -7,10 +15,6 @@
 # reboot
 ```
 
-Getting the full path to a file path:
-```
-readlink -f file.txt
-```
 
 Download a YouTube playlist
 ```
