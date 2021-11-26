@@ -6,9 +6,7 @@ Getting the full path to a file:
 readlink -f file.txt
 ```
 
-Listing geven van bijvoorbeeld alle .JPG en .jpg files
-------------------------------------------------------
-List all .JPG and .jpg files:
+List all .JPG and .jpg files:<br>
 Method 1:
 ```
 ls | grep -i \.jpg$
