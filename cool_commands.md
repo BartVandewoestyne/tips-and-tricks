@@ -7,13 +7,15 @@
 # reboot
 ```
 
-Get full file path
-------------------
+Getting the full path to a file path:
+```
 readlink -f file.txt
+```
 
-Youtube Playlists downloaden
-----------------------------
+Download a YouTube playlist
+```
 youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
+```
 
 Get EXIF data from a picture
 ----------------------------
