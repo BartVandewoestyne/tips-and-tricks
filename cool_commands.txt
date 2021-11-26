@@ -591,7 +591,11 @@ PDF commands:
 -------------
 Paste together PDF's:
 
-  pdftk file1.pdf file2.pdf cat output totaal.pdf
+  method 1:
+    pdfunite file1.pdf file2.pdf filen.pdf out.pdf
+
+  method 1:
+    pdftk file1.pdf file2.pdf cat output totaal.pdf
 
 Extract pages from PDF:
   Method 1:
