@@ -16,6 +16,11 @@ Method 2:
 ls *.[jJ][pP][gG]
 ```
 
+List only directories:
+```
+ls -d */
+```
+
 # Other GNU tools
 
 ???
@@ -65,12 +70,6 @@ als user: xhost +LOCAL:
 als root: export DISPLAY=:0
           gq
 
-
-Listing geven van enkel directories
------------------------------------
-ls -d */
-
-
 Foto's omzetten naar een kleiner formaat:
 -----------------------------------------
 # For paraglide.be      -> 1600x1600 met -quality 80
@@ -92,74 +91,82 @@ do
 done
 
 
-Om te zien welke Debian packages de grootste zijn:
---------------------------------------------------
+# Debian GNU/Linux commands
 
-Mogelijkheid 1:
-        wajig size
+To see what packages are the biggest:<br>
+Method 1:
+```
+wajig size
+```
+Method 2:
+```
+dpkg-query -W --showformat='${Installed-Size} ${Package}\n' | sort -n
+```
+Method 3:
+```
+dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | sort -n | grep installed
+```
 
-Mogelijkheid 2:
-        dpkg-query -W --showformat='${Installed-Size} ${Package}\n' | sort -n
-
-Mogelijkheid 3:
-        dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | sort -n | grep installed
-
-Om te zien tot welke package een file behoort:
-----------------------------------------------
+To see to what package a file belongs:
+```
 $ dpkg -S /my/file
+```
 
-Om packages te zoeken en info op te vragen:
--------------------------------------------
+Search for packages and fetch info from a package:
+```
 $ aptitude search <packages>
--> only searches in package names
-
+```
+The above command only searches in package names.
+```
 $ aptitude search ~d"RegEx"
--> Matches packages whose description matches the regular expression
-   RegEx. 
--> See http://algebraicthunk.net/~dburrows/projects/aptitude/doc/en/ch02s03s05.html
-
+```
+The above command matches packages whose description matches the regular expression RegEx. 
+See also http://algebraicthunk.net/~dburrows/projects/aptitude/doc/en/ch02s03s05.html.
+```
 $ apt-cache search zoekterm
 $ apt-cache search "een zoekterm"
+```
 
+to see the description of on or more packages:
+```
 $ aptitide show <packages>
+```
 
+## Cleaning up a Debian system
 
-Om beschrijving van packages te zien:
--------------------------------------
-$ aptitude show packagename
-
-Om alle packages te verwijderen waarvan het systeem kan detecteren dat ze
-niet meer nodig zijn:
-------------------------------------------------------------------------
+To remove all packages of which the system can detect that they are no longer necessary:
+```
 # apt-get autoremove --purge
+```
 
-Om Debian packages (libs en data) te verwijderen die niet meer
-gebruikt worden of in de rc-state zijn:
-----------------------------------------------------------
+To remove packages (libs and data) that are no longe rused or that are in the rc-state:
+```
 # deborphan --find-config | xargs aptitude -y purge
 # dpkg -l | grep ^rc | cut -d' ' -f3 | xargs aptitude -y purge
 # deborphan | xargs aptitude -y purge
 # deborphan --guess-data | xargs aptitude -y purge
+```
 
-Om transitional Debian packages te verwijderen:
-----------------------------------------------
+To remove transitional Debian packages:
+```
 # dpkg -l | grep transitional | cut -c5-39 | xargs aptitude -y purge
+```
 
--> In al het bovenstaande kan je ook aptitude -y purge vervangen
-   door dpkg --purge
+In all the above, you can also change `aptitude -y purge` by `dpkg --purge`.
 
-Om packages op hold of unhold te zetten via aptitude:
------------------------------------------------------
+To set packages on 'unhold' via aptitude:
+```
 # aptitude hold packagename
 # aptitude unhold packagename
 # aptitude search ~ahold
+```
 
-Om packages op hold of unhold te zetten via dpkg/apt-get:
----------------------------------------------------------
+To set packages on 'unhold' via dpkg/apt-get:
+```
 # echo 'packagename hold' | dpkg --set-selections       -> op hold zetten
 # echo 'packagename install' | dpkg --set-selections    -> op unhold zetten
 # dpkg --get-selections | grep hold                     -> lijst hold packages
-
+```
 
 uitzoeken welke Linux-distributie je juist hebt
 ------------------------------------------
