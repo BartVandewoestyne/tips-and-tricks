@@ -1,9 +1,11 @@
+```
 # mkdir -p /mnt/hda2
 # mount -o dev /dev/hda2 /mnt/hda2
 # chroot /mnt/hda2 /sbin/lilo
 # exit
 # sync; umount /dev/hda2
 # reboot
+```
 
 Get full file path
 ------------------
