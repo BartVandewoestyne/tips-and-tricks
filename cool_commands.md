@@ -1,11 +1,47 @@
 # GNU core utilities
-These utilities are expected to exist on every operating system.
+These commands can be found on Unix operating systems and most Unix-like operating systems.
 
 Getting the full path to a file:
 ```
 readlink -f file.txt
 ```
 
+Listing geven van bijvoorbeeld alle .JPG en .jpg files
+------------------------------------------------------
+List all .JPG and .jpg files:
+Method 1:
+```
+ls | grep -i \.jpg$
+```
+Method 2:
+```
+ls *.[jJ][pP][gG]
+```
+
+# Other GNU tools
+
+???
+```
+sed -e '0,/\\begin\{document\}/d;s/\\begin\{[^}]*\}//g;s/\\[^{]*\{//g;s/\}//g'
+
+sed -e 's/[ \t\n]/\n/g' | sed -e 's/[^0-9a-zA-Z]//g' | sort | uniq -c
+
+file=$(cat inputfile); echo $file|sed -e 's/[\.!?] /\n/g' | wc -l
+```
+
+Get cpu frequency:
+```
+grep MHz /proc/cpuinfo | cut -d ":" -f 2
+```
+
+# Third party tools
+
+Download a YouTube playlist
+```
+youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
+```
+
+# Unknown
 ```
 # mkdir -p /mnt/hda2
 # mount -o dev /dev/hda2 /mnt/hda2
@@ -13,12 +49,6 @@ readlink -f file.txt
 # exit
 # sync; umount /dev/hda2
 # reboot
-```
-
-
-Download a YouTube playlist
-```
-youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
 ```
 
 Get EXIF data from a picture
@@ -30,18 +60,6 @@ Set EXIF data in a picture
 --------------------------
 exif --output=myoutput.jpg -t 0x013b --ifd=0 --set-value='Foo Bar' --no-fixup myinput.jpg
 
-???
----
-sed -e '0,/\\begin\{document\}/d;s/\\begin\{[^}]*\}//g;s/\\[^{]*\{//g;s/\}//g'
-
-sed -e 's/[ \t\n]/\n/g' | sed -e 's/[^0-9a-zA-Z]//g' | sort | uniq -c
-
-file=$(cat inputfile); echo $file|sed -e 's/[\.!?] /\n/g' | wc -l
-
-cpu frequentie opvragen:
-------------------------
-grep MHz /proc/cpuinfo | cut -d ":" -f 2
-
 
 ???
 ---
@@ -49,13 +67,6 @@ als user: xhost +LOCAL:
 als root: export DISPLAY=:0
           gq
 
-
-Listing geven van bijvoorbeeld alle .JPG en .jpg files
-------------------------------------------------------
-Manier 1:
-        ls | grep -i \.jpg$
-Manier 2:
-        ls *.[jJ][pP][gG]
 
 Listing geven van enkel directories
 -----------------------------------
