@@ -36,3 +36,37 @@
     https://adamtheautomator.com/robocopy-the-ultimate/
     https://superuser.com/questions/814102/robocopy-command-to-do-an-incremental-backup
     https://www.techrepublic.com/article/how-to-quickly-back-up-just-your-data-in-windows-10-with-robocopys-multi-threaded-feature/
+
+Performance measuring and benchmarking
+--------------------------------------
+
+* The Windows Experience Index assesses key system components on a scale of
+  1.0 to 9.9.
+
+  https://www.makeuseof.com/tag/check-windows-experience-score-windows-10/
+
+  PowerShell in Administrator mode opstarten, en dan:
+
+    PS C:\WINDOWS\system32> Get-WmiObject -class Win32_WinSAT
+
+    __GENUS               : 2
+    __CLASS               : Win32_WinSAT
+    __SUPERCLASS          :
+    __DYNASTY             : Win32_WinSAT
+    __RELPATH             : Win32_WinSAT.TimeTaken="MostRecentAssessment"
+    __PROPERTY_COUNT      : 8
+    __DERIVATION          : {}
+    __SERVER              : ESLCLT1569
+    __NAMESPACE           : root\cimv2
+    __PATH                : \\ESLCLT1569\root\cimv2:Win32_WinSAT.TimeTaken="MostRecentAssessment"
+    CPUScore              : 8.9
+    D3DScore              : 9.9
+    DiskScore             : 7.4
+    GraphicsScore         : 8
+    MemoryScore           : 8.9
+    TimeTaken             : MostRecentAssessment
+    WinSATAssessmentState : 1
+    WinSPRLevel           : 7.4
+    PSComputerName        : ESLCLT1569
+
+* winsat disk -drive d:
