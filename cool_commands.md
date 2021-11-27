@@ -37,11 +37,20 @@ Get cpu frequency:
 grep MHz /proc/cpuinfo | cut -d ":" -f 2
 ```
 
-# Third party tools
-
-Download a YouTube playlist
+Grepping only in .tex files recursively:
 ```
-youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
+grep -r '\$I\^.*\$' --include=*.tex .
+```
+
+Sending compressed data 'on the fly' over the network:
+```
+tar cjf - test.txt | ssh bartv@vonneumann.cs.kuleuven.be "cd /home/bartv/temp/ ;
+tar xjf -"
+```
+
+Renaming a whole bunch of files using a regular expression:
+```
+rename 's/old/new/' *.tex
 ```
 
 # Unknown
@@ -54,24 +63,54 @@ youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
 # reboot
 ```
 
-Get EXIF data from a picture
-----------------------------
+# Image manipulation
+
+Get EXIF data from a picture:
+```
 exif mypicture.jpg
 exiftran -d kolonisten_van_catan_bus.jpg
-
-Set EXIF data in a picture
---------------------------
+```
+Set EXIF data in a picture:
+```
 exif --output=myoutput.jpg -t 0x013b --ifd=0 --set-value='Foo Bar' --no-fixup myinput.jpg
+```
+To get the size or other info from an image:
+```
+identify -verbose sample.png
+pnginfo sample.png
+tiffinfo sample.tif
+```
+```
+for d in `seq 1 15`;
+do
+  convert -append niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg - | display -
+done
 
+for d in `seq 1 15`;
+do
+  montage -geometry 640x480 niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg jpg:- | display -
+done
+```
+Convert an EPS to a PNG:
+* Method 1:
+  ```
+  mogrify -format png *.eps
+  ```
+* Method 2:
+  ```
+  convert foo.ps foo.png
+  ```
+Convert PDF to EPS
+```
+pdftops -eps file.pdf
+```
+Create a PDF file from an Asymptote script:
+```
+asy myfile.asy -f pdf
+```
 
-???
----
-als user: xhost +LOCAL:
-als root: export DISPLAY=:0
-          gq
-
-Foto's omzetten naar een kleiner formaat:
------------------------------------------
+Convert pictures to a smaller format:
+```
 # For paraglide.be      -> 1600x1600 met -quality 80
 # For parapentebelge.be -> 800x800
 # Zie ook http://www.imagemagick.org/script/command-line-options.php
@@ -89,124 +128,106 @@ do
   convert -resize 1600x1600 -quality 80 $file resized/$file
   echo "done."
 done
+```
 
-
-# Debian GNU/Linux commands
-
-To see what packages are the biggest:<br>
+To find out what Linux distribution you have<br>
 Method 1:
 ```
-wajig size
+lsb_release -a
 ```
 Method 2:
 ```
-dpkg-query -W --showformat='${Installed-Size} ${Package}\n' | sort -n
-```
-Method 3:
-```
-dpkg-query -W --showformat='${Installed-Size} ${Package} ${Status}\n' | sort -n | grep installed
+cat /etc/issue.net
 ```
 
-To see to what package a file belongs:
-```
-$ dpkg -S /my/file
-```
+# Audio
 
-Search for packages and fetch info from a package:
-```
-$ aptitude search <packages>
-```
-The above command only searches in package names.
-```
-$ aptitude search ~d"RegEx"
-```
-The above command matches packages whose description matches the regular expression RegEx. 
-See also http://algebraicthunk.net/~dburrows/projects/aptitude/doc/en/ch02s03s05.html.
-```
-$ apt-cache search zoekterm
-$ apt-cache search "een zoekterm"
-```
-
-to see the description of on or more packages:
-```
-$ aptitide show <packages>
-```
-
-## Cleaning up a Debian system
-
-To remove all packages of which the system can detect that they are no longer necessary:
-```
-# apt-get autoremove --purge
-```
-
-To remove packages (libs and data) that are no longe rused or that are in the rc-state:
-```
-# deborphan --find-config | xargs aptitude -y purge
-# dpkg -l | grep ^rc | cut -d' ' -f3 | xargs aptitude -y purge
-# deborphan | xargs aptitude -y purge
-# deborphan --guess-data | xargs aptitude -y purge
-```
-
-To remove transitional Debian packages:
-```
-# dpkg -l | grep transitional | cut -c5-39 | xargs aptitude -y purge
-```
-
-In all the above, you can also change `aptitude -y purge` by `dpkg --purge`.
-
-To set packages on 'unhold' via aptitude:
-```
-# aptitude hold packagename
-# aptitude unhold packagename
-# aptitude search ~ahold
-```
-
-To set packages on 'unhold' via dpkg/apt-get:
-```
-# echo 'packagename hold' | dpkg --set-selections       -> op hold zetten
-# echo 'packagename install' | dpkg --set-selections    -> op unhold zetten
-# dpkg --get-selections | grep hold                     -> lijst hold packages
-```
-
-uitzoeken welke Linux-distributie je juist hebt
-------------------------------------------
-mogelijkheid 1:
-        lsb_release -a
-
-mogelijkheid 2:
-        cat /etc/issue.net
-
-
-codec informatie opvragen, analoog als in gspot voor windows.
--------------------------------------------------------------
-1) mediainfo file.avi
-2) avprobe file.avi
-3) tcprobe -i file.avi
-
-See also http://www.fourcc.org/codecs.php for a list of codecs and their
-four character code.
-
-mpeg info opvragen
-------------------
-mpgtx -i file.mpg
-
-mp3-info opvragen en aanpassen
-------------------------------
-For ID3 versions 1.0 and 1.1 only, not ID3V2:
-
+To get mp3-info and change it:
+* For ID3 versions 1.0 and 1.1 only, not ID3V2:
+  ```
   mp3info file.mp3
-
-For ID3 versions 1.0, 1.1, 2.3 and 2.4:
-
+  ```
+* For ID3 versions 1.0, 1.1, 2.3 and 2.4:
+  ```
   eyeD3 file.mp3
+  ```
+For automated batch tagging, use the program easytag, btag or kid3 (on KDE) or kid3-qt (on Gnome).
 
-For automated batch tagging, use the program easytag, btag or kid3 (on KDE) or
-kid3-qt (on Gnome).
+Remark: Android Music Player should work with ID3v2.3.0, but not sure about ID3v2.4.0.
 
-Opmerking: Android Music Player zou moeten werken met ID3v2.3.0, maar
-           ID3v2.4.0 is niet helemaal zeker???
+Convert .wav to .mp3
+--------------------
+# lame –h –b 192 Test.wav Test.mp3
 
+$ for FILE in *.wav; do lame -h -b 192 "$FILE"; done
 
+# for FILE in "`ls *.wav`"; do `which lame` –h –b 192 "$FILE" "${FILE//\.wav}.mp3"; done
+
+#!/bin/sh
+# name of this script: wav2mp3.sh
+# wav to mp3
+for i in *.wav; do
+ if [ -e "$i" ]; then
+   file=`basename "$i" .wav`
+   lame -h -b 192 "$i" "$file.mp3"
+ fi
+done
+
+# Video
+
+## Downloading
+
+Download a YouTube playlist:
+```
+youtube-dl -t http://www.youtube.com/view_play_list?p=PL03C3ABF4835B2C51
+```
+Downloading a stream:
+```
+ffmpeg -i videourl.m3u8 -c:v copy -c:a copy video.ts
+```
+
+## Getting info
+To request codec info, similar as gspot for Windows:
+```
+mediainfo file.avi
+avprobe file.avi
+tcprobe -i file.avi
+```
+See also http://www.fourcc.org/codecs.php for a list of codecs and their four character code.
+
+To get mpeg info:
+```
+mpgtx -i file.mpg
+```
+Checking if an mpg file is corrupt or not
+-----------------------------------------
+ffmpeg -v 5 -i file.avi -f null - 2>error.log
+
+# Joining videos
+* AVI files:
+  ```
+  mencoder -ovc copy -oac copy -o completevideos.avi video1.avi video2.avi
+  ```
+  Also checkout avimerge.
+* MPEG:
+  * Method 1:
+    ```
+    mpgjoin file1.mpg file2.mpg file3.mpg -o newfile.mpg
+    ```
+  * Method 2:
+    ```
+    mpgjoin *.mpg -o test.mpg
+    ```
+  * Method 3:
+    ```
+    cat file1.mpg file2.mpg file3.mpg > totalfile.mpg
+    ```
+  * Method 4:
+    ```
+    mencoder -of mpeg -ovc copy -oac copy *.mpg -o totalfile.mpg
+    ```
+
+# GPX related commands
 gpx file in Google Earth bekijken met hoogte info
 -------------------------------------------------
 By default zet Google Earth de altitudemode op "clamped to ground".  Je kan
@@ -219,220 +240,180 @@ gpsbabel -i gpx -f myfile.gpx -o kml,floating=1 -F myfile.kml
 http://www.gpsbabel.org/htmldoc-development/fmt_kml.html#fmt_kml_o_floating
 
 
-convert pdf file to booklet
----------------------------
-mijn manier:
-
-  pdftops file.pdf
-  psbook file.ps | psnup -2 -pa4 | a2ps -1 -s tumble -o booklet.ps
-  -> en dan printen op een duplex printer.
-
-alternatief 1:
-
-  pdf2ps -spapersize=a4 file.pdf file.ps
-  psbook file.ps | psnup -2 | a2ps -1 -s tumble -o booklet.ps
-  -> print on both side with the option "long edge (standard)".
-  
-alternatief 2: if the original document is not in the a4 format (for
-instance 14,88 cm x 20,98 cm), we have to do then:
-
-  pdf2ps file.pdf file.ps
-  psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
-
-or
-
-hexdump command examples
-------------------------
-  hexdump -v -c file.bin
-  hexdump -v -d Model.msh
-  hexdump -v -e '1/4 "%d\n"' -n 4 Model.msh
-  hexdump -v -e '1/8 "%10.5f\n"' -s 20 Model.msh
-  hexdump -v -e '1/8 "%_ad%10.5f\n"' -s 20 Model.msh
-Show header of 12 bytes (3 four byte integers):
-  hexdump -v -e '"[" 3/4 "%u " "]\n"' -n  12 reso2~dad.mat
-Show data following this header (4 byte floats following each other):
-  hexdump -v -e '"[" 1/4 "%f " "]\n"' -s  12 reso2~dad.mat
-
--> A good hexeditor for Linux is ghex2.  For windows, you can use wxhexeditor.
-
-Java commands
+# PDF and PostScript commands
+PDF commands:
 -------------
-Find out class file version:
-  $ javap -verbose HelloServlet | grep major
-  
+Paste together PDF's:
 
-Print commands
---------------
+  method 1:
+    pdfunite file1.pdf file2.pdf filen.pdf out.pdf
+
+  method 1:
+    pdftk file1.pdf file2.pdf cat output totaal.pdf
+
+Extract pages from PDF:
+* Method 1:
+  ```
+  gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+     -dFirstPage=22 -dLastPage=36 \
+     -sOutputFile=outfile_p22-p36.pdf 100p-inputfile.pdf
+```
+* Method 2:
+  ```
+  pdftk inputfile.pdf cat 1-10 output outputfile.pdf
+  ```
+* Method 2 (pdftk with handles):
+  ```
+  pdftk A=100p-inputfile.pdf cat A22-36 output outfile_p22-p36.pdf
+  ```
+Rotating a PDF document:
+```
+  pdftk input.pdf cat 1-endwest output output.pdf
+```
+
+Convert a PDF file to booklet:<br>
+* My method:
+    ```
+    pdftops file.pdf
+    psbook file.ps | psnup -2 -pa4 | a2ps -1 -s tumble -o booklet.ps
+    ```
+  and then print on a duplex printer.
+
+* Alternative 1:
+    ```
+    pdf2ps -spapersize=a4 file.pdf file.ps
+    psbook file.ps | psnup -2 | a2ps -1 -s tumble -o booklet.ps
+    ```
+  and then print on both side with the option "long edge (standard)".
+
+* Alternative 2: if the original document is not in the a4 format (for instance 14,88 cm x 20,98 cm),
+we have to do:
+    ```
+    pdf2ps file.pdf file.ps
+    psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
+    ```
+
+Selecting selected pages from a PostScript document:
+```
+psselect -p18,31,32 file_in.ps file_out.ps
+```
+
+Combining PostScript files into one document:
+* Method 1:
+  ```
+  ghostscript -dNOPAUSE -sDEVICE=pswrite -dBATCH -sOutputFile=out.ps file1.ps file2.ps
+  ```
+* Method 2:
+  ```
+  psjoin
+  ```
+* Method 3
+  ```
+  psmerge -oout.ps file.ps
+  ```
+The above command only works if the files were created using the same application, with the
+same device setup and resources (fonts, procsets, patterns, files, etc) loaded.
+
+# Print commands
+
 Print only odd sides pages in a certain range:
+```
 $ lp -o page-set=odd -o sides=two-sided-long-edge -o media=a4 -o fitplot -P 3-5 file.pdf
-
-Eerst oneven:
+```
+First uneven:
+```
 $ lp -o page-set=odd -o sides=two-sided-long-edge -o media=a4 -o fitplot -P 1-5
 PaulVanHoutte.pdf
-Dan even (in reverse order):
+```
+Then even (in reverse order):
+```
 $ lp -o page-set=even -o outputorder=reverse -o sides=two-sided-long-edge -o
 media=a4 -o fitplot -P 2-6 PaulVanHoutte.pdf
-\linebreak kan in LaTeX helpen om lijnen te breken
+```
+`\linebreak` can help in LaTeX to break lines
 
-Grepping only in .tex files recursively
----------------------------------------
-grep -r '\$I\^.*\$' --include=*.tex .
+# Text processing
 
-Sending data `tar-bz2d on the fly' over the network
----------------------------------------------------
-tar cjf - test.txt | ssh bartv@vonneumann.cs.kuleuven.be "cd /home/bartv/temp/ ;
-tar xjf -"
+Replacing a piece of text in a lot of files in the current directory:
+* Method 1:
+  ```
+  for file in `ls *.tex`
+  do
+    sed -e "s/chapter/part/g" <$file >$file.new
+    mv $file.new $file
+  done
+  ```
+* Method 2:
+  ```
+  perl -pi.bak -e 's/foo/bar/g' *.whatever
+  ```
+* Method 3:
+  ```
+  sed -i.bak -e 's/foo/bar/g' *.whatever
+  ```
 
-
-Renaming a whole bunch of files using a regular expression
-----------------------------------------------------------
-rename 's/old/new/' *.tex
-
-
-Selecting selected pages from a PostScript document
----------------------------------------------------
-psselect -p18,31,32 file_in.ps file_out.ps
-
-
-Combining PostScript files into one document
---------------------------------------------
-ghostscript -dNOPAUSE -sDEVICE=pswrite -dBATCH -sOutputFile=out.ps file1.ps
-file2.ps
-
-psjoin
-
-psmerge -oout.ps file.ps
-(only works if the files were created using the same application, with the
- same device setup and resources (fonts, procsets, patterns, files, etc) loaded.
-
-
-Replacing a piece of text in a lot of files in the current directory
---------------------------------------------------------------------
-for file in `ls *.tex`
-do
-  sed -e "s/chapter/part/g" <$file >$file.new
-  mv $file.new $file
-done
-
-OR
-
-perl -pi.bak -e 's/foo/bar/g' *.whatever
-
-OR
-
-sed -i.bak -e 's/foo/bar/g' *.whatever
-
-
-Append a line after a certain matching line
--------------------------------------------
+Append a line after a certain matching line:
+```
 sed '/myregex/ a\myline' myfile.txt
-
-
-Finding out with what options gnuplot is built:
------------------------------------------------
-gnuplot> show version long
+```
 
 Printing sourcecode in color:
------------------------------
-
-With `enscript`:
-
+* With `enscript`:
+  ```
   enscript -Ec -G -U2 --color -Pkleur <file>
-  
+
     -E            -> filter (autodetectie meestal, hier c-code)
     -G            -> fancy header 
     -U2           -> 2 paginas op bladzijde
     --color       -> kleur
-
-With `a2ps`:
-
+  ```
+* With `a2ps`:
+  ```
   a2ps --prologue=color -2 <file>
 
     -> includes color.pro as PostScript prologue
     -> predefined font size and layout for 2 virtual
+  ```
 
+# gnuplot
+
+Finding out what options gnuplot is built with:
+```
+gnuplot> show version long
+```
 
 Plotting points from sequences:
--------------------------------
+```
 $ gnuplot
 plot "filename.seq" using ($15):($16)
 
 $ echo 'plot "filename.seq" using ($1):($2); pause 10' | gnuplot
-
+```
 
 Dictionary:
 -----------
 dict myword
 
+# X Window System
 
-Profiling:
-----------
-* compileer met -pg optie
-* voer sourcecode uit, je bekomt een gmon.out
-* gprof binary gmon.out 
-
-
-X
--
 Starting another X:
-	export WINDOWMANAGER=kde
-	startx -- :2
+```
+export WINDOWMANAGER=kde
+startx -- :2
+```
+???:
+```
+als user: xhost +LOCAL:
+als root: export DISPLAY=:0
+          gq
+```
 
-
-CVS
----
-* Een eerste, verse checkout doen:
-  cvs -q -d :ext:bartv@radon.cs.kuleuven.be:/export/home2/cvs co qmcpack
-
-
-Maple input files
+# Maple input files
 -----------------
 1) start maple in console modus
 2) read("myfile.mpl")
 
 
-CVS stuff
----------
-Bij een `cvs update' kan je hebben:
- M - Modified - this file had been modified on YOUR local machine and needed to
-                be uploaded to server.  Bij een commit zullen alle files
-                waar een M bij stond getoond worden in de commit lijst.
- P - Patched - minor changes from the server had been patched to your files
- U - Updated - your file is overwritten by the latest version due to major
-               changes
- C - Conflict - Er is een conflict en je moet het eerst oplossen
-
--------------------------------------------------------------------------------
-for d in `seq 1 15`;
-do
-  convert -append niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg - | display -
-done
-
-for d in `seq 1 15`;
-do
-  montage -geometry 640x480 niederreiter_f_warnock01_1000000p_${d}d_none.jpg niederreiter_f_warnock01_1000000p_${d}d_Laurie.jpg jpg:- | display -
-done
-
---------------------------------------------------------------------------------
-cancellen op printer wit:
-/usr/local/lib/cs-lprng/lprm.wrapper -Pwit 87
---------------------------------------------------------------------------------
-
-Convert an EPS to a PNG:
-
-  mogrify -format png *.eps
-or
-  convert foo.ps foo.png
-
-Convert PDF to EPS
-
-        pdftops -eps file.pdf
-
-Create a PDF file from an Asymptote script:
-
-        asy myfile.asy -f pdf
-
---------------------------------------------------------------------------------
 Add a graphicspath in LaTeX:
 
   \graphicspath{{<path_to_pictures>}}
@@ -565,42 +546,6 @@ Foto-album maken
 ----------------
 photon --sizelist=640x480 --resize-plugin=gimp -o myoutputdir mypicturesdir/
 
-
-Creating a patch
-----------------
-Assume original source code at folder dir1 and latest source code at folder
-dir2.  And there can be multiple subdirectories:
-
-  diff -crB dir1 dir2 > Tb02.patch
-
-  -c context
-  -r recursive (multiple levels dir)
-  -B is to ignore Blank Lines.
-
-Testing the patch:
-
-  patch --dry-run -p1 -i Tb02.patch
-
-Applying the patch:
-
-  patch -p1 -i Tb02.patch
-
-To create a patch from CVS:
-
-  cvs diff -uN > patch.txt
-
-Or if you added files:
-
-  cvs add newfile
-  cvs diff -uNa > patch.txt
-
-
-To get the size or other info from an image
--------------------------------------------
-  identify -verbose sample.png
-  pnginfo sample.png
-  tiffinfo sample.tif
-
 Having two versions of gcc side by side
 ---------------------------------------
 sudo apt-get install gcc-4.3 g++-4.3
@@ -610,31 +555,6 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 60 --slave 
 
 Now, if you want to change between gcc versions, simply run
 sudo update-alternatives --config gcc
-
-PDF commands:
--------------
-Paste together PDF's:
-
-  method 1:
-    pdfunite file1.pdf file2.pdf filen.pdf out.pdf
-
-  method 1:
-    pdftk file1.pdf file2.pdf cat output totaal.pdf
-
-Extract pages from PDF:
-  Method 1:
-    gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-           -dFirstPage=22 -dLastPage=36 \
-                  -sOutputFile=outfile_p22-p36.pdf 100p-inputfile.pdf
-  Method 2:
-    pdftk inputfile.pdf cat 1-10 output outputfile.pdf
-
-  Method 2 (pdftk with handles):
-    pdftk A=100p-inputfile.pdf cat A22-36 output outfile_p22-p36.pdf
-
-Rotating a PDF document:
-
-  pdftk input.pdf cat 1-endwest output output.pdf
 
 tcpdump commands
 ----------------
@@ -649,48 +569,6 @@ Terminal weer goed krijgen als hij fucked up is
 tset
 tput init
 tput reset
-
-Convert .wav to .mp3
---------------------
-# lame –h –b 192 Test.wav Test.mp3
-
-$ for FILE in *.wav; do lame -h -b 192 "$FILE"; done
-
-# for FILE in "`ls *.wav`"; do `which lame` –h –b 192 "$FILE" "${FILE//\.wav}.mp3"; done
-
-#!/bin/sh
-# name of this script: wav2mp3.sh
-# wav to mp3
-for i in *.wav; do
- if [ -e "$i" ]; then
-   file=`basename "$i" .wav`
-   lame -h -b 192 "$i" "$file.mp3"
- fi
-done
-
-Checking if an mpg file is corrupt or not
------------------------------------------
-ffmpeg -v 5 -i file.avi -f null - 2>error.log
-
-Downloading a stream
---------------------
-ffmpeg -i videourl.m3u8 -c:v copy -c:a copy video.ts
-
-Joining .avi files
-------------------
-mencoder -ovc copy -oac copy -o completevideos.avi video1.avi video2.avi
-(eventueel ook avimerge?)
-
-Joining Mpeg:
--------------
-mpgjoin file1.mpg file2.mpg file3.mpg -o newfile.mpg
-OF
-mpgjoin *.mpg -o test.mpg
-OF
-cat file1.mpg file2.mpg file3.mpg > totalfile.mpg
-OF
-mencoder -of mpeg -ovc copy -oac copy *.mpg -o totalfile.mpg
-(dit leek te werken voor de mpg files van traficon)
 
 Pretty print JSON
 -----------------
