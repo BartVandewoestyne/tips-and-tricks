@@ -21,6 +21,12 @@ List only directories:
 ls -d */
 ```
 
+Finding the biggest directories in the current directory
+```
+du -s * | sort -n
+du -s * .[a-zA-Z]* | sort -n
+```
+
 # Other GNU tools
 
 ???
@@ -129,6 +135,12 @@ do
   echo "done."
 done
 ```
+
+Find corrupted JPG files in a directory
+```
+find -iname "*.jpg" -print0 | xargs -0 jpeginfo -c | grep -e WARNING -e ERROR
+```
+See also http://watson-net.com/blog/checking-the-integrity-of-all-jpg-files-in-a-directory/
 
 To find out what Linux distribution you have<br>
 Method 1:

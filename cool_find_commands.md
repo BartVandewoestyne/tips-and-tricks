@@ -1,40 +1,58 @@
-Finding a file
---------------
-Method 1:
+# Finding files
 
-    locate
+## Finding a file
+* Method 1:
+  ```
+  locate
+  ```
+* Method 2:
+  ```
+  find / -name 'program.c' 2>/dev/null
+  find / -name 'program.c' 2>errors.txt
+  ```
 
-Method 2:
-
-    find / -name 'program.c' 2>/dev/null
-    find / -name 'program.c' 2>errors.txt
-
-Finding multiple files
-----------------------
-
-Case sensitive match:
-
-    find . -type f -name '*.pl'
-
-Using case insensitive match:
-
-    find . -type f -iname '*.pl'
-    
-Finding both .h and .cpp files:
+## Finding multiple files
+* Case sensitive match:
+  ```
+  find . -type f -name '*.pl'
+  ```
+* Case insensitive match:
+  ```
+  find . -type f -iname '*.pl'
+  ```
+* Finding both .h and .cpp files:
 
     find . -type f -iname '*.h' -o -iname '*.cpp'
 
-Finding text in files
----------------------
+## Finding duplicate files
 
-    find . -type f -name '*.pl' | xargs grep text
+Finding duplicate .m files:
+```
+find subversion/ -type f -name '*.m' | sort | uniq -d > duplicate_files
+```
 
-Find corrupted JPG files in a directory
----------------------------------------
+Finding duplicate files:
+```
+fdupes -r mydir > ~/duplicate_files.txt
+```
 
-    find -iname "*.jpg" -print0 | xargs -0 jpeginfo -c | grep -e WARNING -e ERROR
+# Finding text in files
 
-See http://watson-net.com/blog/checking-the-integrity-of-all-jpg-files-in-a-directory/
+```
+find . -type f -name '*.pl' | xargs grep text
+```
+
+To run a <command> on files with spaces:
+```
+find . -print0 | xargs -0 <command>
+```
+
+# Replacing text in files
+
+Replacing a string in a lot of files, including subdirs:
+```
+find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
+```
 
 Om te kijken of 2 remote directories verschillend zijn:
 -------------------------------------------------------
@@ -49,29 +67,6 @@ Manier 1:
 Manier 2:
 
         find . -print | xargs md5sum | ssh $host '(cd $dir; md5sum -c)'
-
-
-Om een find/xargs commando op te roepen op files met spaties:
--------------------------------------------------------------
-find . -print0 | xargs -0 <command>
-
-
-Om te zien of je duplicate .m files hebt:
------------------------------------------
-find subversion/ -type f -name '*.m' | sort | uniq -d > duplicate_files
-
-Finding duplicate files
------------------------
-fdupes -r mydir > ~/duplicate_files.txt
-
-Replacing a piece of text in a lot of files, including subdirs
---------------------------------------------------------------
-find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
-
-Finding the biggest directories in the current directory
---------------------------------------------------------
-du -s * | sort -n
-du -s * .[a-zA-Z]* | sort -n
 
 Finding the top 10 largest files names (not directories) in a particular
 directory and its subdirectories
