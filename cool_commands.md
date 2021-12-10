@@ -48,6 +48,30 @@ Grepping only in .tex files recursively:
 grep -r '\$I\^.*\$' --include=*.tex .
 ```
 
+Grep for a certain text in all non-binary files:
+```
+grep -rI "SomeText" .
+```
+
+Grep for multiple strings:
+* Method 1
+  ```
+  grep 'pattern1\|pattern2' fileName_or_filePath
+  ```
+* Method 2
+  ```
+  grep -E 'pattern1|pattern2' fileName_or_filePath
+  ```
+* Method 3
+  ```
+  grep -e pattern1 -e pattern2 fileName_or_filePath
+  ```
+
+Grep but exclude .svn directories:
+```
+grep -rI --exclude-dir=".svn" "SomeText" .
+```
+
 Sending compressed data 'on the fly' over the network:
 ```
 tar cjf - test.txt | ssh bartv@vonneumann.cs.kuleuven.be "cd /home/bartv/temp/ ;
@@ -57,6 +81,21 @@ tar xjf -"
 Renaming a whole bunch of files using a regular expression:
 ```
 rename 's/old/new/' *.tex
+```
+
+# Redirecting stdout and stderr
+
+Example command that generates both stdout and stderr output:
+```
+ls . *.blah
+```
+Redirecting stdout and stderr to same file using tee:
+```
+ls . *.blah 2>&1 | tee output.txt
+```
+Redirecting stdout and stderr to separate files using tee:
+```
+ls . *.blah 1> >(tee stdout.txt) 2> >(tee stderr.txt >&2)
 ```
 
 # Unknown
