@@ -1,3 +1,7 @@
+* Checking DNS resolving:
+
+    nslookup s-be-jnks07-21.trealitysvs.net 10.1.147.132
+
 * To redirect both STDERR and STDOUT to a file:
 
     command > logfile 2>&1
