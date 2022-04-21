@@ -1,0 +1,26 @@
+https://forum.dd-wrt.com/phpBB2/viewtopic.php?t=177607&postdays=0&postorder=asc&start=0
+
+If you did not mess with the CFE, recovery of RT-N16 is fairly easy: remove power, press WPS button and keep pressing it, connect power, keep pressing WPS while the power LED flashes quickly, press Recover while continuing to press WPS, stop pressing WPS, but keep pressing Recover till the power LED flashes slowly, stop pressing Recover, set a static IP 192.168.1.3 with Gateway 192.168.1.1 and netmask 255.255.255.0, TFTP a firmware to the router, wait 10 minutes and then power off and power on or use Asus Recovery tool instead of TFTP.
+
+Note 6
+https://forum.dd-wrt.com/phpBB2/viewtopic.php?t=51486
+
+https://forum.dd-wrt.com/phpBB2/viewtopic.php?p=521523
+Aha! I had to hold down the WPS button (factory reset) for an extended period of time with a powercycle and then the power light flashed very fast for about a minute, then I powercycled again with the recover button and then it was able to stick in Recovery mode.
+Just gotta keep trying I guess. Thanks buddee!
+
+Eerst power cycle met WPS (30 seconden inhouden)
+Dan power cycle met power recovery button (30 seconden inhouden)
+Dat lukt, en ik kan hem pingen met ttl 100.
+the bootloader (CFE) is responding.
+
+TFTP
+----
+11. The instructions for how to use tftp.exe are here:
+http://www.dd-wrt.com/wiki/index.php/Tftp_flash
+
+In order to catch the narrow window for TFTP flash, you should use platforms with simple TCP/IP implementations that don't have CTCP implemented: WinXP or Linux are reported to work, but some are reporting significant problems with Vista, Win7 or W2K8. For more information see this posting
+
+If you do wish to try to Post WinXP OS, you will need to right click on the icon and "Run As Administrator".
+
+---------------
