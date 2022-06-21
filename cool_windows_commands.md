@@ -1,3 +1,8 @@
+* Rename multiple files at once:
+
+    rename *.txt *.pdf
+    rename * *.pdf
+    
 * Checking DNS resolving:
 
     nslookup s-be-jnks07-21.trealitysvs.net 10.1.147.132
