@@ -19,4 +19,5 @@ When the snap is installed, you can launch it by running the `clion.sh` command.
 
 # Post install configuration
 
+* To enable the back and forward navigation buttons, select *View > Appearance* and enable *Toolbar*.
 * If you get Inotify-related warnings when running Clion on Linux, increase the limit of watch handles for inotify as explained in the blog post [Inotify Watches Limit (Linux)](https://youtrack.jetbrains.com/articles/IDEA-A-2/Inotify-Watches-Limit-Linux).
