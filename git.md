@@ -12,3 +12,11 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 ```
 _NOTE_: Setting both is not necessarily needed, but some programs may not use the more-correct `VISUAL`.  See [`VISUAL` vs `EDITOR`](https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference).
+
+# Monitoring git repos
+* [git-dude](https://github.com/sickill/git-dude)
+* [git-indicator](https://github.com/itsadok/git-indicator)
+
+Windows only:
+
+* [SourceLog](https://github.com/tomhunter-gh/SourceLog)
