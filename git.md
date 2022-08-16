@@ -184,6 +184,75 @@ $ git log -- path/to/file
 ```
 
 To prevent the display of merge commits, add `--no-merges`.
+
+# 2.6 Git Basics - Tagging
+
+Listing the existing tags:
+
+```
+$ git tag
+$ $ git tag -l "v1.8.5*"
+```
+
+Creating an *annotated* tag:
+
+```
+$ git tag -a v1.4 -m "my version 1.4"
+```
+
+To see the tag data along with the commit that was tagged for a certain tag:
+
+```
+$ git show v1.4
+```
+
+Creating a *leightweight* tag:
+
+```
+$ git tag v1.4-lw
+```
+
+To tag a certain commit:
+
+```
+$ git tag -a v1.2 9fceb02
+```
+
+The git push command doesn’t transfer tags to remote servers.  You will have to explicitly push tags to a shared server after you have created them.
+
+```
+$ git push origin v1.5
+$ git push origin --tags
+```
+
+To delete a tag on your local repository:
+
+```
+$ git tag -d v1.4-lw
+```
+
+Deleting a tag from a remote server:
+
+```
+$ git push origin :refs/tags/v1.4-lw
+or
+$ git push origin --delete <tagname>
+```
+
+Checking out a tag:
+
+```
+$ git checkout v2.0.0
+```
+
+The above puts you in *detached head* state!
+
+In “detached HEAD” state, if you make changes and then create a commit, the tag will stay the same, but your new commit won’t belong to any branch and will be unreachable, except by the exact commit hash. Thus, if you need to make changes — say you’re fixing a bug on an older version, for instance — you will generally want to create a branch:
+
+```
+$ git checkout -b version2 v2.0.0
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
