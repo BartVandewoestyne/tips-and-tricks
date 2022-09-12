@@ -253,6 +253,142 @@ In “detached HEAD” state, if you make changes and then create a commit, the 
 $ git checkout -b version2 v2.0.0
 ```
 
+# 2.7 Git Basics - Git Aliases
+
+
+You can always create aliases as follows:
+
+```
+$ git config --global alias.co checkout
+```
+
+# 3.1 Git Branching - Branches in a Nutshell
+
+Create a new branch:
+
+```
+$ git branch testing
+```
+
+To see where the branch pointers are pointing:
+
+```
+$ git log --oneline --decorate
+```
+
+To switch to an existing branch:
+
+```
+$ git checkout testing
+```
+
+To show log for only the branch you checked out:
+
+```
+git log         (only branch that is checked out)
+git log testing (specific branch)
+git log --all   (all logs for all branches)
+```
+
+```
+git log --oneline --decorate --graph --all
+```
+
+Create branch and immediately switch to it:
+
+```
+git checkout -b <newbranchname>
+```
+
+From git 2.23 on, you can use `git switch` instead of `git checkout`:
+
+```
+git switch testing-branch
+git switch -c new-branch
+```
+
+To return to your previously checked out branch:
+
+```
+git switch -
+```
+
+# 3.2 Git Branching - Basic Branching and Merging
+
+```
+$ git checkout master
+$ git merge hotfix
+```
+
+To delete a branch:
+
+```
+$ git branch -d hotfix
+```
+
+Basic Merging
+
+```
+$ git checkout master
+$ git merge iss53
+```
+
+```
+$ git mergetool
+```
+
+# 3.3 Git Branching - Branch Management
+
+## Branch Management
+
+List your current branches:
+
+```
+$ git branch
+```
+
+To see the last commit on each branch:
+
+```
+$ git branch -v
+```
+
+To see which branches are already merged into the branch you're on:
+
+```
+git branch --merged
+```
+
+To see all the branches that contain work you haven't merged in:
+
+```
+$ git branch --no-merged
+```
+
+## Changing a branch name
+
+First rename the branch locally:
+
+```
+$ git branch --move bad-branch-name corrected-branch-name
+```
+
+Then push upstream:
+
+```
+$ git push --set-upstream origin corrected-branch-name
+```
+
+```
+$ git push origin --delete bad-branch-name
+```
+
+## Changing the master branch name
+
+# 3.4 Git Branching - Branching Workflows
+
+
+
 # 7.3 Git Tools - Stashing and Cleaning
 
 ## Stashing your work
