@@ -387,7 +387,72 @@ $ git push origin --delete bad-branch-name
 
 # 3.4 Git Branching - Branching Workflows
 
+TODO
 
+# 3.5 Git Branching - Remote Branches
+
+## Remote Branches
+
+```
+git ls-remote <remote>
+or
+git remote show <remote>
+```
+
+To synchronize your work with a given remote:
+
+```
+git fetch <remote>
+e.g.
+git fetch origin
+```
+
+## Pushing
+
+If you want your own `serverfix` branch that you can work on, you can base it off your remote-tracking branch:
+
+```
+git checkout -b serverfix origin/serverfix
+```
+or the shorthand (which does the same)
+
+```
+git checkout --track origin/serferfix
+```
+or even shorter:
+
+```
+git checkout serverfix
+```
+
+If you want to see what tracking branches you have set up:
+```
+$ git branch -vv (this command does not reach out to the server!)
+```
+
+If you want totally up-to-date ahead and behind numbers, you'll need to fetch from all your remotes right before running git branch -vv:
+
+```
+$ git fetch --all; git branch -vv
+```
+
+## Pulling
+
+Note that `git fetch` does not merge, it will not modify your working directory at all.  It will get the data for you and let you merge it yourself.
+
+git pull = git fetch followed by git merge (in most cases)
+
+Generally it’s better to simply use the fetch and merge commands explicitly as the magic of git pull can often be confusing.
+
+## Deleting Remote Branches
+
+To delete your serverfix branch from the server:
+
+```
+$ git push origin --delete serverfix
+```
+
+## Tracking Branches
 
 # 7.3 Git Tools - Stashing and Cleaning
 
