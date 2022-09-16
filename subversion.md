@@ -20,5 +20,9 @@ svn patch mypatchfile.patch
 
 Note that neither tracks `svn move`s and `svn rename`s.
 
+References:
+
+* https://stackoverflow.com/questions/10333712/how-to-make-and-apply-svn-patch
+
 # Monitoring SVN repositories
 * [Subversion repository monitor](https://ghost.tweakblogs.net/blog/3073/subversion-repository-monitor.html)
