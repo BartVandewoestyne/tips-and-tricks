@@ -393,21 +393,47 @@ TODO
 
 ## Remote Branches
 
+To get a full list of remote references explicitly, use
+
 ```
 git ls-remote <remote>
+```
+
 or
+
+```
 git remote show <remote>
 ```
 
-To synchronize your work with a given remote:
+To synchronize your work with a given remote, you run a
 
 ```
 git fetch <remote>
-e.g.
-git fetch origin
 ```
 
+command (e.g. `git fetch origin`). This command looks up which server `origin` is, fetches any data from it that you don’t yet have, and updates your local database, moving for example your `origin/master` pointer to its new, more up-to-date position.
+
 ## Pushing
+
+To push your local `serverfix` branch:
+
+```
+git push origin serverfix
+```
+
+which is short for
+
+```
+git push origin serverfix:serverfix
+```
+
+If you want to name it differently on the remote, use
+
+```
+git push origin serverfix:coolserverfix
+```
+
+## Tracking branches
 
 If you want your own `serverfix` branch that you can work on, you can base it off your remote-tracking branch:
 
@@ -425,10 +451,13 @@ or even shorter:
 git checkout serverfix
 ```
 
-If you want to see what tracking branches you have set up:
+If you want to see what tracking branches you have set up and list out your local branches with more information including what each branch is tracking and if your local branch is ahead, behind or both, use
+
 ```
-$ git branch -vv (this command does not reach out to the server!)
+git branch -vv
 ```
+
+Note that the above command does not reach out to the server.
 
 If you want totally up-to-date ahead and behind numbers, you'll need to fetch from all your remotes right before running git branch -vv:
 
