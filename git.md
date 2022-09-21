@@ -612,6 +612,12 @@ $ git clean -x -i
 
 If you happen to be in a working directory under which you’ve copied or cloned other Git repositories (perhaps as submodules), even git clean -fd will refuse to delete those directories. In cases like that, you need to add a second -f option for emphasis.
 
+## Storing your credentials
+
+```
+git config --global credential.helper cache
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
