@@ -618,6 +618,20 @@ If you happen to be in a working directory under which you’ve copied or cloned
 git config --global credential.helper cache
 ```
 
+## Differences between branches 
+
+To see the diffs between branches
+
+```
+git diff master..test-branch
+```
+
+or using Meld:
+
+```
+git difftool -d master..test-branch
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
