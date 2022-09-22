@@ -632,6 +632,40 @@ or using Meld:
 git difftool -d master..test-branch
 ```
 
+## Undo last commit
+
+Not yet pushed:
+```
+git reset --soft HEAD~1
+```
+
+After running the command, you'll find the changes as uncommitted local modifications in your working copy.
+
+```
+git reset --hard HEAD~1
+```
+
+
+## Going back to previous commits
+
+One that is already pushed:
+
+Option 1:
+
+```
+git checkout be9055b .
+git add -A
+git commit -m "Revert commit: be9055b"
+git push
+
+```
+
+Option 2:
+
+```
+git revert <oldest_commit_hash>..<latest_commit_hash>
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
