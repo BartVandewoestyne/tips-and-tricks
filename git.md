@@ -481,6 +481,12 @@ To delete your serverfix branch from the server:
 $ git push origin --delete serverfix
 ```
 
+or the shorthand version
+
+```
+$ git push origin :serverfix
+```
+
 ## Tracking Branches
 
 # 7.3 Git Tools - Stashing and Cleaning
