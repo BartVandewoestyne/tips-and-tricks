@@ -621,7 +621,7 @@ If you happen to be in a working directory under which you’ve copied or cloned
 ## Storing your credentials
 
 ```
-git config --global credential.helper cache
+git config --global credential.helper store
 ```
 
 ## Differences between branches 
