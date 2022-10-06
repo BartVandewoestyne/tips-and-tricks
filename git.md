@@ -620,9 +620,16 @@ If you happen to be in a working directory under which you’ve copied or cloned
 
 ## Storing your credentials
 
+Globally:
 ```
 git config --global credential.helper store
 ```
+or for a specific repository:
+```
+git config credential.helper store
+```
+
+TODO: Instead of `store` you can also use `cache`.  what is the difference?
 
 ## Differences between branches 
 
