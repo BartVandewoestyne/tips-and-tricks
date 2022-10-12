@@ -645,18 +645,27 @@ or using Meld:
 git difftool -d master..test-branch
 ```
 
-## Undo last commit
+## Undo last (or N last) commit(s)
 
 Not yet pushed:
 ```
+git reset --soft HEAD~
+```
+or
+```
 git reset --soft HEAD~1
 ```
-
+or if you want for example to undo the last 2 commits:
+```
+git reset --soft HEAD~2
+```
 After running the command, you'll find the changes as uncommitted local modifications in your working copy.
 
+Already pushed?
 ```
 git reset --hard HEAD~1
 ```
+TODO: do we need `git push -f <remote> <branch>` here after this reset?
 
 
 ## Going back to previous commits
