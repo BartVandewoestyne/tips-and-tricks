@@ -487,7 +487,54 @@ or the shorthand version
 $ git push origin :serverfix
 ```
 
-## Tracking Branches
+# 3.6 Git Branching - Rebasing
+
+## The Basic Rebase
+
+```
+$ git checkout experiment
+$ git rebase master
+```
+
+```
+$ git checkout master
+$ git merge experiment
+```
+
+## More Interesting Rebases
+
+```
+$ git rebase --onto master server client
+```
+
+```
+$ git checkout master
+$ git merge client
+``` 
+
+To rebase the server branch onto the master branch without having to check it out first:
+
+```
+$ git rebase <basebranch> <topicbranch>
+```
+
+```
+$ git checkout master
+$ git merge server
+```
+
+```
+$ git branch -d client
+$ git branch -d server
+```
+
+## The Perils of Rebasing
+
+Do not rebase commits that exist outside your repository and that people may have based work on.
+
+## Rebase When You Rebase
+
+## Rebase vs. Merge
 
 # 7.3 Git Tools - Stashing and Cleaning
 
