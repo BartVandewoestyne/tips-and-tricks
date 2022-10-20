@@ -679,6 +679,26 @@ Option 2:
 git revert <oldest_commit_hash>..<latest_commit_hash>
 ```
 
+## Cherry-picking
+
+To only pick one commit from another branch (and immediately create a commit):
+
+```
+git cherry-pick a6817d7
+```
+
+To pick multiple commits:
+
+```
+git cherry-pick a6817d7 sdfasdf
+```
+
+To cherry-pick without immediately committing:
+
+```
+git cherry-pick a6817d7 -n
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
