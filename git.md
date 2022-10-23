@@ -755,6 +755,13 @@ To cherry-pick without immediately committing:
 git cherry-pick a6817d7 -n
 ```
 
+## Merge conflicts
+
+To undo the merge and its conflicts and start over:
+```
+git merge --abort
+```
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
