@@ -1,4 +1,5 @@
 # Configuration
+
 ## Setting the editor
 If you want to set the editor *only* for Git, do either (you don't need both):
 
@@ -535,6 +536,14 @@ Do not rebase commits that exist outside your repository and that people may hav
 ## Rebase When You Rebase
 
 ## Rebase vs. Merge
+
+## Aborting a rebase
+
+To abort a rebase:
+
+```
+git rebase --abort
+```
 
 # 7.3 Git Tools - Stashing and Cleaning
 
