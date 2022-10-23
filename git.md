@@ -762,6 +762,10 @@ To undo the merge and its conflicts and start over:
 git merge --abort
 ```
 
+# Best practices
+
+* Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
