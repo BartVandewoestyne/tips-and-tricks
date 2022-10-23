@@ -766,6 +766,28 @@ git merge --abort
 
 * Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
 
+# Diff and Merge tools
+
+# Diff tools
+
+# Merge tools
+
+It's most convenient to use a tool that allows you to see all 4 views: base, left, right, and merged result.
+
+## Meld
+
+Meld only allows 3 views. Meld isn't a real merge tool, it's a diff tool since it doesn't shows the base version view.
+
+# KDiff3
+
+# vimdiff
+
+http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+
+## CLion
+
+See https://www.jetbrains.com/help/clion/resolve-conflicts.html
+
 # Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
