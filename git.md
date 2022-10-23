@@ -765,6 +765,12 @@ git merge --abort
 # Best practices
 
 * Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
+  See https://git-scm.com/book/en/v2/Git-Branching-Rebasing under 'The Perils of Rebasing'.
+
+References:
+* https://opensource.com/article/20/7/git-best-practices
+* https://deepsource.io/blog/git-best-practices/
+* https://sethrobertson.github.io/GitBestPractices/
 
 # Diff and Merge tools
 
