@@ -610,7 +610,7 @@ To also include untracked files in the stash being created:
 
 ```
 $ git stash -u
-$ git stash -include-untracked
+$ git stash --include-untracked
 ```
 
 To additionally include ignored files, use --all (or just -a):
