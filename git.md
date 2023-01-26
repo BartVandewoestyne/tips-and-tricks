@@ -811,3 +811,7 @@ See https://www.jetbrains.com/help/clion/resolve-conflicts.html
 Windows only:
 
 * [SourceLog](https://github.com/tomhunter-gh/SourceLog)
+
+# Workflows
+
+* [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
