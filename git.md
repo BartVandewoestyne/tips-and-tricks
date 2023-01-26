@@ -812,6 +812,14 @@ Windows only:
 
 * [SourceLog](https://github.com/tomhunter-gh/SourceLog)
 
+# Git clients
+
+* [git-gui](https://git-scm.com/docs/git-gui)
+* [gitk](https://git-scm.com/docs/gitk)
+* [Using Git source control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)
+
+The lists at https://git-scm.com/downloads/guis and https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools also have some promising ones.
+
 # Workflows
 
 * [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
