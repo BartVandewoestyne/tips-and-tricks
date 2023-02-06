@@ -5,10 +5,18 @@ git config --list
 ```
 
 ## Setting the editor
+
 If you want to set the editor *only* for Git, do either (you don't need both):
 
-* Set `core.editor` in your Git config: `git config --global core.editor "vim"`
-* Set the `GIT_EDITOR` environment variable: `export GIT_EDITOR=vim`
+* Set `core.editor` in your Git config:
+   ```
+   git config --global core.editor "vim"
+   ```
+
+* Set the `GIT_EDITOR` environment variable:
+   ```
+   export GIT_EDITOR=vim
+   ```
 
 If you want to set the editor for Git *and also other programs*, set the standardized `VISUAL` and `EDITOR` environment variables:
 
