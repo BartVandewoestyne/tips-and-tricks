@@ -1,5 +1,9 @@
 # Configuration
 
+```
+git config --list
+```
+
 ## Setting the editor
 If you want to set the editor *only* for Git, do either (you don't need both):
 
