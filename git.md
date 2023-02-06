@@ -28,14 +28,14 @@ _NOTE_: Setting both is not necessarily needed, but some programs may not use th
 
 # 2.1 Git Basics - Getting a Git Repository
 
-Initializing a Repository in an Existing Directory:
+To initialize a Git repository from an existing directory:
 
 ```
 $ cd ~/my_project
 $ git init
 ```
 
-Cloning an Existing Repository:
+To clone an existing repository:
 
 ```
 $ git clone https://github.com/libgit2/libgit2
@@ -44,31 +44,31 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit
 
 # 2.2 Git Basics - Recording Changes to the Repository
 
-Checking the Status of Your Files:
+Checking the status of your files:
 
 ```
 $ git status
 ```
 
-Short status:
+Getting the status in short-format:
 
 ```
 $ git status -s
 ```
 
-Tracking New Files:
+Update the index with new content:
 
 ```
 $ git add README
 ```
 
-Viewing Your Staged Changes:
+Viewing your staged changes:
 
 ```
 $ git diff --staged
 ```
 
-Viewing Your Unstaged Changes:
+Viewing your unstaged changes:
 
 ```
 $ git diff
@@ -100,14 +100,11 @@ Removing files:
 $ git rm PROJECTS.md
 ```
 
-Removing files from the staging area:  
-Keeps the file in your working tree, but removes it from the staging area.
-Keeps file on hard drive, but do not have Git tracking it anymore.
-Useful if you forgot to add something to your `.gitignore` file and accidentally staged it.
-
+Removing files from the staging area:
 ```
 $ git rm --cached README
 ```
+The above command keeps the file in your working tree, but removes it from the staging area.  The file is kept on your hard drive, but you do not have Git tracking it anymore.  This can be useful if you forgot to add something to your `.gitignore` file and accidentally staged it.
 
 Moving files:
 
@@ -117,7 +114,7 @@ Moving files:
 
 # 2.3 Git Basics - Viewing the Commit History
 
-Default (showing most recent commit first)
+Default way of showing the log (showing most recent commit first):
 
 ```
 $ git log
@@ -164,7 +161,7 @@ ASCII graph showing branch and merge history:
 $ git log --pretty=format:"%h %s" --graph
 ```
 
-Get list of commits from the last two weeks:
+Get list of commits from somewhere in the past:
 
 ```
 $ git log --since=2.weeks
@@ -625,7 +622,7 @@ $ git stash -u
 $ git stash --include-untracked
 ```
 
-To additionally include ignored files, use --all (or just -a):
+To additionally include ignored files, use `--all` (or just `-a`):
 
 ```
 $ git stash -a
