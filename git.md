@@ -146,7 +146,9 @@ $ git log --pretty=oneline
 $ git log --pretty=short
 $ git log --pretty=full
 $ git log --pretty=fuller
-... and so on ...
+$ git log --pretty=reference
+$ git log --pretty=email
+$ git log --pretty=raw
 ```
 
 To specify your own log output format:
@@ -154,6 +156,7 @@ To specify your own log output format:
 ```
 $ git log --pretty=format:"%h - %an, %ar : %s"
 ```
+See the `PRETTY FORMATS` section from `git help log` to know what placeholders are possible.
 
 ASCII graph showing branch and merge history:
 
