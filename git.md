@@ -328,11 +328,6 @@ git switch -
 
 # 3.2 Git Branching - Basic Branching and Merging
 
-```
-$ git checkout master
-$ git merge hotfix
-```
-
 To delete a branch:
 
 ```
