@@ -168,7 +168,7 @@ Get list of commits from somewhere in the past:
 
 ```
 $ git log --since=2.weeks
-$ git log --since="2008-01-15" (TODO: check this!)
+$ git log --since="2008-01-15"  # shows commits more recent than this date!
 $ git log --since="2 years 1 day 3 minutes ago"
 ```
 
