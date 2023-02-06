@@ -85,7 +85,7 @@ Committing your changes:
 
 ```
 $ git commit
-$ $ git commit -m "Story 182: fix benchmarks for speed"
+$ git commit -m "Story 182: fix benchmarks for speed"
 ```
 
 Committing your changes with skipping the staging area:
@@ -201,7 +201,7 @@ Listing the existing tags:
 
 ```
 $ git tag
-$ $ git tag -l "v1.8.5*"
+$ git tag -l "v1.8.5*"
 ```
 
 Creating an *annotated* tag:
