@@ -479,6 +479,12 @@ If you want totally up-to-date ahead and behind numbers, you'll need to fetch fr
 $ git fetch --all; git branch -vv
 ```
 
+TODO:
+
+```
+$ git fetch --prune
+```
+
 ## Pulling
 
 Note that `git fetch` does not merge, it will not modify your working directory at all.  It will get the data for you and let you merge it yourself.
