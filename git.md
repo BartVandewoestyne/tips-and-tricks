@@ -361,6 +361,12 @@ To see the last commit on each branch:
 $ git branch -v
 ```
 
+To see more verbose list and also which branches have no more remotes (gone):
+
+```
+$ git branch -vv
+```
+
 To see which branches are already merged into the branch you're on:
 
 ```
