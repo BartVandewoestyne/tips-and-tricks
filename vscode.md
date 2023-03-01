@@ -11,6 +11,7 @@ SVN:
 Git:
 
 * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+* [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)
 
 CMake:
 
