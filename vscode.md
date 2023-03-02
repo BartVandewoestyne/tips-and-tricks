@@ -30,3 +30,7 @@ Ruby:
 * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
 * [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)<br>
   (note that on the eng4 machine I had to install it using `sudo gem install solargraph` because the installation from VSCode failed...)
+
+# Things to fix
+
+* On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".
