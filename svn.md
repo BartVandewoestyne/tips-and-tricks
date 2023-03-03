@@ -1,3 +1,25 @@
+# Creating patches
+
+Using `/usr/bin/patch`:
+
+```
+svn diff > $TMPDIR/mypatchfile.patch
+...
+patch -p0 < $TMPDIR/mypatchfile.patch
+```
+
+This will apply your changes well if there are not added/deleted files through `svn add` or `svn delete`.
+
+Using `svn patch`:
+
+```
+svn diff > $TMPDIR/mypatchfile.patch
+...
+svn patch $TMPDIR/mypatchfile.patch
+```
+
+This tracks added and deleted files too.
+
 # SVN clients
 
 ## RabbitVCS
