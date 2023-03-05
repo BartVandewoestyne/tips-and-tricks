@@ -204,13 +204,12 @@ Listing the existing tags:
 
 ```
 $ git tag
+```
+
+Search for tags that match a particular pattern:
+
+```
 $ git tag -l "v1.8.5*"
-```
-
-Creating an *annotated* tag:
-
-```
-$ git tag -a v1.4 -m "my version 1.4"
 ```
 
 To see the tag data along with the commit that was tagged for a certain tag:
@@ -219,10 +218,12 @@ To see the tag data along with the commit that was tagged for a certain tag:
 $ git show v1.4
 ```
 
-Creating a *leightweight* tag:
+## Annotated tags
+
+*Annotated tags* are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG).  It is recommended to create annotated tags to have this information.  To create an *annotated* tag:
 
 ```
-$ git tag v1.4-lw
+$ git tag -a v1.4 -m "my version 1.4"
 ```
 
 To tag a certain commit:
@@ -231,13 +232,31 @@ To tag a certain commit:
 $ git tag -a v1.2 9fceb02
 ```
 
+## Leightweight tags
+
+Another way to tag commits is with a *lightweight* tag. This is basically the commit checksum stored in a file — no other information is kept.  To creat a *leightweight* tag:
+
+```
+$ git tag v1.4-lw
+```
+
+## Sharing tags
+
 The git push command doesn’t transfer tags to remote servers.  You will have to explicitly push tags to a shared server after you have created them.
+
+To push one specific tag:
 
 ```
 $ git push origin v1.5
+```
+
+To transfer all of your tags to the remote server that are not already there:
+
+```
 $ git push origin --tags
 ```
 
+## Deleting tags
 To delete a tag on your local repository:
 
 ```
@@ -248,9 +267,15 @@ Deleting a tag from a remote server:
 
 ```
 $ git push origin :refs/tags/v1.4-lw
+```
+
 or
+
+```
 $ git push origin --delete <tagname>
 ```
+
+## Checking out tags
 
 Checking out a tag:
 
