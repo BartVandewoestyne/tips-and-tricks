@@ -839,6 +839,25 @@ Windows only:
 
 The lists at https://git-scm.com/downloads/guis and https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools also have some promising ones.
 
-# Workflows
+# Workflows / Branching stategies
+
+Git Flow (has some issues):
+
+* [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+* [What is Git Flow](https://www.gitkraken.com/learn/git/git-flow)
+
+GitHub Flow:
+
+* [GitHub Flow - The best way to use Git and GitHub](https://githubflow.github.io/)
+* [GitHub flow - Follow GitHub flow to collaborate on projects](https://docs.github.com/en/get-started/quickstart/github-flow)
+* [GitHub Flow](https://www.gitkraken.com/learn/git/git-flow#github-flow)
+
+GitLab Flow:
+
+* [Introduction to GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+
+General:
+
+* [What is the best Git branch strategy?](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
 
 * [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
