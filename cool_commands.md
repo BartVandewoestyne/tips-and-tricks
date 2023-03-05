@@ -292,76 +292,105 @@ http://www.gpsbabel.org/htmldoc-development/fmt_kml.html#fmt_kml_o_floating
 
 
 # PDF and PostScript commands
-PDF commands:
--------------
-Paste together PDF's:
 
-  method 1:
-    pdfunite file1.pdf file2.pdf filen.pdf out.pdf
+## PDF commands
 
-  method 1:
-    pdftk file1.pdf file2.pdf cat output totaal.pdf
+### Paste together PDF's
 
-Extract pages from PDF:
-* Method 1:
-  ```
-  gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
-     -dFirstPage=22 -dLastPage=36 \
-     -sOutputFile=outfile_p22-p36.pdf 100p-inputfile.pdf
+Using `pdfunite`:
+
 ```
-* Method 2:
-  ```
-  pdftk inputfile.pdf cat 1-10 output outputfile.pdf
-  ```
-* Method 2 (pdftk with handles):
-  ```
-  pdftk A=100p-inputfile.pdf cat A22-36 output outfile_p22-p36.pdf
-  ```
-Rotating a PDF document:
-```
-  pdftk input.pdf cat 1-endwest output output.pdf
+pdfunite file1.pdf file2.pdf file3.pdf out.pdf
 ```
 
-Convert a PDF file to booklet:<br>
-* My method:
-    ```
-    pdftops file.pdf
-    psbook file.ps | psnup -2 -pa4 | a2ps -1 -s tumble -o booklet.ps
-    ```
-  and then print on a duplex printer.
+Using `pdftk`:
 
-* Alternative 1:
-    ```
-    pdf2ps -spapersize=a4 file.pdf file.ps
-    psbook file.ps | psnup -2 | a2ps -1 -s tumble -o booklet.ps
-    ```
-  and then print on both side with the option "long edge (standard)".
+```
+pdftk file1.pdf file2.pdf cat output out.pdf
+```
 
-* Alternative 2: if the original document is not in the a4 format (for instance 14,88 cm x 20,98 cm),
-we have to do:
-    ```
-    pdf2ps file.pdf file.ps
-    psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
-    ```
+### Extract pages from a PDF
 
-Selecting selected pages from a PostScript document:
+Using `gs`:
+
+```
+gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER \
+   -dFirstPage=22 -dLastPage=36 \
+   -sOutputFile=outfile_p22-p36.pdf 100p-inputfile.pdf
+```
+
+Using `pdftk`:
+
+```
+pdftk inputfile.pdf cat 1-10 output outputfile.pdf
+```
+
+Using `pdftk` with handles:
+
+```
+pdftk A=100p-inputfile.pdf cat A22-36 output outfile_p22-p36.pdf
+```
+
+### Rotating a PDF document:
+
+```
+pdftk input.pdf cat 1-endwest output output.pdf
+```
+
+### Convert a PDF file to booklet:
+
+#### My method:
+
+```
+pdftops file.pdf
+psbook file.ps | psnup -2 -pa4 | a2ps -1 -s tumble -o booklet.ps
+```
+and then print on a duplex printer.
+
+#### Alternative 1:
+
+```
+pdf2ps -spapersize=a4 file.pdf file.ps
+psbook file.ps | psnup -2 | a2ps -1 -s tumble -o booklet.ps
+```
+and then print on both side with the option "long edge (standard)".
+
+#### Alternative 2:
+
+If the original document is not in the a4 format (for instance 14,88 cm x 20,98 cm), we have to do:
+
+```
+pdf2ps file.pdf file.ps
+psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
+```
+
+## PostScript commands
+
+### Selecting pages from a PostScript document
+
 ```
 psselect -p18,31,32 file_in.ps file_out.ps
 ```
 
-Combining PostScript files into one document:
-* Method 1:
-  ```
-  ghostscript -dNOPAUSE -sDEVICE=pswrite -dBATCH -sOutputFile=out.ps file1.ps file2.ps
-  ```
-* Method 2:
-  ```
-  psjoin
-  ```
-* Method 3
-  ```
-  psmerge -oout.ps file.ps
-  ```
+### Combining PostScript files into one document
+
+#### Using `ghostscript`
+
+```
+ghostscript -dNOPAUSE -sDEVICE=pswrite -dBATCH -sOutputFile=out.ps file1.ps file2.ps
+```
+
+#### Using `psjoin`
+
+```
+psjoin
+```
+
+#### Using `psmerge`
+
+```
+psmerge -oout.ps file.ps
+```
 The above command only works if the files were created using the same application, with the
 same device setup and resources (fonts, procsets, patterns, files, etc) loaded.
 
