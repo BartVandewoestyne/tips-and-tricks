@@ -30,6 +30,8 @@ Ruby:
 * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
 * [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)<br>
   (note that on the eng4 machine I had to install it using `sudo gem install solargraph` because the installation from VSCode failed...)
+* [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)<br>
+  (TODO: test this one out!)
 
 # Issues I have or had
 
