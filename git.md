@@ -190,6 +190,11 @@ To find commits that added or removed a reference to a specific function:
 $ git log -S function_name
 ```
 
+To trace the evolution of a function name with in a certain file:
+```
+git log -L :functionName:./path/to/file.cpp
+```
+
 Limit log output to commits that introduced a change to the given files:
 
 ```
