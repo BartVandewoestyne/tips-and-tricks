@@ -20,9 +20,9 @@ CMake:
 C++:
 
 * [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-
 * [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)<br>
 This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
+* [C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)
 
 Code coverage:
 
