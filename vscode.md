@@ -24,6 +24,10 @@ C++:
 * [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)<br>
 This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 
+Code coverage:
+
+* [Gcov Viewer](https://marketplace.visualstudio.com/items?itemName=JacquesLucke.gcov-viewer)
+
 Ruby:
 
 * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
