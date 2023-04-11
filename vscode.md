@@ -41,3 +41,6 @@ Ruby:
 
 * On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".<br>
   *Solution: don't use the minus character from the numeric keypad, use the other one.*
+
+* Ruby shared examples not working.  
+  See https://stackoverflow.com/questions/75756169/how-to-navigate-to-ruby-rspec-shared-examples-in-vscode/
