@@ -28,6 +28,15 @@ Code coverage:
 
 * [Gcov Viewer](https://marketplace.visualstudio.com/items?itemName=JacquesLucke.gcov-viewer)
 
+Static code analysis:
+
+* [C/C++ Advanced Lint](https://marketplace.visualstudio.com/items?itemName=jbenden.c-cpp-flylint)
+* [Cppcheck Plug-in](https://marketplace.visualstudio.com/items?itemName=NathanJ.cppcheck-plugin)
+* [cppcheckcmd](https://marketplace.visualstudio.com/items?itemName=ronzhong.cppcheckcmd)
+* [cpp-check-lint](https://marketplace.visualstudio.com/items?itemName=QiuMingGe.cpp-check-lint)
+* [cpp-checker](https://marketplace.visualstudio.com/items?itemName=eBikeLabs.cpp-checker)
+* [Cpp Static Checks](https://marketplace.visualstudio.com/items?itemName=NathanJ.cpp-tools-plugin)
+
 Ruby:
 
 * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
