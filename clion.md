@@ -25,3 +25,6 @@ When the snap is installed, you can launch it by running the `clion.sh` command.
 # Interesting plugins
 * [cppcheck](https://plugins.jetbrains.com/plugin/8143-cppcheck)
 * [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint)
+
+# Useful features
+* [viewing changes for a selection](https://www.jetbrains.com/help/clion/viewing-changes-information.html#changes_history)
