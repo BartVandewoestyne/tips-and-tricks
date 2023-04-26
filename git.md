@@ -891,3 +891,6 @@ General:
 * [What is the best Git branch strategy?](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
 
 * [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
+
+# TODO
+* Check out [git worktree](https://git-scm.com/docs/git-worktree).
