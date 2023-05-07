@@ -364,6 +364,20 @@ pdf2ps file.pdf file.ps
 psbook file.ps | psnup -2 -w18.88cm -h20.98cm -pa4 | a2ps -1 -s tumble -o booklet.ps
 ```
 
+### Remove metadata from a PDF
+
+Not in place, resulting in `filename.cleaned.pdf`:
+
+```
+mat2 filename.pdf
+```
+
+In place:
+
+```
+mat2 --inplace filename.pdf
+```
+
 ## PostScript commands
 
 ### Selecting pages from a PostScript document
