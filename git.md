@@ -890,6 +890,10 @@ GitLab Flow:
 
 * [Introduction to GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
 
+Release Flow:
+
+* [Release Flow: How We Do Branching on the VSTS Team](https://devblogs.microsoft.com/devops/release-flow-how-we-do-branching-on-the-vsts-team/)
+
 General:
 
 * [What is the best Git branch strategy?](https://www.gitkraken.com/learn/git/best-practices/git-branch-strategy)
