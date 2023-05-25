@@ -829,6 +829,7 @@ References:
 * https://opensource.com/article/20/7/git-best-practices
 * https://deepsource.io/blog/git-best-practices/
 * https://sethrobertson.github.io/GitBestPractices/
+* https://commonflow.org/ (section 'Git Best Practices')
 
 # Diff and Merge tools
 
