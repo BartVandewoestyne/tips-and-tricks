@@ -875,6 +875,7 @@ The lists at https://git-scm.com/downloads/guis and https://git.wiki.kernel.org/
 Git Flow (has some issues):
 
 * [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
+* [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 * [What is Git Flow](https://www.gitkraken.com/learn/git/git-flow)
 
 GitHub Flow:
