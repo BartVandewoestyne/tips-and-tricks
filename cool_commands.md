@@ -667,3 +667,6 @@ tput reset
 Pretty print JSON
 -----------------
 cat file.json | python -mjson.tool
+
+# TO CHECK
+* `schedtool -a 0x01 -e <cmd>`
