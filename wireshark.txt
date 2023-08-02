@@ -7,6 +7,8 @@ Tips
      mode.
   -> It can be that you have to select another 'Ethernet X' adapter instead of
      the 'Npcap Loopback Adapter' in order to see traffic on 127.0.0/8 hosts.
+     
+* With tcpreplay you can replay network traffic captured with tcpdump or Wireshark: https://github.com/appneta/tcpreplay
 
 Useful capture filters:
 -----------------------
