@@ -1,0 +1,6 @@
+Om van een bepaalde groep te zien of je er in zit:
+* Start een nieuwe mail
+* Vul de groep in bij To
+* Klik op het plusje en dan expand hij alle namen in het To-veld
+  OF
+  Rechtsklik op de groep en dan 'Open contact card' en dan zie je alle leden.
