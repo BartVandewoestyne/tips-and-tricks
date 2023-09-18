@@ -17,18 +17,21 @@ $ docker run hello-world
 
 ## docker pull
 
-To pull images (e.g. from DockerHub).
-
-docker pull mongo:4.2
-is in fact
-docker pull docker.io/library/mongo:4.2
+To pull images (e.g. from DockerHub):
+```
+$ docker pull mongo:4.2
+```
+which is shorthand for
+```
+$ docker pull docker.io/library/mongo:4.2
+```
 
 ## docker run
 
 To run an image.  This starts the image in a container in an attached mode.
 With CTRL+C it is stopped.
 
-With the -d, the container runs in detached mode:
+With the `-d`, the container runs in detached mode:
 ```
 $ docker run -d redis
 ```
@@ -54,15 +57,15 @@ $ docker run -d -p6001:6379 --name redis-older redis:4.0
 To restart a container (e.g. if application crashed or error happened).
 Take first part of docker id and do
 ```
-docker stop 8381867e8242
+$ docker stop 8381867e8242
 ```
 
 To restart it again:
 ```
-docker start 8381867e8242
+$ docker start 8381867e8242
 ```
 
-Note the difference between docker run and docker start.  docker start works with containers.  After you created the container with docker run.  docker start is to restart a stopped container.
+Note the difference between `docker run` and `docker start`.  `docker start` works with containers.  After you created the container with `docker run`.  `docker start` is to restart a stopped container.
 
 ## docker ps
 
@@ -71,12 +74,12 @@ To list running containers
 $ docker ps
 ```
 
-PORTS specifies on which ports the container is listening for incoming requests.
+`PORTS` specifies on which ports the container is listening for incoming requests.
 Two containers can actually listen on the same portnumber.  The host where the containers are running on must then have different bindings.  E.g.
-
+```
 host port 3000 -> container port 3000
 host port 3001 -> container port 3000
-
+```
 To list both running and stopped containers:
 ```
 $ docker ps -a
@@ -88,11 +91,11 @@ $ docker ps -a
 
 To see the logs that a certain container is producing:
 ```
-docker logs 51cdac3132f6
+$ docker logs 51cdac3132f6
 ```
 or use the name of the container (see `docker ps` output in the right):
 ```
-docker logs some_name
+$ docker logs some_name
 ```
 (containers get random names, but you can name them too...)
 
@@ -100,10 +103,10 @@ docker logs some_name
 
 To get the terminal of a running container!  E.g. to navigate to a directory inside that container, check logfile, check configuration file, print out environment variables,...
 ```
-docker exec -it cae903a74202 /bin/bash
-docker exec -it cae903a74202 /bin/sh
+$ docker exec -it cae903a74202 /bin/bash
+$ docker exec -it cae903a74202 /bin/sh
 ```
-The `-it` stands for `interactive terminal`.  You can also use the name instead of the ID.  One of bash or sh should work (always).
+The `-it` stands for `interactive terminal`.  You can also use the name instead of the ID.  One of `bash` or `sh` should work (always).
 
 Just do `exit` to go out.
 
@@ -116,7 +119,7 @@ Checking all existing images on my laptop (e.g. to cleanup stale images):
 $ docker images
 ```
 
-TO delete an image from this list:
+To delete an image from this list:
 ```
 $ docker rmi 2e0a4d16e074
 ```
