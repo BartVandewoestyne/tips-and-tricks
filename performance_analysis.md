@@ -1,5 +1,7 @@
 # iPerf
 
+iPerf can be used to perform network throughput tests
+
 Example iperf commands:
 ```
 iperf3 --udp --client 10.177.0.2 --bitrate 5M --length 512
