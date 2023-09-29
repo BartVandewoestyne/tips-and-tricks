@@ -820,6 +820,32 @@ To undo the merge and its conflicts and start over:
 git merge --abort
 ```
 
+# Other
+
+## Creating patches
+
+To create a patch:
+```
+git diff --output foo.patch
+```
+The above will not include new files.  To include new files, first stage them (using `git add`) and then create the patch with
+```
+git diff --staged --output foo.patch
+```
+and later apply as usual.
+
+To prepare patches for e-mail submission (TODO):
+```
+git format-patch <something>
+```
+
+## Applying patches
+
+To apply a patch created with `git diff`:
+```
+git apply foo.patch
+```
+
 # Best practices
 
 * Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
