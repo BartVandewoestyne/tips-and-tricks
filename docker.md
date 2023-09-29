@@ -316,6 +316,15 @@ To see where docker volumes are located (depends on Windows/Linux)
 Windows: C:\ProgramData\docker\volumes
 Linux and Mac: /var/lib/docker/volumes
 
+# Other useful commands
+
+## docker inspect
+
+To see low-level information on Docker objects:
+```
+docker inspect <container-id>
+```
+
 # References:
 
 * Docker Tutorial for Beginners [FULL COURSE in 3 Hours]:
