@@ -1,3 +1,10 @@
+# Git Support
+
+Visual Studio Code has Git support built in.  You will need to have Git version 2.0.0 (or newer) installed.
+See
+* https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Visual-Studio-Code
+* https://code.visualstudio.com/docs/sourcecontrol/overview
+
 # Interesting extensions
 
 Live Share:

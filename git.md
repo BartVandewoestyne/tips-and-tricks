@@ -888,11 +888,15 @@ Windows only:
 
 * [SourceLog](https://github.com/tomhunter-gh/SourceLog)
 
-# Git clients
+# Git clients that work in both Linux and Windows
 
 * [git-gui](https://git-scm.com/docs/git-gui)
 * [gitk](https://git-scm.com/docs/gitk)
 * [Using Git source control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)
+* [ungit](https://github.com/FredrikNoren/ungit)
+* [gitg](https://wiki.gnome.org/Apps/Gitg/) is the GNOME GUI client to view git repositories
+* [Magit](https://magit.vc/) => seems to be an Emacs plugin or so...
+* [MeGit](https://github.com/eclipsesource/megit) (based on [EGit](https://eclipse.dev/egit/), which is an Eclipse plugin)
 
 The lists at https://git-scm.com/downloads/guis and https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools also have some promising ones.
 
