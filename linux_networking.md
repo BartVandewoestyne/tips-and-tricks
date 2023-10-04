@@ -1,3 +1,14 @@
+# ARP
+
+Viewing the ARP cache on your computer:
+```
+$ arp -n
+```
+or
+```
+$ cat /proc/net/arp
+```
+
 # Linux Network Namespaces
 
 ## Creating and listing network namespaces
