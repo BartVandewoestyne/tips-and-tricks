@@ -9,6 +9,13 @@ or
 $ cat /proc/net/arp
 ```
 
+Clearing the ARP cache (preferred method):
+```
+sudo ip -s -s neigh flush all
+```
+References:
+* https://linux-audit.com/how-to-clear-the-arp-cache-on-linux/
+
 # Linux Network Namespaces
 
 ## Creating and listing network namespaces
