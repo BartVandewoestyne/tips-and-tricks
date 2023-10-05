@@ -44,6 +44,10 @@ Static code analysis:
 * [cpp-checker](https://marketplace.visualstudio.com/items?itemName=eBikeLabs.cpp-checker)
 * [Cpp Static Checks](https://marketplace.visualstudio.com/items?itemName=NathanJ.cpp-tools-plugin)
 
+Docker:
+
+* [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+
 Ruby:
 
 * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
