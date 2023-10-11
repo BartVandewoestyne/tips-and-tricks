@@ -168,6 +168,12 @@ $ docker run -d \
 ```
 With the above, mongo-express should be able to connect to mongodb.
 
+To remove all unused networks:
+```
+docker network prune
+
+```
+
 # Docker Compose
 
 Tool to make running multiple containers.
