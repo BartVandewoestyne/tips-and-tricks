@@ -4,6 +4,11 @@ Listen on all interfaces:
 tcpdump -i any
 ```
 
+Capture only UDP traffic on eth0 and write to file
+```
+tcpdump -i eth0 -w capture.pcap udp
+```
+
 Capture ICMPv6 Router Advertisement messages (IPv6 address assignment):
 
 ```
