@@ -19,3 +19,8 @@ TODO: check what this exactly does:
 ```
 tcpdump -nvei any dst 10.100.104.102
 ```
+
+Info on what expressions can be used for tcpdump, see pcap-filter(7):
+```
+man pcap-filter
+```
