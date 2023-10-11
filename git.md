@@ -81,6 +81,12 @@ To see what is available as difftool:
 git difftool --tool-help
 ```
 
+To see changes between commits with difftool:
+
+```
+git difftool -d 1b3baae..b2b29ce
+```
+
 Committing your changes:
 
 ```
