@@ -9,3 +9,5 @@ user@system$ mv a-very-long-name{,-old}
 user@system$ ls -al a-very-long-name-old
 -rw-r--r-- 1 bvandewoestyne domain users 0 Feb 28 11:46 a-very-long-name-old
 ```
+
+TODO: pushd and popd
