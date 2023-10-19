@@ -151,6 +151,11 @@ After running the above command, you will see one extra `br-XXXXXXXXXXXX` interf
     inet 172.20.0.1/16 brd 172.20.255.255 scope global br-1e90ace5d49d
        valid_lft forever preferred_lft forever
 ```
+You can also use
+```
+docker network inspect mongo-network
+```
+to see what containers are connected to it.
 
 After you created the network, to run containers in this network, you have to provide the network option when you run the container in the `docker run` command.
 ```
