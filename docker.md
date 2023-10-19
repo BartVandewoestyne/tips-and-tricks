@@ -144,6 +144,13 @@ to create network:
 ```
 $ docker network create mongo-network
 ```
+After running the above command, you will see one extra `br-XXXXXXXXXXXX` interface in the output of the `ip a` command:
+```
+30: br-1e90ace5d49d: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:87:50:87:ae brd ff:ff:ff:ff:ff:ff
+    inet 172.20.0.1/16 brd 172.20.255.255 scope global br-1e90ace5d49d
+       valid_lft forever preferred_lft forever
+```
 
 After you created the network, to run containers in this network, you have to provide the network option when you run the container in the `docker run` command.
 ```
@@ -206,8 +213,51 @@ How to start the containers using this file?
 $ docker-compose -f mongo.yaml up
 ```
 Interesting things:
+
 * A network is created with the containers in it.
 * Logs of both containers are shown mixed.
+* I have the impression that in your `docker-compose.yml` file, if you create a network with e.g.
+```
+networks:
+  lan:
+    ipam:
+      config:
+        - subnet: "192.168.1.0/24"
+```
+that will lead to an extra
+```
+31: br-2b5bd357b315: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    link/ether 02:42:77:d3:86:cf brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.1/24 brd 192.168.1.255 scope global br-2b5bd357b315
+       valid_lft forever preferred_lft forever
+    inet6 fe80::42:77ff:fed3:86cf/64 scope link 
+       valid_lft forever preferred_lft forever
+```
+in the output of `ip a`.
+
+If in your `docker-compose.yml` you are assigning IP addresses with e.g.
+```
+services:
+    ...
+    networks:
+      lan:
+        ipv4_address: 192.168.1.10
+```
+Then on the container itself you will see:
+```
+root@e64d133700fd:/# ip a show dev eth0
+34: eth0@if35: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:c0:a8:01:0a brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 192.168.1.10/24 brd 192.168.1.255 scope global eth0
+       valid_lft forever preferred_lft forever
+```
+and on the host it will appear as a virtual interface:
+```
+33: vethdf1876f@if32: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br-2b5bd357b315 state UP group default
+    link/ether 7e:bf:0a:81:cb:bf brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet6 fe80::7cbf:aff:fe81:cbbf/64 scope link 
+       valid_lft forever preferred_lft forever
+```
 
 How to stop the containers?
 ```
