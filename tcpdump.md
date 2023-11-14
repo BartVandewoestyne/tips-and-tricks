@@ -26,3 +26,9 @@ Info on what expressions can be used for tcpdump, see pcap-filter(7):
 ```
 man pcap-filter
 ```
+
+To avoid doing reverse host lookups, use `-nn`
+```
+tcpdump -e -nni <interface>
+```
+With the `-e` you canalso see the VLAN tags if there are any.
