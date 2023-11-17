@@ -819,6 +819,33 @@ To cherry-pick without immediately committing:
 git cherry-pick a6817d7 -n
 ```
 
+## Git blame
+
+First, do a `git blame` on the file:
+```
+git blame <filename>
+```
+Find the commit in which a certain line was introduced.  To see the log message and textual diff for that commit:
+```
+git show <commit>
+```
+If you want to see the diff with your difftool:
+```
+git difftool <commit>~..<commit>
+```
+
+To go back in history:
+```
+git blame <commit>^ -- file.cpp
+```
+
+Git GUI also makes it easy to check the history of a line as the versions are clickable:
+```
+git gui blame <filename>
+```
+
+or in `gitk`, rightclick on a file name and select 'Blame parent commit'.
+
 ## Merge conflicts
 
 To undo the merge and its conflicts and start over:
