@@ -845,6 +845,11 @@ git gui blame <filename>
 ```
 
 or in `gitk`, rightclick on a file name and select 'Blame parent commit'.
+And then, when in git GUI, click on 'Blame Parent Commit'.
+
+References:
+* https://stackoverflow.com/questions/5098256/how-can-i-view-prior-commits-with-git-blame
+* 
 
 ## Merge conflicts
 
