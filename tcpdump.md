@@ -32,3 +32,5 @@ To avoid doing reverse host lookups, use `-nn`
 tcpdump -e -nni <interface>
 ```
 With the `-e` you canalso see the VLAN tags if there are any.
+
+To capture specific VLAN, see https://serverfault.com/questions/196250/tcpdump-capture-one-of-several-vlans
