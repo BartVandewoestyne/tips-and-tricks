@@ -1,3 +1,9 @@
+# Routes
+
+```
+traceroute <ip-address>
+```
+
 # ARP
 
 Viewing the ARP cache on your computer:
