@@ -729,7 +729,81 @@ $ git clean -x -i
 
 If you happen to be in a working directory under which you’ve copied or cloned other Git repositories (perhaps as submodules), even git clean -fd will refuse to delete those directories. In cases like that, you need to add a second -f option for emphasis.
 
-## Storing your credentials
+## 7.11 Git Tools - Submodules
+
+### Starting with Submodules
+
+To add a new submodule:
+
+```bash
+git submodule add https://github.com/chaconinc/DbConnector
+```
+
+To get a nicer diff output, pass the `--submodule` option to git diff:
+
+```bash
+git diff --cached --submodule
+```
+
+To commit the added submodule and push:
+
+```bash
+git commit -am 'Add DbConnector module'
+git push origin master
+```
+
+### Cloning a Project with Submodules
+
+#### Method 1
+
+When you clone a project with a submodule in it
+
+```bash
+git clone https://github.com/chaconinc/MainProject
+```
+
+then by default you get the directories that contain submodules, but none of the files within them yet.
+
+To initialize your local configuration file:
+
+```bash
+git submodule init
+```
+
+To fetch all the data from the project and check out the appropriate commit listed in your superproject:
+
+```bash
+git submodule update
+```
+
+The `git submodule init` and `git submodule update` steps can be combined by running
+
+```bash
+git submodule update --init
+```
+
+To also initialize, fetch and checkout any nested submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+#### Method 2
+
+Pass `--recurse-submodules` to the `git clone` command:
+
+```bash
+git clone --recurse-submodules https://github.com/chaconinc/MainProject
+```
+
+
+which will automatically initialize and update
+
+### Working on a Project with Submodules
+
+TODO
+
+### Storing your credentials
 
 Globally:
 ```
