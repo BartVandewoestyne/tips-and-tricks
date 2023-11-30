@@ -22,6 +22,11 @@ sudo ip -s -s neigh flush all
 References:
 * https://linux-audit.com/how-to-clear-the-arp-cache-on-linux/
 
+Creating static arp addresses?
+```
+arp -s 192.168.5.2 <some mac address>
+```
+
 # Linux Network Namespaces
 
 ## Creating and listing network namespaces
