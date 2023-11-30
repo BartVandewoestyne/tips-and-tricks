@@ -1,71 +1,77 @@
-# Configuration
+# Git
 
+## Configuration
+
+To list all variables set in config file, along with their values:
 ```
 git config --list
 ```
 
-## Setting the editor
+### Setting the editor
 
 If you want to set the editor *only* for Git, do either (you don't need both):
 
 * Set `core.editor` in your Git config:
-   ```
-   git config --global core.editor "vim"
-   ```
+
+  ```text
+  git config --global core.editor "vim"
+  ```
 
 * Set the `GIT_EDITOR` environment variable:
-   ```
+
+  ```bash
    export GIT_EDITOR=vim
    ```
 
 If you want to set the editor for Git *and also other programs*, set the standardized `VISUAL` and `EDITOR` environment variables:
 
-```
+```bash
 export VISUAL=vim
 export EDITOR="$VISUAL"
 ```
-_NOTE_: Setting both is not necessarily needed, but some programs may not use the more-correct `VISUAL`.  See [`VISUAL` vs `EDITOR`](https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference).
 
-# 2.1 Git Basics - Getting a Git Repository
+*NOTE*: Setting both is not necessarily needed, but some programs may not use the more-correct `VISUAL`.  See [`VISUAL` vs `EDITOR`](https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference).
+
+## 2.1 Git Basics - Getting a Git Repository
 
 To initialize a Git repository from an existing directory:
 
-```
-$ cd ~/my_project
-$ git init
+```bash
+cd ~/my_project
+git init
 ```
 
 To clone an existing repository:
 
-```
-$ git clone https://github.com/libgit2/libgit2
-$ git clone https://github.com/libgit2/libgit2 mylibgit
+```bash
+git clone https://github.com/libgit2/libgit2
+git clone https://github.com/libgit2/libgit2 mylibgit
 ```
 
-# 2.2 Git Basics - Recording Changes to the Repository
+## 2.2 Git Basics - Recording Changes to the Repository
 
 Checking the status of your files:
 
-```
-$ git status
+```bash
+git status
 ```
 
 Getting the status in short-format:
 
-```
-$ git status -s
+```bash
+git status -s
 ```
 
 Update the index with new content:
 
-```
-$ git add README
+```bash
+git add README
 ```
 
 Viewing your staged changes:
 
-```
-$ git diff --staged
+```bash
+git diff --staged
 ```
 
 Viewing your unstaged changes:
@@ -118,7 +124,7 @@ Moving files:
  git mv README.md README
 ```
 
-# 2.3 Git Basics - Viewing the Commit History
+## 2.3 Git Basics - Viewing the Commit History
 
 Default way of showing the log (showing most recent commit first):
 
@@ -209,7 +215,7 @@ $ git log -- path/to/file
 
 To prevent the display of merge commits, add `--no-merges`.
 
-# 2.6 Git Basics - Tagging
+## 2.6 Git Basics - Tagging
 
 Listing the existing tags:
 
@@ -229,7 +235,7 @@ To see the tag data along with the commit that was tagged for a certain tag:
 $ git show v1.4
 ```
 
-## Annotated tags
+### Annotated tags
 
 *Annotated tags* are stored as full objects in the Git database. They’re checksummed; contain the tagger name, email, and date; have a tagging message; and can be signed and verified with GNU Privacy Guard (GPG).  It is recommended to create annotated tags to have this information.  To create an *annotated* tag:
 
@@ -243,7 +249,7 @@ To tag a certain commit:
 $ git tag -a v1.2 9fceb02
 ```
 
-## Leightweight tags
+### Leightweight tags
 
 Another way to tag commits is with a *lightweight* tag. This is basically the commit checksum stored in a file — no other information is kept.  To creat a *leightweight* tag:
 
@@ -251,7 +257,7 @@ Another way to tag commits is with a *lightweight* tag. This is basically the co
 $ git tag v1.4-lw
 ```
 
-## Sharing tags
+### Sharing tags
 
 The git push command doesn’t transfer tags to remote servers.  You will have to explicitly push tags to a shared server after you have created them.
 
@@ -267,7 +273,7 @@ To transfer all of your tags to the remote server that are not already there:
 $ git push origin --tags
 ```
 
-## Deleting tags
+### Deleting tags
 To delete a tag on your local repository:
 
 ```
@@ -286,7 +292,7 @@ or
 $ git push origin --delete <tagname>
 ```
 
-## Checking out tags
+### Checking out tags
 
 Checking out a tag:
 
@@ -302,7 +308,7 @@ In “detached HEAD” state, if you make changes and then create a commit, the 
 $ git checkout -b version2 v2.0.0
 ```
 
-# 2.7 Git Basics - Git Aliases
+## 2.7 Git Basics - Git Aliases
 
 
 You can always create aliases as follows:
@@ -311,7 +317,7 @@ You can always create aliases as follows:
 $ git config --global alias.co checkout
 ```
 
-# 3.1 Git Branching - Branches in a Nutshell
+## 3.1 Git Branching - Branches in a Nutshell
 
 Create a new branch:
 
@@ -362,7 +368,7 @@ To return to your previously checked out branch:
 git switch -
 ```
 
-# 3.2 Git Branching - Basic Branching and Merging
+## 3.2 Git Branching - Basic Branching and Merging
 
 To delete a branch:
 
@@ -381,9 +387,9 @@ $ git merge iss53
 $ git mergetool
 ```
 
-# 3.3 Git Branching - Branch Management
+## 3.3 Git Branching - Branch Management
 
-## Branch Management
+### Branch Management
 
 List your current branches:
 
@@ -415,7 +421,7 @@ To see all the branches that contain work you haven't merged in:
 $ git branch --no-merged
 ```
 
-## Changing a branch name
+### Changing a branch name
 
 First rename the branch locally:
 
@@ -433,15 +439,15 @@ $ git push --set-upstream origin corrected-branch-name
 $ git push origin --delete bad-branch-name
 ```
 
-## Changing the master branch name
+### Changing the master branch name
 
-# 3.4 Git Branching - Branching Workflows
+## 3.4 Git Branching - Branching Workflows
 
 TODO
 
-# 3.5 Git Branching - Remote Branches
+## 3.5 Git Branching - Remote Branches
 
-## Remote Branches
+### Remote Branches
 
 To get a full list of remote references explicitly, use
 
@@ -463,7 +469,7 @@ git fetch <remote>
 
 command (e.g. `git fetch origin`). This command looks up which server `origin` is, fetches any data from it that you don’t yet have, and updates your local database, moving for example your `origin/master` pointer to its new, more up-to-date position.
 
-## Pushing
+### Pushing
 
 To push your local `serverfix` branch:
 
@@ -483,7 +489,7 @@ If you want to name it differently on the remote, use
 git push origin serverfix:coolserverfix
 ```
 
-## Tracking branches
+### Tracking branches
 
 If you want your own `serverfix` branch that you can work on, you can base it off your remote-tracking branch:
 
@@ -521,7 +527,7 @@ TODO:
 $ git fetch --prune
 ```
 
-## Pulling
+### Pulling
 
 Note that `git fetch` does not merge, it will not modify your working directory at all.  It will get the data for you and let you merge it yourself.
 
@@ -529,7 +535,7 @@ git pull = git fetch followed by git merge (in most cases)
 
 Generally it’s better to simply use the fetch and merge commands explicitly as the magic of git pull can often be confusing.
 
-## Deleting Remote Branches
+### Deleting Remote Branches
 
 To delete your serverfix branch from the server:
 
@@ -543,9 +549,9 @@ or the shorthand version
 $ git push origin :serverfix
 ```
 
-# 3.6 Git Branching - Rebasing
+## 3.6 Git Branching - Rebasing
 
-## The Basic Rebase
+### The Basic Rebase
 
 ```
 $ git checkout experiment
@@ -557,7 +563,7 @@ $ git checkout master
 $ git merge experiment
 ```
 
-## More Interesting Rebases
+### More Interesting Rebases
 
 ```
 $ git rebase --onto master server client
@@ -584,15 +590,15 @@ $ git branch -d client
 $ git branch -d server
 ```
 
-## The Perils of Rebasing
+### The Perils of Rebasing
 
 Do not rebase commits that exist outside your repository and that people may have based work on.
 
-## Rebase When You Rebase
+### Rebase When You Rebase
 
-## Rebase vs. Merge
+### Rebase vs. Merge
 
-## Aborting a rebase
+### Aborting a rebase
 
 To abort a rebase:
 
@@ -600,9 +606,9 @@ To abort a rebase:
 git rebase --abort
 ```
 
-# 7.3 Git Tools - Stashing and Cleaning
+## 7.3 Git Tools - Stashing and Cleaning
 
-## Stashing your work
+### Stashing your work
 
 To stash modified and staged *tracked* files:
 
@@ -653,7 +659,7 @@ To apply the stash and immediately drop it:
 $ git stash pop
 ```
 
-## Creative stashing
+### Creative stashing
 
 Tell Git to not only include all staged content in the stash being created, but simultaneously leave it in the index:
 
@@ -680,7 +686,7 @@ To not stash everything that is modified but instead prompt you interactively wh
 $ git stash --patch
 ```
 
-## Creating a branch from a stash
+### Creating a branch from a stash
 
 
 ```
@@ -688,7 +694,7 @@ $ git stash branch testchanges
 ```
 This is a nice shortcut to recover stashed work easily and work on it in a new branch.
 
-## Cleaning your working directory
+### Cleaning your working directory
 
 Reasons for cleaning your working directory:
 
@@ -816,7 +822,7 @@ git config credential.helper store
 
 TODO: Instead of `store` you can also use `cache`.  what is the difference?
 
-## Differences between branches 
+### Differences between branches 
 
 To see the diffs between branches
 
@@ -830,7 +836,7 @@ or using Meld:
 git difftool -d master..test-branch
 ```
 
-## Undo last (or N last) commit(s)
+### Undo last (or N last) commit(s)
 
 Not yet pushed:
 ```
@@ -853,7 +859,7 @@ git reset --hard HEAD~1
 TODO: do we need `git push -f <remote> <branch>` here after this reset?
 
 
-## Going back to previous commits
+### Going back to previous commits
 
 One that is already pushed:
 
@@ -873,7 +879,7 @@ Option 2:
 git revert <oldest_commit_hash>..<latest_commit_hash>
 ```
 
-## Cherry-picking
+### Cherry-picking
 
 To only pick one commit from another branch (and immediately create a commit):
 
@@ -893,7 +899,7 @@ To cherry-pick without immediately committing:
 git cherry-pick a6817d7 -n
 ```
 
-## Git blame
+### Git blame
 
 First, do a `git blame` on the file:
 ```
@@ -925,16 +931,16 @@ References:
 * https://stackoverflow.com/questions/5098256/how-can-i-view-prior-commits-with-git-blame
 * 
 
-## Merge conflicts
+### Merge conflicts
 
 To undo the merge and its conflicts and start over:
 ```
 git merge --abort
 ```
 
-# Other
+## Other
 
-## Creating patches
+### Creating patches
 
 To create a patch:
 ```
@@ -951,14 +957,14 @@ To prepare patches for e-mail submission (TODO):
 git format-patch <something>
 ```
 
-## Applying patches
+### Applying patches
 
 To apply a patch created with `git diff`:
 ```
 git apply foo.patch
 ```
 
-# Best practices
+## Best practices
 
 * Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
   See https://git-scm.com/book/en/v2/Git-Branching-Rebasing under 'The Perils of Rebasing'.
@@ -969,29 +975,29 @@ References:
 * https://sethrobertson.github.io/GitBestPractices/
 * https://commonflow.org/ (section 'Git Best Practices')
 
-# Diff and Merge tools
+## Diff and Merge tools
 
-# Diff tools
+## Diff tools
 
-# Merge tools
+## Merge tools
 
 It's most convenient to use a tool that allows you to see all 4 views: base, left, right, and merged result.
 
-## Meld
+### Meld
 
 Meld only allows 3 views. Meld isn't a real merge tool, it's a diff tool since it doesn't shows the base version view.
 
-# KDiff3
+### KDiff3
 
-# vimdiff
+### vimdiff
 
-http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+<http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/>
 
-## CLion
+### CLion
 
-See https://www.jetbrains.com/help/clion/resolve-conflicts.html
+See <https://www.jetbrains.com/help/clion/resolve-conflicts.html>
 
-# Monitoring git repos
+## Monitoring git repos
 
 * [git-dude](https://github.com/sickill/git-dude)
 * [git-indicator](https://github.com/itsadok/git-indicator)
@@ -1000,7 +1006,7 @@ Windows only:
 
 * [SourceLog](https://github.com/tomhunter-gh/SourceLog)
 
-# Git clients that work in both Linux and Windows
+## Git clients that work in both Linux and Windows
 
 * [git-gui](https://git-scm.com/docs/git-gui)
 * [gitk](https://git-scm.com/docs/gitk)
@@ -1010,9 +1016,9 @@ Windows only:
 * [Magit](https://magit.vc/) => seems to be an Emacs plugin or so...
 * [MeGit](https://github.com/eclipsesource/megit) (based on [EGit](https://eclipse.dev/egit/), which is an Eclipse plugin)
 
-The lists at https://git-scm.com/downloads/guis and https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools also have some promising ones.
+The lists at <https://git-scm.com/downloads/guis> and <https://git.wiki.kernel.org/index.php/InterfacesFrontendsAndTools> also have some promising ones.
 
-# Workflows / Branching stategies
+## Workflows / Branching stategies
 
 Git Flow (has some issues):
 
@@ -1044,5 +1050,6 @@ General:
 
 * [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
 
-# TODO
+## TODO
+
 * Check out [git worktree](https://git-scm.com/docs/git-worktree).
