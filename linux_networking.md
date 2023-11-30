@@ -47,6 +47,10 @@ $ ip link
 $ arp
 $ route
 ```
+To also see vlan info
+```
+ip -d link
+```
 
 To execute the `ip link` command inside the `red` namespace:
 ```
