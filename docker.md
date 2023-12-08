@@ -377,6 +377,65 @@ To see where docker volumes are located (depends on Windows/Linux)
 Windows: C:\ProgramData\docker\volumes
 Linux and Mac: /var/lib/docker/volumes
 
+# Cleaning up
+
+## Analyzing how much space Docker is using
+Look up how much space is used:
+
+```text
+docker system df
+```
+
+or a bit more verbose:
+
+```text
+docker system df -v
+```
+
+## Cleaning up
+
+To clean up as much as possible excluding components that are in use:
+
+```text
+docker system prune -a
+```
+
+`-a` includes unused and dangling containers. Not providing `-a` would only delete dangling images, which are untagged images that have no relationship to any other images.
+
+To clean up most Docker resources but still keep tagged images:
+
+```text
+docker system prune
+```
+
+Clean up unused and dangling images:
+
+```text
+docker image prune
+```
+
+Clean up dangling images only
+
+```text
+docker image prune -a
+```
+
+Clean up stopped containers
+
+```text
+docker container prune
+```
+
+Clean up unused volumes
+
+```text
+docker volume prune
+```
+
+References:
+
+* [How to Remove All Docker Images – A Docker Cleanup Guide](https://www.freecodecamp.org/news/how-to-remove-all-docker-images-a-docker-cleanup-guide/)
+
 # Other useful commands
 
 ## docker inspect
