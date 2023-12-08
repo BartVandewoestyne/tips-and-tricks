@@ -721,7 +721,7 @@ To get rid of some work or files in your working directory:
 
 To remove all the untracked files in your working directory (that are not ignored, all ignored files will remain) (= removes any files and also any subdirectories that become empty as a result):
 
-```
+```bash
 git clean -f -d
 ```
 
@@ -729,24 +729,28 @@ The -f means 'force' or “really do this,” and is required if the Git configu
 
 To do a dry-run, use `-n`:
 
+```bash
+git clean -d -n
 ```
-$ git clean -d -n
+
 or
-$ git clean -d --dry-run
+
+```bash
+git clean -d --dry-run
 ```
 
 To also remove ignored files:
 
-```
-$ git clean -n -d -x   (-n is probably not necessary here, is just for dry-run)
+```bash
+git clean -n -d -x   (-n is probably not necessary here, is just for dry-run)
 ```
 
 If you don’t know what the git clean command is going to do, always run it with a -n first to double check before changing the -n to a -f and doing it for real.
 
 To run the clean command in interactive mode:
 
-```
-$ git clean -x -i
+```bash
+git clean -x -i
 ```
 
 If you happen to be in a working directory under which you’ve copied or cloned other Git repositories (perhaps as submodules), even git clean -fd will refuse to delete those directories. In cases like that, you need to add a second -f option for emphasis.
@@ -818,7 +822,6 @@ Pass `--recurse-submodules` to the `git clone` command:
 git clone --recurse-submodules https://github.com/chaconinc/MainProject
 ```
 
-
 which will automatically initialize and update
 
 ### Working on a Project with Submodules
@@ -828,50 +831,61 @@ TODO
 ### Storing your credentials
 
 Globally:
-```
+
+```bash
 git config --global credential.helper store
 ```
+
 or for a specific repository:
-```
+
+```bash
 git config credential.helper store
 ```
 
 TODO: Instead of `store` you can also use `cache`.  what is the difference?
 
-### Differences between branches 
+### Differences between branches
 
 To see the diffs between branches
 
-```
+```bash
 git diff master..test-branch
 ```
 
 or using Meld:
 
-```
+```bash
 git difftool -d master..test-branch
 ```
 
 ### Undo last (or N last) commit(s)
 
 Not yet pushed:
-```
+
+```bash
 git reset --soft HEAD~
 ```
+
 or
-```
+
+```bash
 git reset --soft HEAD~1
 ```
+
 or if you want for example to undo the last 2 commits:
-```
+
+```bash
 git reset --soft HEAD~2
 ```
+
 After running the command, you'll find the changes as uncommitted local modifications in your working copy.
 
 Already pushed?
-```
+
+```bash
 git reset --hard HEAD~1
 ```
+
 TODO: do we need `git push -f <remote> <branch>` here after this reset?
 
 
