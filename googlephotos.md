@@ -6,6 +6,10 @@ https://developers.google.com/photos
 
 https://rclone.org/googlephotos/
 
+# QGooglePhotos
+
+https://github.com/torresflo/QGooglePhotos
+
 # Google Photos Sync
 
 https://github.com/gilesknap/gphotos-sync/
