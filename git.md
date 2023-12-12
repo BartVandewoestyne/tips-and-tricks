@@ -888,24 +888,22 @@ git reset --hard HEAD~1
 
 TODO: do we need `git push -f <remote> <branch>` here after this reset?
 
-
 ### Going back to previous commits
 
 One that is already pushed:
 
 Option 1:
 
-```
+```bash
 git checkout be9055b .
 git add -A
 git commit -m "Revert commit: be9055b"
 git push
-
 ```
 
 Option 2:
 
-```
+```bash
 git revert <oldest_commit_hash>..<latest_commit_hash>
 ```
 
