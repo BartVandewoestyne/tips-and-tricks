@@ -911,44 +911,51 @@ git revert <oldest_commit_hash>..<latest_commit_hash>
 
 To only pick one commit from another branch (and immediately create a commit):
 
-```
+```bash
 git cherry-pick a6817d7
 ```
 
 To pick multiple commits:
 
-```
+```bash
 git cherry-pick a6817d7 sdfasdf
 ```
 
 To cherry-pick without immediately committing:
 
-```
+```bash
 git cherry-pick a6817d7 -n
 ```
 
 ### Git blame
 
 First, do a `git blame` on the file:
-```
+
+```bash
 git blame <filename>
 ```
+
 Find the commit in which a certain line was introduced.  To see the log message and textual diff for that commit:
-```
+
+```bash
 git show <commit>
 ```
+
 If you want to see the diff with your difftool:
-```
+
+```bash
 git difftool <commit>~..<commit>
 ```
 
 To go back in history:
-```
+
+```bash
 git blame <commit>^ -- file.cpp
 ```
 
 Git GUI also makes it easy to check the history of a line as the versions are clickable:
-```
+
+```bash
 git gui blame <filename>
 ```
 
@@ -956,13 +963,14 @@ or in `gitk`, rightclick on a file name and select 'Blame parent commit'.
 And then, when in git GUI, click on 'Blame Parent Commit'.
 
 References:
-* https://stackoverflow.com/questions/5098256/how-can-i-view-prior-commits-with-git-blame
-* 
+
+* <https://stackoverflow.com/questions/5098256/how-can-i-view-prior-commits-with-git-blame>
 
 ### Merge conflicts
 
 To undo the merge and its conflicts and start over:
-```
+
+```bash
 git merge --abort
 ```
 
@@ -971,37 +979,44 @@ git merge --abort
 ### Creating patches
 
 To create a patch:
-```
+
+```bash
 git diff --output foo.patch
 ```
+
 The above will not include new files.  To include new files, first stage them (using `git add`) and then create the patch with
-```
+
+```bash
 git diff --staged --output foo.patch
 ```
+
 and later apply as usual.
 
 To prepare patches for e-mail submission (TODO):
-```
+
+```bash
 git format-patch <something>
 ```
 
 ### Applying patches
 
 To apply a patch created with `git diff`:
-```
+
+```bash
 git apply foo.patch
 ```
 
 ## Best practices
 
 * Do not use rebase on commits that you've already pushed/shared on a remote repository.  Instead, use it for cleaning up your local commit history before merging it into a shared team branch.
-  See https://git-scm.com/book/en/v2/Git-Branching-Rebasing under 'The Perils of Rebasing'.
+  See <https://git-scm.com/book/en/v2/Git-Branching-Rebasing> under 'The Perils of Rebasing'.
 
 References:
-* https://opensource.com/article/20/7/git-best-practices
-* https://deepsource.io/blog/git-best-practices/
-* https://sethrobertson.github.io/GitBestPractices/
-* https://commonflow.org/ (section 'Git Best Practices')
+
+* <https://opensource.com/article/20/7/git-best-practices>
+* <https://deepsource.io/blog/git-best-practices/>
+* <https://sethrobertson.github.io/GitBestPractices/>
+* <https://commonflow.org/> (section 'Git Best Practices')
 
 ## Diff and Merge tools
 
