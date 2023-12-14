@@ -826,7 +826,171 @@ which will automatically initialize and update
 
 ### Working on a Project with Submodules
 
+#### Pulling in Upstream Changes from the Submodule Remote
+
+##### Method 1: manual fetch and merge
+
+Go into the directory of the submodule and do
+
+```bash
+git fetch
+git merge origin/master
+```
+
+If you now go back to the main project and run
+
+```bash
+git diff --submodule
+```
+
+You'll see that the submodule was updated and will see a list of commits that were added to it.
+If you commit at this point you will lock the submodule into having the new code when other people update.
+
+##### Method 2: let git do the fetch and merge
+
+To let Git do the fetch and update for you:
+
+```bash
+git submodule update --remote DbConnector
+```
+
+To do it for all submodules:
+
+```bash
+git submodule update --remote
+```
+
+You can also change the branch that the submodule tracks, either in your `.gitmodules` or in your local `.git/config`.  To set it in `.gitmodules`:
+
+```bash
+git config -f .gitmodules submodule.DbConnector.branch stable
+```
+
+#### Pulling Upstream Changes from the Project Remote
+
+A `git pull` recursively fetches submodule changes, but it does not *update* the submodules!  To finalize the update, you need to run `git submodule update`:
+
+```bash
+git submodule update --init --recursive
+```
+
+To be on the safe side,...
+
+* ... the `--init` is best added in case the main project commits added new submodules.
+* ... the `--recursive` for the case where certain submodules have nested submodules.
+
+Since git 2.14 you can do
+
+```bash
+git pull --recurse-submodules
+```
+
+to always run `git submodule update` after the pull.
+
+Special situation: URL of the submodule was changed in the `.gitmodules` file in one of the commits that you pulled.  Then `git pull --recurse submodules` or `git submodule update` might fail.  To remedy:
+
+```bash
+# copy the new URL to your local config
+git submodule sync --recursive
+# update the submodule from the new URL
+git submodule update --init --recursive
+```
+
+#### Working on a Submodule
+
+Go into your submodule and check out a branch
+
+```bash
+cd DbConnector/
+git checkout stable
+```
+
+* Now try updating the submodule with the "merge" option:
+
+  ```bash
+  cd ..
+  git submodule update --remote --merge
+  ```
+
+* You can also update the submodule with the "rebase" option:
+
+  ```bash
+  cd ..
+  git submodule update --remote --rebase
+  ```
+
+* If you forget the `--merge` or `--rebase`, Git will just update the submodule to whatever is on the server and reset your project to a detached HEAD state:
+
+  ```bash
+  cd ..
+  git submodule update --remote
+  ```
+
+  If this happens, simply go back into the directory and check out your branch again and merge or rebase `origin/stable` (or whatever remote branch you want) manually.
+
+#### Publishing Submodule Changes
+
+To check that all your submodules have been pushed properly before pushing the main project, the `git push` command takes the `--recurse-submodules` argument which can be set to either "check" or "on-demand".
+
+* The "check" option will make `push` simply fail if any of the committed submodule changes haven't been pushed:
+
+  ```bash
+  git push --recurse-submodules=check
+  ```
+
+* The "on-demand" option will try to do the pushes for you:
+
+  ```bash
+  git push --recurse-submodules=on-demand
+  ```
+
+  If the submodule push fails, the main project push will also fail.
+
+#### Merging Submodule Changes
+
+TODO: this is if you change a submodule reference at the same time as someone else... looks quite complicated...
+
+### Submodule Tips
+
+#### Submodule foreach
+
+Do a certain git command in all submodules:
+
+```bash
+git submodule foreach 'git foobar'
+```
+
+Stash all the work in all our submodules:
+
+```bash
+git submodule foreach 'git stash'
+```
+
+Create new branch and switch to it in all submodules:
+
+```bash
+git submodule foreach 'git checkout -b featureA'
+```
+
+Nice diff of everything:
+
+```bash
+git diff; git submodule foreach 'git diff'
+```
+
+#### Useful aliases
+
+```bash
+git config alias.sdiff '!'"git diff && git submodule foreach 'git diff'"
+git config alias.spush 'push --recurse-submodules=on-demand'
+git config alias.supdate 'submodule update --remote --merge'
+```
+
+### Issues with Submodules
+
 TODO
+
+#### Switching branches
 
 ### Storing your credentials
 
