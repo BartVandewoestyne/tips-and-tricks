@@ -17,3 +17,11 @@ $ sudo apt install virtualbox-guest-dkms virtualbox-guest-x11
 Activate the Shared Clipboard Feature
 The Virtualbox guest additions provides a bi-directional shared clipboard option that allows you to copy and paste the content between the Ubuntu virtual machine and host operating system.
 To enable this feature on your system, access the menu option of your Ubuntu virtual machine. Move into the tab General / Advanced / Shared Clipboard / Bidirectional as follows:
+
+# Other tips and tricks
+
+To list your VMs:
+
+```bash
+VBoxManage list vms
+```
