@@ -642,6 +642,12 @@ To see which stashes you’ve stored:
 git stash list
 ```
 
+To see the diff of a stash:
+
+```bash
+git stash show -p stash@{0}
+```
+
 To reapply the stash you just stashed (without restaging)
 
 ```bash
