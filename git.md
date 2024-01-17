@@ -1132,9 +1132,12 @@ git gui blame <filename>
 or in `gitk`, rightclick on a file name and select 'Blame parent commit'.
 And then, when in git GUI, click on 'Blame Parent Commit'.
 
+There are also several VS Code extensions for doing a git blame.  See the link in the references.
+
 References:
 
 * <https://stackoverflow.com/questions/5098256/how-can-i-view-prior-commits-with-git-blame>
+* <https://www.kosli.com/blog/git-blame-in-vs-code-the-4-best-options/>
 
 ### Merge conflicts
 
