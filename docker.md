@@ -408,17 +408,19 @@ To clean up most Docker resources but still keep tagged images:
 docker system prune
 ```
 
-Clean up unused and dangling images:
+Remove all dangling images (not unused images), which are untagged images that have no relationship to any other images:
 
 ```text
 docker image prune
 ```
 
-Clean up dangling images only
+Remove all unused images, not just dangling ones:
 
 ```text
 docker image prune -a
 ```
+
+The above command will remove all images without at least one container associated to them.
 
 Clean up stopped containers
 
