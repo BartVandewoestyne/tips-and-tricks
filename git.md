@@ -148,6 +148,12 @@ Limit git log output to most recent two commits:
 git log -2
 ```
 
+To show all commits that branch B has and A does not have (according to one of my colleagues, check!)
+
+```bash
+git log A..B
+```
+
 To see some abbreviated stats for each commit:
 
 ```bash
