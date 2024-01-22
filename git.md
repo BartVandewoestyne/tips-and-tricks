@@ -1034,6 +1034,12 @@ or using Meld:
 git difftool -d master..test-branch
 ```
 
+According to one of my colleagues, you need the triple-dot operator (TODO: CHECK DIFFERENCE between using double and triple dot operator!)
+
+```
+git difftool origin/develop...feat/VELO-41254-arp-resolution-investigation-and-implementation
+```
+
 ### Undo last (or N last) commit(s)
 
 Not yet pushed:
