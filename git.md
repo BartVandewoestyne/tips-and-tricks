@@ -396,6 +396,7 @@ git merge iss53
 
 ```bash
 git mergetool
+git mergetool -t meld
 ```
 
 ## 3.3 Git Branching - Branch Management
@@ -721,6 +722,14 @@ git stash branch testchanges
 ```
 
 This is a nice shortcut to recover stashed work easily and work on it in a new branch.
+
+### Merge conflicts when applying stashed changes
+
+You can use `git mergetool` to resolve conflicts.  For example when you have merge conflicts when popping stashed changes, you will see three versions of the file:
+
+* "local" (your changes locally)
+* "remote" (stash changes)
+* a combination of both
 
 ### Cleaning your working directory
 
