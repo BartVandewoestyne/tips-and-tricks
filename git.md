@@ -1031,22 +1031,32 @@ TODO: Instead of `store` you can also use `cache`.  what is the difference?
 
 ### Differences between branches
 
-To see the diffs between branches
+To see the diffs between the *current states* of `branch1` and `branch2`:
 
 ```bash
-git diff master..test-branch
+git diff branch1..branch2
 ```
 
-or using Meld:
+or equivalent
+
+```bash
+git diff branch1 branch2
+```
+
+The above syntax compares the difference between the tips of the two branches `branch1` and `branch2`.  It shows the changes that are in `branch2` but not in `branch1`, essentially highlighting the changes that would be brought in if you were to merge `branch2` into `branch1`.  It's useful for understanding changes between the two branches as they currently are.
+
+If you prefer to find the changes introduced in `branch2` *since it diverged from `branch1`*, you can use the three dots instead of two:
+
+```bash
+git diff branch1...branch2
+```
+
+This syntax compares the changes between the common ancestor of `branch1` and `branch2`, and the tip of `branch2`.  It's essentially showing the changes that are present in `branch2` since it diverged from `branch1`.  It is helpful for understanding the changes introduced in `branch2` compared to the point where it diverged from `branch1`.  This syntax is particularly useful in scenario's where you're interested in seeing the changes introduced in a feature branch (`branch2`) relative to the main development branch (`branch1`).
+
+If you want to see the diff using Meld, replace `git diff` by `git difftool` or `git difftool -d`, for example
 
 ```bash
 git difftool -d master..test-branch
-```
-
-According to one of my colleagues, you need the triple-dot operator (TODO: CHECK DIFFERENCE between using double and triple dot operator!)
-
-```
-git difftool origin/develop...feat/VELO-41254-arp-resolution-investigation-and-implementation
 ```
 
 ### Undo last (or N last) commit(s)
