@@ -483,6 +483,9 @@ command (e.g. `git fetch origin`). This command looks up which server `origin` i
 
 ### Pushing
 
+TODO: explain git push --force-with-lease
+https://youtu.be/aolI_Rz0ZqY?si=6fPpLj1Zob4bgEZZ&t=1063
+
 To push your local `serverfix` branch:
 
 ```bash
