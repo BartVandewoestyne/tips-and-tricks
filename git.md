@@ -484,7 +484,7 @@ command (e.g. `git fetch origin`). This command looks up which server `origin` i
 ### Pushing
 
 TODO: explain git push --force-with-lease
-https://youtu.be/aolI_Rz0ZqY?si=6fPpLj1Zob4bgEZZ&t=1063
+<https://youtu.be/aolI_Rz0ZqY?si=6fPpLj1Zob4bgEZZ&t=1063>
 
 To push your local `serverfix` branch:
 
@@ -749,7 +749,7 @@ To remove all the untracked files in your working directory (that are not ignore
 git clean -f -d
 ```
 
-The -f means 'force' or “really do this,” and is required if the Git configuration variable clean.requireForce is not explicitly set to false.
+The `-f` means 'force' or 'really do this', and is required if the Git configuration variable `clean.requireForce` is not explicitly set to false.
 
 To do a dry-run, use `-n`:
 
@@ -769,7 +769,7 @@ To also remove ignored files:
 git clean -n -d -x   (-n is probably not necessary here, is just for dry-run)
 ```
 
-If you don’t know what the git clean command is going to do, always run it with a -n first to double check before changing the -n to a -f and doing it for real.
+If you don’t know what the `git clean` command is going to do, always run it with a `-n` first to double check before changing the `-n` to a `-f` and doing it for real.
 
 To run the clean command in interactive mode:
 
@@ -1064,7 +1064,7 @@ git difftool -d master..test-branch
 
 ### Undo last (or N last) commit(s)
 
-Not yet pushed:
+#### Not yet pushed
 
 ```bash
 git reset --soft HEAD~
@@ -1084,7 +1084,7 @@ git reset --soft HEAD~2
 
 After running the command, you'll find the changes as uncommitted local modifications in your working copy.
 
-Already pushed?
+#### Already pushed
 
 ```bash
 git reset --hard HEAD~1
@@ -1094,7 +1094,7 @@ TODO: do we need `git push -f <remote> <branch>` here after this reset?
 
 ### Going back to previous commits
 
-One that is already pushed:
+#### Already pushed
 
 Option 1:
 
