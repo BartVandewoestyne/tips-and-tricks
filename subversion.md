@@ -59,11 +59,15 @@
 
 ## Creating and applying a patch
 
-Creating a patch:
+### Using `/usr/bin/patch`
 
 ```text
 svn diff > mypatchfile.patch
+...
+patch -p0 < mypatchfile.patch
 ```
+
+This will apply your changes well if there are not added/deleted files through `svn add` or `svn delete`.
 
 To apply your changes if there are no added/deleted files through `svn add` or `svn delete`:
 
@@ -71,11 +75,15 @@ To apply your changes if there are no added/deleted files through `svn add` or `
 patch -p0 < mypatchfile.patch
 ```
 
-To track added and deleted files too:
+### Using `svn diff` and `svn patch`
 
 ```text
+svn diff > mypatchfile.patch
+...
 svn patch mypatchfile.patch
 ```
+
+This tracks added and deleted files too.
 
 Note that neither tracks `svn move`s and `svn rename`s.
 
@@ -83,6 +91,65 @@ References:
 
 * [How to make and apply SVN patch?](https://stackoverflow.com/questions/10333712/how-to-make-and-apply-svn-patch)
 
+## Reverting changes
+
+To revert a single file:
+
+```text
+svn revert foo.c
+```
+
+To revert a whole directory of files:
+
+```text
+svn revert --recursive .
+```
+
 ## Monitoring SVN repositories
 
 * [Subversion repository monitor](https://ghost.tweakblogs.net/blog/3073/subversion-repository-monitor.html)
+
+## SVN clients
+
+### RabbitVCS
+
+Pros:
+
+* Latest release is from February 12, 2020.
+* Interface is inspired by TortoiseSVN.
+
+Cons:
+
+* Only Linux
+
+### Integrated Subversion source control for VSCode
+
+<https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm>
+
+Cons:
+
+* Requires VSCode
+
+### SubTile
+
+* <https://en.wikipedia.org/wiki/SubTile>
+
+### RapidSVN
+
+Cons:
+
+* Latest release is form June 28, 2012...
+
+### QSvn
+
+<https://en.wikipedia.org/wiki/QSvn>
+
+Cons:
+
+* Development stopped in 2010.
+
+### eSVN
+
+Cons:
+
+* Latest release is from 2007...
