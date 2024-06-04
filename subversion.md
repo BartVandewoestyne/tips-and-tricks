@@ -1,20 +1,79 @@
-# Creating and applying a patch
+# Subversion
+
+## Find out from what branch a branch was originally copied of
+
+1. Identify the branch URL of the branch you are currently on:
+
+   ```text
+   svn info | grep ^URL
+   ```
+
+1. Still on that branch, examine the log for the branch creation:
+
+   ```text
+   svn log --stop-on-copy -v
+   ```
+
+   The `-v` flag will also print the affected paths so that you can see what is copied from where.  For example:
+
+   ```text
+   r54174 | tvrd | 2024-04-25 16:52:57 +0200 (Do, 25 Apr 2024) | 2 lines
+   Changed paths:
+      A /trunk/terminal/buildtools/modembuild/branches/dialog_to_intuition_migration (from /trunk/terminal/buildtools/modembuild/dialog_trunk:54173)
+
+   Create feature branch for Dialog-to-Intuition migration feature.
+   ```
+
+## Using Meld as a merge tool
+
+1. Configure `meld` as the merge tool by editing `~/.subversion/config`:
+
+   ```text
+   [helpers]
+   merge-tool-cmd = meld
+   ```
+
+1. Perform the merge
+
+   ```text
+   svn merge htttp://path/to/branch
+   ```
+
+1. Identify conflicted files:
+
+   ```text
+   svn status
+   ```
+
+1. Resolve conflicts with `meld`:
+
+   ```text
+   meld conflicted_file.txt.rOLD conflicted_file.txt.rNEW conflicted_file.txt
+   ```
+
+1. Mark the conflict as resolved:
+
+   ```text
+   svn resolve --accept working conflicted_file.txt
+   ```
+
+## Creating and applying a patch
 
 Creating a patch:
 
-```
+```text
 svn diff > mypatchfile.patch
 ```
 
 To apply your changes if there are no added/deleted files through `svn add` or `svn delete`:
 
-```
+```text
 patch -p0 < mypatchfile.patch
 ```
 
 To track added and deleted files too:
 
-```
+```text
 svn patch mypatchfile.patch
 ```
 
@@ -22,7 +81,8 @@ Note that neither tracks `svn move`s and `svn rename`s.
 
 References:
 
-* https://stackoverflow.com/questions/10333712/how-to-make-and-apply-svn-patch
+* [How to make and apply SVN patch?](https://stackoverflow.com/questions/10333712/how-to-make-and-apply-svn-patch)
 
-# Monitoring SVN repositories
+## Monitoring SVN repositories
+
 * [Subversion repository monitor](https://ghost.tweakblogs.net/blog/3073/subversion-repository-monitor.html)
