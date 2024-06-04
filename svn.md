@@ -1,3 +1,15 @@
+# Reverting changes
+
+To revert a single file:
+```
+svn revert foo.c
+```
+
+To revert a whole directory of files:
+```
+svn revert --recursive .
+```
+
 # Creating patches
 
 Using `/usr/bin/patch`:
