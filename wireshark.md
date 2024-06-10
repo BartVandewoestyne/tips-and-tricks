@@ -7,7 +7,10 @@
   * Make sure your install Wireshark with NpCap, not in WinPcap compatibility mode.
   * It can be that you have to select another 'Ethernet X' adapter instead of the 'Npcap Loopback Adapter' in order to see traffic on 127.0.0/8 hosts.
 
-* With tcpreplay you can replay network traffic captured with tcpdump or Wireshark: <https://github.com/appneta/tcpreplay>
+* With tcpreplay you can replay network traffic captured with tcpdump or Wireshark: <https://github.com/appneta/tcpreplay> I've seen examples like this:
+```text
+sudo tcpreplay --loop=0 --intf1=eth1 corasat_cse_capture3.pcap
+```
 
 * It is possible to enable or disable the UDP checksum in Wireshark.  TODO: how?
 
