@@ -1,11 +1,14 @@
-# Git Support
+# VS Code
+
+## Git Support
 
 Visual Studio Code has Git support built in.  You will need to have Git version 2.0.0 (or newer) installed.
 See
-* https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Visual-Studio-Code
-* https://code.visualstudio.com/docs/sourcecontrol/overview
 
-# Interesting extensions
+* <https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Visual-Studio-Code>
+* <https://code.visualstudio.com/docs/sourcecontrol/overview>
+
+## Interesting extensions
 
 Live Share:
 
@@ -31,7 +34,7 @@ Makefile Tools:
 C++:
 
 * [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-* [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)<br>
+* [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 * [C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)
 
@@ -57,19 +60,19 @@ Ruby:
 
 * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
 * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
-* [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)<br>
+* [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)  
   (note that on the eng4 machine I had to install it using `sudo gem install solargraph` because the installation from VSCode failed...)
-* [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)<br>
+* [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)  
   (TODO: test this one out!)
 
 Markdown:
 
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 
-# Issues I have or had
+## Issues I have or had
 
-* On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".<br>
+* On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".  
   *Solution: don't use the minus character from the numeric keypad, use the other one.*
 
 * Ruby shared examples not working.  
-  See https://stackoverflow.com/questions/75756169/how-to-navigate-to-ruby-rspec-shared-examples-in-vscode/
+  See <https://stackoverflow.com/questions/75756169/how-to-navigate-to-ruby-rspec-shared-examples-in-vscode/>
