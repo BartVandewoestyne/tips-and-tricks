@@ -105,6 +105,12 @@ To revert a whole directory of files:
 svn revert --recursive .
 ```
 
+## Sparse checkouts and updates
+
+When checking out, you can use the `--depth ARG` option with `ARG` equal to any of `empty`, `files`, `immediates` or `infinity`.
+
+When updating, you can use `--depth` with `empty`, `files`, `immediatese` or `infinity` and you can use `--set-depth` with `exclude`, `empty`, `files`, `immediatese` or `infinity`.
+
 ## Monitoring SVN repositories
 
 * [Subversion repository monitor](https://ghost.tweakblogs.net/blog/3073/subversion-repository-monitor.html)
