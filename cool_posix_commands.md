@@ -1,4 +1,15 @@
-# w
+# POSIX commands
+
+The standard is available here: https://pubs.opengroup.org/onlinepubs/9799919799/
+
+## ls
+
+To list all files with the last modified ones at the bottom:
+```
+ls -altr
+```
+
+## w
 
 ```
 root@iDirectRMT:p6 ~ # w
@@ -8,7 +19,7 @@ root            ttyS0           00:00   Nov 29 09:34:52
 
 Here, ttyS0 means someone is logged in from the serial console 0.
 
-# who
+## who
 
 ```
 bvandewoestyne@RAPTOR-JUMPSERVER:~$ who
