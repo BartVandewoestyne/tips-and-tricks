@@ -1,5 +1,10 @@
 # VS Code
 
+## Configuration
+
+* User settings are stored in ``~/.config/Code/User/settings.json``.
+* Workspace settings are stored in the ``.vscode/settings.json`` file in the workspace directory.
+
 ## Git Support
 
 Visual Studio Code has Git support built in.  You will need to have Git version 2.0.0 (or newer) installed.
