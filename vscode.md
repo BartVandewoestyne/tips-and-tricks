@@ -16,40 +16,45 @@ See
 
 ## Interesting extensions
 
-Live Share:
+### Live Share
 
 * [Live Share](https://code.visualstudio.com/learn/collaboration/live-share)
 
-SVN:
+### SVN
 
 * [SVN](https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm)
 
-Git:
+### Git
 
 * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 * [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)
 
-CMake:
+### CMake
 
 * [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
   * [C++ in VS Code: Building your Code with CMake](https://www.youtube.com/watch?v=_BWU5mWqVA4)
 
-Makefile Tools:
+### Makefile Tools
 
 * [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
 
-C++:
+### C++
 
-* [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-* [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+#### [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+
+
+#### [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+
 This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
-* [C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)
 
-Code coverage:
+
+#### [C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)
+
+### Code coverage
 
 * [Gcov Viewer](https://marketplace.visualstudio.com/items?itemName=JacquesLucke.gcov-viewer)
 
-Static code analysis:
+### Static code analysis
 
 * [C/C++ Advanced Lint](https://marketplace.visualstudio.com/items?itemName=jbenden.c-cpp-flylint)
 * [Cppcheck Plug-in](https://marketplace.visualstudio.com/items?itemName=NathanJ.cppcheck-plugin)
@@ -59,12 +64,12 @@ Static code analysis:
 * [Cpp Static Checks](https://marketplace.visualstudio.com/items?itemName=NathanJ.cpp-tools-plugin)
 * [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
 
-Docker:
+### Docker
 
 * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 * [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-Ruby:
+### Ruby
 
 * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
 * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
@@ -73,7 +78,7 @@ Ruby:
 * [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)  
   (TODO: test this one out!)
 
-Markdown:
+### Markdown
 
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 
