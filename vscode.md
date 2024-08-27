@@ -42,6 +42,10 @@ See
 
 #### [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 
+* Logging level can be changed via `C_Cpp.loggingLevel`, see also [C/C++ extension logging](https://code.visualstudio.com/docs/cpp/enable-logging-cpp)
+* View output via *View/Output* and then select *C/C++* or *cpptools*.
+* To reset your IntelliSense database, open the Command Palette (`Ctrl+Shift+P`) and choose **C/C++: Reset Intellisense Database** command.
+* [Attaching debugger to cpptools or cpptools‐srv](https://github.com/microsoft/vscode-cpptools/wiki/Attaching-debugger-to-cpptools-or-cpptools%E2%80%90srv)
 
 #### [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 
