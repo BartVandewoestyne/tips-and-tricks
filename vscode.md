@@ -51,6 +51,7 @@ See
 
 This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 
+#### [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)
 
 #### [C++ TestMate](https://marketplace.visualstudio.com/items?itemName=matepek.vscode-catch2-test-adapter)
 
