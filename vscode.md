@@ -4,6 +4,7 @@
 
 * User settings are stored in `~/.config/Code/User/settings.json`.
 * Workspace settings are stored in the `~/.vscode/settings.json` file in the workspace directory.
+* Extensions are installed in `~/.vscode/extensions/`.
 
 ## Git Support
 
