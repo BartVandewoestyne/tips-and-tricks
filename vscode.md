@@ -34,6 +34,8 @@ See
 * [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
   * [C++ in VS Code: Building your Code with CMake](https://www.youtube.com/watch?v=_BWU5mWqVA4)
 
+* [CMake-Lint](https://marketplace.visualstudio.com/items?itemName=brobeson.vscode-cmake-lint)
+
 ### Makefile Tools
 
 * [Makefile Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.makefile-tools)
