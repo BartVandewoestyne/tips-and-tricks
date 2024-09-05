@@ -85,6 +85,8 @@ This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 * [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)  
   (TODO: test this one out!)
 
+Note: Apparently, for the language server, I also had to do `sudo gem install rek` once... don't know exactly in what context anymore.
+
 ### Markdown
 
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
