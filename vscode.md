@@ -78,12 +78,12 @@ This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 
 ### Ruby
 
-* [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
-* [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
+* [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp)
 * [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)  
   (note that on the eng4 machine I had to install it using `sudo gem install solargraph` because the installation from VSCode failed...)
 * [Ruby Test Explorer](https://marketplace.visualstudio.com/items?itemName=connorshea.vscode-ruby-test-adapter)  
-  (TODO: test this one out!)
+
+The [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby) and [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby) extensions are deprecated and one should use the [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) extension instead.
 
 Note: Apparently, for the language server, I also had to do `sudo gem install rek` once... don't know exactly in what context anymore.
 
