@@ -1,11 +1,12 @@
-# In browser
+# Microsoft OneDrive
 
-https://onedrive.live.com/
+## Using OneDrive in your browser
 
-# OneDrive Clieent for Linux
+<https://onedrive.live.com/>
 
-https://abraunegg.github.io/
+## OneDrive Client for Linux
 
-GUI: https://github.com/bpozdena/OneDriveGUI
-Colorful log output terminal modification: https://github.com/zzzdeb/dotfiles/blob/master/scripts/tools/onedrive_log
-System Tray Icon: https://github.com/DanielBorgesOliveira/onedrive_tray
+* [OneDrive Client for Linux](https://abraunegg.github.io/)
+* [OneDriveGUI](https://github.com/bpozdena/OneDriveGUI)
+* [onedrive_tray](https://github.com/DanielBorgesOliveira/onedrive_tray)
+* [onedrive_log](https://github.com/zzzdeb/dotfiles/blob/master/scripts/tools/onedrive_log)
