@@ -377,6 +377,11 @@ To see where docker volumes are located (depends on Windows/Linux)
 Windows: C:\ProgramData\docker\volumes
 Linux and Mac: /var/lib/docker/volumes
 
+To check the contents of a named volume:
+* First find the name of the volume: `docker volume ls`
+* Run `docker run --rm -it -v some_volume_name:/mnt busybox`
+* Go into the /mnt directory and inspect contents
+
 # Cleaning up
 
 ## Analyzing how much space Docker is using
