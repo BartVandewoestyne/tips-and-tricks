@@ -6,6 +6,10 @@
 * Workspace settings are stored in the `~/.vscode/settings.json` file in the workspace directory.
 * Extensions are installed in `~/.vscode/extensions/`.
 
+## Cache data
+
+Cache data is located under `~/.cache/vscode-cpptools/` and can take up quite some space (I've once had 63 GB of cache data in it...)
+
 ## Git Support
 
 Visual Studio Code has Git support built in.  You will need to have Git version 2.0.0 (or newer) installed.
