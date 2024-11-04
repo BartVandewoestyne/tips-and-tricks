@@ -570,10 +570,15 @@ git push origin :serverfix
 
 ### The Basic Rebase
 
+To take all the changes that were committed on the `experiment` branch and
+replay them on the `master` branch:
+
 ```bash
 git checkout experiment
 git rebase master
 ```
+
+Once the rebase is done, you can go back to the master branch and do a fast-forward merge:
 
 ```bash
 git checkout master
