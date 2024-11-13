@@ -24,6 +24,14 @@
    Create feature branch for Dialog-to-Intuition migration feature.
    ```
 
+## Merging
+
+To see what will be merged, for example by a sync-merge from trunk:
+
+```text
+svn merge --dry-run ^/trunk .
+```
+
 ## Using Meld as a merge tool
 
 1. Configure `meld` as the merge tool by editing `~/.subversion/config`:
