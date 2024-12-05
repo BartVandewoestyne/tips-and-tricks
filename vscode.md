@@ -26,7 +26,9 @@ See
 
 ### SVN
 
-* [SVN](https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm)
+* [SVN](https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm)  
+  Note that this extension does not provide svn blame functionality.  On its [features page](https://marketplace.visualstudio.com/items?itemName=johnstoncode.svn-scm) it recommends SVN Blamer.
+* [SVN Blamer](https://marketplace.visualstudio.com/items?itemName=beaugust.blamer-vs)
 
 ### Git
 
