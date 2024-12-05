@@ -1,5 +1,14 @@
 # Subversion
 
+## Viewing changes
+
+To see the changes made in revision 123:
+
+```text
+svn diff -c 123 myfile.c
+svn diff -c 123 myfile.c --diff-cmd meld
+```
+
 ## Find out from what branch a branch was originally copied of
 
 1. Identify the branch URL of the branch you are currently on:
