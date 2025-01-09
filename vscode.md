@@ -90,6 +90,7 @@ This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 
 * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 * [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+  (See also [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers))
 
 ### Ruby
 
