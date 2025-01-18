@@ -13,6 +13,12 @@ $ docker run hello-world
 * Everything in docker hub are 'images'.
   Images have tags or versions (see e.g. Docker hub)
 
+* Tags: Docker images are often tagged wiith a version number or name so you can retrieve a specific version of te application:
+```
+docker run -d -it ubuntu:24.04
+```
+If you don't specify one, it uses tag `latest` (can break things!).
+
 # Main Docker commands
 
 ## docker pull
@@ -42,14 +48,33 @@ To both pull an image (with potentially a specific version) and start a containe
 $ docker run redis:4.0
 ```
 
+Interactive with tty interface:
+```
+$ docker run -it ubuntu
+```
+
 To start containers with binding between host and container ports, e.g. to bind my laptop's port 6000 to the container's port 6378:
 ```
 $ docker run -p6000:6378 redis
+$ docker run -p 6000:6378 redis
 ```
 
 To create a container with a certain name instead of an automatically generated name:
 ```
 $ docker run -d -p6001:6379 --name redis-older redis:4.0
+```
+
+Exposing all ports in a Dockerfile:
+```
+$ docker run -P <other_flags> <image>
+```
+maps Dockerfile-defined ports to a random port on the host (32768-60999)
+In your dockerfile, you have:
+```
+FROM ...
+...
+EXPOSE 80
+ENTRYPOINT ...
 ```
 
 ## docker start and stop
@@ -59,6 +84,11 @@ Take first part of docker id and do
 ```
 $ docker stop 8381867e8242
 ```
+or
+```
+$ docker stop <container_name_or_UUID>
+```
+This does not remove the container.  You can restart it.
 
 To restart it again:
 ```
@@ -99,6 +129,13 @@ $ docker logs some_name
 ```
 (containers get random names, but you can name them too...)
 
+To also print timestamps:
+```
+docker logs <container_name> -t
+```
+
+Docker logs only exist until the container is deleted.
+
 ## docker exec -it
 
 To get the terminal of a running container!  E.g. to navigate to a directory inside that container, check logfile, check configuration file, print out environment variables,...
@@ -115,9 +152,16 @@ Often, containers are based on lightweight linux distro's, so you don't always h
 # Other commands:
 
 Checking all existing images on my laptop (e.g. to cleanup stale images):
+All images that you have downloaded and are currently taking up space on your harddrive.
 ```
 $ docker images
 ```
+or
+```
+$ docker images -a
+```
+In this list, untagged images are "dangling" images, set as `<none>`.  Typically caused by using the 'latest' tag and then image got updated and previous image got dangling with `<none>`
+There are commands for being able to delete dangling images.
 
 To delete an image from this list:
 ```
@@ -127,6 +171,10 @@ $ docker rmi 2e0a4d16e074
 To delete a Docker container:
 ```
 $ docker rm 3c58e681c8c5
+```
+or
+```
+$ docker rm <container_name_or_UUID>
 ```
 
 # docker network
@@ -294,6 +342,59 @@ docker build -t my-app:1.0 .
 ```
 
 Note that whenever you adjust the Dockerfile, you MUST rebuild the image!
+
+FROM:
+Base layer, always use a tag!  Then it's deterministic!
+
+LABEL:
+readable metadata used for organisation
+
+RUN:
+Executes any commands in a new layer on top of the current image and commits (stores) the results
+Chain them with && and "\"
+Often used for isntalling packages: RUN yum install -y httpd
+
+ADD
+Copies new files, directories or remote URLs to the images's file system and commits.
+Can also perform local tar file extraction.
+
+COPY
+Like ADD, used for copying files and directories to the image's file system
+Useful for copyingg static data or executables to the container
+More straightforward then ADD, generally preferred (because ADD allows you to access remote URLs and deploy them onto your local container  image when you're building it which may not be secure, so always use COPY)
+
+EXPOSE
+Defines which network ports that the container should listen on at run-time (tcp or udp)
+Note: Does not publish the port.  To publish, use -P or -p with the "docker run" command
+
+ENV
+Allows specifying environment variables or modifying PATH
+Each ENV line creates a new intermediate layer
+
+VOLUME
+Create a mount point and notes that it will hold an externally mounted filesystem
+
+CMD
+Provides a default command to run when the container starts
+Only one per Dockerfile, if more than one, runs last one
+If a user specifies a container argument, CMD is overridden (this could be dangerous, user could run anything he wants if it exists in the container)
+=> alternative is ENTRYPOINT
+
+ENTRYPOINT
+Configures the container to run as an executable, defining the main command to run
+Best practice is to use this, and then CMD for any default arguments (as they can be overridden)
+
+USER
+Use to define the non-root user that the container will run as
+If not set, container will be run using ROOT privileges (inDocker, Kubernetes is different).  Best practice is to *always* set USER and use an explicit UID/GID.
+Why?  If a sensitive volume (like /etc) is mounted into the container from the host, or a process escapes the container, it will have ROOT access to the entire host.
+
+Ordering in the Dockerfile is important because each instruction can create a new layer.
+Best practice is to combine similar functionality into a single line using "&&" and "\" (e.g. installing libraries or modules)
+
+Best practice is also to put more static instructions earlier (e.g. yum commands to install modules, additional libraries from an operating system), put changing files (e.g. application layer stuff) later.  Reason: Any layer that needs to get rebuilt at a lower level invalidates the build cache for layers above it, forcing them to be rebuilt.
+Rule: put things that don't change often lower, more mutable instructions higher.
+
 
 # Private Docker Registry 
 
