@@ -44,20 +44,6 @@ Grep for a certain text in all non-binary files:
 grep -rI "SomeText" .
 ```
 
-Grep for multiple strings:
-* Method 1
-  ```
-  grep 'pattern1\|pattern2' fileName_or_filePath
-  ```
-* Method 2
-  ```
-  grep -E 'pattern1|pattern2' fileName_or_filePath
-  ```
-* Method 3
-  ```
-  grep -e pattern1 -e pattern2 fileName_or_filePath
-  ```
-
 Grep but exclude .svn directories:
 ```
 grep -rI --exclude-dir=".svn" "SomeText" .
