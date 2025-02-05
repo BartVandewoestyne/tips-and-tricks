@@ -2,16 +2,6 @@
 
 The standard is available here: https://pubs.opengroup.org/onlinepubs/9799919799/
 
-## w
-
-```
-root@iDirectRMT:p6 ~ # w
-USER		TTY		IDLE	TIME		 HOST
-root            ttyS0           00:00   Nov 29 09:34:52
-```
-
-Here, ttyS0 means someone is logged in from the serial console 0.
-
 ## who
 
 ```
