@@ -6,19 +6,10 @@ Getting the full path to a file:
 readlink -f file.txt
 ```
 
-List all .JPG and .jpg files:<br>
-Method 1:
+List all .JPG and .jpg files:
+
 ```
 ls | grep -i \.jpg$
-```
-Method 2:
-```
-ls *.[jJ][pP][gG]
-```
-
-List only directories:
-```
-ls -d */
 ```
 
 Finding the biggest directories in the current directory
