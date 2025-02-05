@@ -1,30 +1,5 @@
 # Finding files
 
-## Finding a file
-* Method 1:
-  ```
-  locate
-  ```
-* Method 2:
-  ```
-  find / -name 'program.c' 2>/dev/null
-  find / -name 'program.c' 2>errors.txt
-  ```
-
-## Finding multiple files
-* Case sensitive match:
-  ```
-  find . -type f -name '*.pl'
-  ```
-* Case insensitive match:
-  ```
-  find . -type f -iname '*.pl'
-  ```
-* Finding both .h and .cpp files:
-  ```
-  find . -type f -iname '*.h' -o -iname '*.cpp'
-  ```
-
 ## Finding duplicate files
 
 Finding duplicate .m files:
