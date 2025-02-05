@@ -50,23 +50,8 @@ Excluding one directory:
   find . -type d -name 'ThirdParty' -prune -o -type f -name '*.pro' -print
   ```
 
-# Finding text in files
-
-```
-find . -type f -name '*.pl' | xargs grep text
-```
-
-To run a <command> on files with spaces:
-```
-find . -print0 | xargs -0 <command>
-```
-
 # Replacing text in files
 
-Replacing a string in a lot of files, including subdirs:
-```
-find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
-```
 
 To see if two remote directories are different:
 * Method 1: on the remote host, do:

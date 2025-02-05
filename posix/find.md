@@ -1,5 +1,7 @@
 # POSIX find
 
+## Finding files
+
 * Finding a file on your filesystem in a case-sensitive manner:
 
   ```text
@@ -19,3 +21,25 @@
   ```text
   find . -type f \( -name '*.h' -o -name '*.cpp' \)
   ```
+
+## Doing things with the found files
+
+* Run a certain command on files that might contain spaces:
+
+  ```text
+  find . -exec <command> {} +
+  ```
+
+  Examples:
+
+  * Search for a string in files:
+
+    ```text
+    find . -type f -name '*.pl' -exec grep foobar {} +
+    ```
+
+  * Replace a string in a lot of files, including subdirs:
+
+    ```text
+    find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
+    ```
