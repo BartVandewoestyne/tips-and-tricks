@@ -2,27 +2,14 @@
 
 ## Finding duplicate files
 
-Finding duplicate .m files:
+Finding .m files with the same name:
 ```
-find subversion/ -type f -name '*.m' | sort | uniq -d > duplicate_files
-```
-
-Finding duplicate files:
-```
-fdupes -r mydir > ~/duplicate_files.txt
+find subversion/ -type f -name '*.m' | sort | uniq -d > filename_duplicates.txt
 ```
 
-## Finding large or small files
-
-Finding the top 10 largest files (not directories) in a particular directory and its subdirectories
+Finding duplicate files based on content:
 ```
-find . -printf '%s %p\n' | sort -nr | head
-```
-
-Finding the smallest file in the current directory and sub directories
-```
-find . -type f -exec ls -s {} \; | sort -n -r | tail -1
-find . -type f -exec ls -s {} \; | sort -n  | head -1
+fdupes -r mydir > ~/file_duplicates.txt
 ```
 
 Excluding certain directories when finding large files:

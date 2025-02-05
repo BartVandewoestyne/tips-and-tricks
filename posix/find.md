@@ -43,3 +43,17 @@
     ```text
     find . -type f -name '*.f95' -exec perl -pi -e 's/foo/bar/g' {} \;
     ```
+
+## Powerful combining with other tools
+
+* Find the smallest file in the current directory and sub directories:
+
+  ```text
+  find . -type f -exec ls -s {} \; | sort -n -r | tail -1
+  ```
+
+  or
+
+  ```text
+  find . -type f -exec ls -s {} \; | sort -n  | head -1
+  ```
