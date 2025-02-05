@@ -2,13 +2,6 @@
 
 The standard is available here: https://pubs.opengroup.org/onlinepubs/9799919799/
 
-## ls
-
-To list all files with the last modified ones at the bottom:
-```
-ls -altr
-```
-
 ## w
 
 ```
