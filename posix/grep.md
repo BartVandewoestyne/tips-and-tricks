@@ -1,5 +1,11 @@
 # grep
 
+* Grep case insensitive:
+
+  ```text
+  grep -i "pattern" filename
+  ```
+
 * Grep for multiple strings:
   * Method 1
 
