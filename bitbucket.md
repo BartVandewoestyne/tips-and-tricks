@@ -11,6 +11,10 @@ Atlassian Bitbucket v8.19.0
 * If you access Bitbucket via <https://bitbucket.org/>, you are using Bitbucket Cloud.
 * If you access Bitbucket through a custom domain or internal network, you are likely using Bitbucket Data Center or Bitbucket Server.
 
+## Keyboard shortcuts
+
+To see all keyboard shortcuts, go to the question mark icon at the top right of your Bitbucket dashboard and select 'Keyboard shortcuts'.
+
 ## Documentation
 
 * Latest version documentation:  
