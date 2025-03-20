@@ -399,6 +399,14 @@ git mergetool
 git mergetool -t meld
 ```
 
+To revert a faulty merge (see also [How to revert a faulty merge](https://github.com/git/git/blob/master/Documentation/howto/revert-a-faulty-merge.adoc)):
+
+```bash
+git revert -m <parent-number> <commit>
+```
+
+where `<parent-number>` specifies the parent number (starting from 1) of the mainline and allows revert to reverse the change relative to the specified parent.  Mostly, `<parent-number>` is 1 because that is usually the branch that was merged *into* (often `main` or `develop`).  The second parent (2) is the branch that was merged *from*.
+
 ## 3.3 Git Branching - Branch Management
 
 ### Branch Management
