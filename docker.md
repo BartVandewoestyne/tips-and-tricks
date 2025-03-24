@@ -553,6 +553,16 @@ To see low-level information on Docker objects:
 docker inspect <container-id>
 ```
 
+## Troubleshooting
+
+* Suppose you have trouble with name resolving and the `/etc/resolv.conf` in your Docker container does not have what you have in your host's `/etc/resolv.conf`, then do a
+
+  ```text
+  service docker restart
+  ```
+
+and re-check both `/etc/resolve.conf` files.
+
 # References:
 
 * Docker Tutorial for Beginners [FULL COURSE in 3 Hours]:
