@@ -12,9 +12,25 @@ If GlobalProtect is not working, it is best to do some basic troubleshooting:
 * Is the IP address reachable?
 * Checking local routes.
 
-## Log files
+## Relevant files
 
-In the output of
+After GlobalProtect first runs, the app creates a GlobalProtect user folder $HOME/.GlobalProtect to save user registry configuration and other CLI related settings:
+
+```text
+bvandewoestyne@BVANDEW-70TZQ73:~$ tree .GlobalProtect/
+.GlobalProtect/
+├── PanGPA.log
+├── pangpa.xml
+├── PanGPI.log
+├── PanGPUI.log
+├── PanGPUI.log.old
+├── PanPCD_755acf65261e8ae96263a8e30f84528.dat
+├── PanPortalCfg_755acf65261e8ae96263a8e30f84528.dat
+└── PanPUAC_755acf65261e8ae96263a8e30f84528.dat
+
+1 directory, 8 files
+```
+
 On Linux, the directory `/opt/paloaltonetworks/globalprotect` has several log files:
 
 ```text
