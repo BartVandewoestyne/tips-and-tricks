@@ -1,5 +1,9 @@
 # GlobalProtect
 
+## GlobalProtect App for Linux
+
+See [GlobalProtect App for Linux](https://docs.paloaltonetworks.com/globalprotect/5-1/globalprotect-app-user-guide/globalprotect-app-for-linux).
+
 ## Basic troubleshooting
 
 If GlobalProtect is not working, it is best to do some basic troubleshooting:
