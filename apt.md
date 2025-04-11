@@ -10,6 +10,16 @@ sudo apt remove <pkg>   # remove packages
 sudo apt search <term>  # search in package descriptions
 ```
 
+## Advanced commands
+
+To print out the configured APT (or [PPA](https://help.launchpad.net/Packaging/PPA)) repositories and their priorities (also known as pinning preferences):
+
+```bash
+apt policy
+```
+
+And look at the first ones. See also [How to list and remove PPA repository on Ubuntu 20.04 Linux](https://linuxconfig.org/how-to-list-and-remove-ppa-repository-on-ubuntu-20-04-linux)
+
 ## References
 
 * `apt --help`
