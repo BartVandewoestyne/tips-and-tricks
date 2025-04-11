@@ -68,6 +68,41 @@ bvandewoestyne@BVANDEW-70TZQ73:~$ ip address show dev gpd0
        valid_lft forever preferred_lft forever
 ```
 
+Netstat gives:
+
+```text
+bvandewoestyne@BVANDEW-70TZQ73:~$ sudo netstat -tunap | grep Pan
+tcp        0      0 127.0.0.1:4769          0.0.0.0:*               LISTEN      8038/PanGPA         
+tcp        0      0 127.0.0.1:4767          0.0.0.0:*               LISTEN      1687/PanGPS         
+tcp        0      0 127.0.0.1:44910         127.0.0.1:4767          ESTABLISHED 8038/PanGPA         
+tcp        0      0 127.0.0.1:38800         127.0.0.1:4769          ESTABLISHED 8797/PanGPUI        
+tcp        0      0 127.0.0.1:4767          127.0.0.1:44910         ESTABLISHED 1687/PanGPS         
+tcp        1      0 192.168.49.51:47300     94.107.246.110:443      CLOSE_WAIT  1687/PanGPS         
+tcp        0      0 127.0.0.1:4769          127.0.0.1:38800         ESTABLISHED 8038/PanGPA
+```
+
+ss gives:
+
+```text
+bvandewoestyne@BVANDEW-70TZQ73:~$ sudo ss -tunap | grep Pan
+tcp   LISTEN     0      1                                       127.0.0.1:4769                      0.0.0.0:*     users:(("PanGPA",pid=8038,fd=6))                          
+tcp   LISTEN     0      128                                     127.0.0.1:4767                      0.0.0.0:*     users:(("PanGPS",pid=1687,fd=3))                          
+tcp   ESTAB      0      0                                       127.0.0.1:44910                   127.0.0.1:4767  users:(("PanGPA",pid=8038,fd=5))                          
+tcp   ESTAB      0      0                                       127.0.0.1:38800                   127.0.0.1:4769  users:(("PanGPUI",pid=8797,fd=24))                        
+tcp   ESTAB      0      0                                       127.0.0.1:4767                    127.0.0.1:44910 users:(("PanGPS",pid=1687,fd=6))                          
+tcp   CLOSE-WAIT 1      0                                   192.168.49.51:47300              94.107.246.110:443   users:(("PanGPS",pid=1687,fd=9))                          
+tcp   ESTAB      0      0                                       127.0.0.1:4769                    127.0.0.1:38800 users:(("PanGPA",pid=8038,fd=8))
+```
+
+nc:
+
+```text
+bvandewoestyne@BVANDEW-70TZQ73:~$ nc -vz snbe-vpn-n2.idirect.net 443
+Connection to snbe-vpn-n2.idirect.net (94.107.246.110) 443 port [tcp/https] succeeded!
+bvandewoestyne@BVANDEW-70TZQ73:~$ nc -vzu snbe-vpn-n2.idirect.net 4501
+Connection to snbe-vpn-n2.idirect.net (94.107.246.110) 4501 port [udp/*] succeeded!
+```
+
 ## Getting help
 
 * [paloalto LIVEcommunity - GlobalProtect Discussions](https://live.paloaltonetworks.com/t5/globalprotect-discussions/bd-p/GlobalProtect_Discussions)
