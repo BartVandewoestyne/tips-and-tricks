@@ -7,6 +7,8 @@ bvandewoestyne@BVANDEW-70TZQ73:~$ who
 bvandewoestyne :0           2025-02-04 21:53 (:0)
 ```
 
+Here, `:0` indicates the display number, typically used in graphical environments (X server). `:0` is the default display for the first graphical session.
+
 Example from an engineering server:
 
 ```text
