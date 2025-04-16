@@ -77,3 +77,9 @@
   ```text
   find . -type f -exec ls -s {} \; | sort -n  | head -1
   ```
+
+* Finding .m files with the same name:
+
+  ```text
+  find dir/ -type f -name '*.m' | sort | uniq -d > filename_duplicates.txt
+  ```
