@@ -20,7 +20,12 @@ newtec   pts/3        2025-02-04 07:58 (10.60.90.106)
 newtec   pts/4        2025-02-05 11:13 (10.60.36.33)
 ```
 
-Example from another server:
+Here,
+
+* `pts/0` is a pseudo-terminal session. `pts/0` means it is the first pseudo-terminal, typically created by an SSH or terminal emulator session.
+* the IP address between round brackets is the IP address the user connected from, likely via SSH from that IP.
+
+On a another server, the date format was slightly different:
 
 ```text
 bvandewoestyne@RAPTOR-JUMPSERVER:~$ who
