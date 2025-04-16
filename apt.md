@@ -2,6 +2,14 @@
 
 ## Overview of commands
 
+### No superuser required
+
+```bash
+apt show <pkg>          # show information about the given package
+```
+
+### Superuser required
+
 ```bash
 sudo apt update         # update list of available packages
 sudo apt upgrade        # upgrade the system by installing/upgrading packages
