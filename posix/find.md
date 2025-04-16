@@ -22,6 +22,26 @@
   find . -type f \( -name '*.h' -o -name '*.cpp' \)
   ```
 
+## Excluding directories
+
+* Method 1 (untested):
+
+  ```text
+  find . -path ./jpeg -prune  -o -print
+  ```
+
+* Method 2:
+
+  ```text
+  find . ! -path "./tmp/*" ! -path "./scripts/*"
+  ```
+
+* Method 3:
+
+  ```text
+  find . -type d -name 'ThirdParty' -prune -o -type f -name '*.pro' -print
+  ```
+
 ## Doing things with the found files
 
 * Run a certain command on files that might contain spaces:
