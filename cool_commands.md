@@ -573,16 +573,6 @@ mail -a "From: Bart.Vandewoestyne@telenet.be" -a "Reply-To: test@test.com" -s
 
 Compare two directories
 -----------------------
-See http://linuxcommando.blogspot.com/2008/05/compare-directories-using-diff-in-linux.html
-
-Best method I have found so far:
-
-  diff -qr dir1 dir2 | tee dir_cmps.txt
-  
-  -> This also shows if symlinks in dir1 and dir2 are different.
-
-Other possibilities:
-
   rsync -avnc --delete dir1/ dir2/
 
     -a        archive mode; equals -rlptgoD (no -H,-A,-X)
