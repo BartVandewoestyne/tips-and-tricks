@@ -14,6 +14,10 @@ bash$ ls -al a-very-long-name-old
 -rw-r--r-- 1 bvandewoestyne domain users 0 Feb 28 11:46 a-very-long-name-old
 ```
 
+References:
+
+* [Brace Expansion](https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html)
+
 ## pushd and popd
 
 TODO
