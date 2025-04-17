@@ -1,14 +1,3 @@
-Using Windows netstat command:
-------------------------------
-
-netstat -an
-
-netstat -an 1 | find "4444"
-
-netstat -ano 1 | find "Dest_IP_Addr"
-
-netstat -an 1 | find "4444" | find "ESTABLISHED"
-
 Using nmap:
 -----------
 
