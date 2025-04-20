@@ -1,5 +1,13 @@
 # nmap
 
+## Host discovery
+
+Ping Scan - disable port scan:
+
+```sh
+nmap -sn 192.168.1.0/24
+```
+
 ## TCP port scanning
 
 To scan all TCP-ports on the system with IP 10.70.70.83, trying to find which ports are open and for all open ports, try to find what service and version is running:
