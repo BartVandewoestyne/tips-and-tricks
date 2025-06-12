@@ -15,6 +15,10 @@ Atlassian Bitbucket v8.19.0
 
 To see all keyboard shortcuts, go to the question mark icon at the top right of your Bitbucket dashboard and select 'Keyboard shortcuts'.
 
+## Bitbucket search syntax
+
+See <https://confluence.atlassian.com/bitbucketserver/bitbucket-search-syntax-814204781.html>
+
 ## Documentation
 
 * Latest version documentation:  
