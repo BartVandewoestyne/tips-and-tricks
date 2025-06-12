@@ -1,5 +1,10 @@
 # VS Code
 
+## Documentation
+
+* [Visual Studio Code documentation](https://code.visualstudio.com/docs)
+* [Visual Studio Code documentation - EDIT CODE - Basic Editing - Search across files](https://code.visualstudio.com/docs/editing/codebasics#_search-across-files)
+
 ## Configuration
 
 * User settings are stored in `~/.config/Code/User/settings.json`.
