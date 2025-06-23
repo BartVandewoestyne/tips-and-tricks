@@ -11,6 +11,14 @@
 * Workspace settings are stored in the `~/.vscode/settings.json` file in the workspace directory.
 * Extensions are installed in `~/.vscode/extensions/`.
 
+## Folding
+
+* Toggle Fold (`Ctrl+K Ctrl+L`) folds or unfolds the region at the cursor.
+* Fold All (`Ctrl+K Ctrl+0`) folds all regions in the editor.
+* Unfold All (`Ctrl+K Ctrl+J`) unfolds all regions in the editor
+
+See also [Visudo Studio Code documentation - EDIT CODE - Basic Editing - Folding](https://code.visualstudio.com/docs/editing/codebasics#_folding)
+
 ## Cache data
 
 Cache data is located under `~/.cache/vscode-cpptools/` and can take up quite some space (I've once had 63 GB of cache data in it...)
