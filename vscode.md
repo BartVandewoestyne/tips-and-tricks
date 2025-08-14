@@ -131,3 +131,5 @@ Note: Apparently, for the language server, I also had to do `sudo gem install re
 
 * Ruby shared examples not working.  
   See <https://stackoverflow.com/questions/75756169/how-to-navigate-to-ruby-rspec-shared-examples-in-vscode/>
+
+* If you get "The "foo" repository has 82 submodules which won't be opened automatically.  You can still open each one individually by opening a file within." from Source: Git, then you can go to your settings for the Git extension and change the "Detect Submodules Limit" from 10 to something higher.  You can also disable "Detect Submodules" if you want.
