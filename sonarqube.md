@@ -26,3 +26,39 @@ static const table[] = {
 };
 // SONAR:ON
 ```
+
+## How coverage is calculated
+
+### Coverage
+
+Coverage is a combination of lines to cover and conditions to cover:
+
+```text
+coverage = (CT + LC) / (B + EL)
+```
+
+where:
+
+* `CT`: conditions that have been evaluated to true at least once = `conditions_to_cover - uncovered_conditions`
+* `LC`: `covered lines = lines_to_cover - uncovered_lines`
+* `B`: total number of conditions = Conditions to Cover
+* `EL`: total number of executable lines (`lines_to_cover`)
+
+See also <https://docs.sonarsource.com/sonarqube-server/user-guide/code-metrics/metrics-definition#coverage>.
+
+### Line Coverage
+
+Line coverage is the density of covered lines by unit tests:
+
+```text
+line_coverage = LC / EL
+```
+
+where:
+
+* `LC` = covered lines = `lines_to_cover - uncovered_lines`
+* `EL` = total number of executable lines (`lines_to_cover`)
+
+### Condition Coverage
+
+TODO
