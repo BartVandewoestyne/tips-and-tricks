@@ -27,6 +27,17 @@ static const table[] = {
 // SONAR:ON
 ```
 
+```c++
+// BEGIN-NOSCAN
+public void doSomethingElse()
+{
+    ...
+}
+// END-NOSCAN
+```
+
+See also <https://docs.sonarsource.com/sonarqube-server/2025.1/project-administration/analysis-scope#ignoring-blocks-within-files>
+
 ## How coverage is calculated
 
 ### Coverage
