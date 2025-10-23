@@ -1321,3 +1321,4 @@ General:
 ## TODO
 
 * Check out [git worktree](https://git-scm.com/docs/git-worktree).
+* `man gitrevisions` is an interesting read
