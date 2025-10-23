@@ -73,3 +73,12 @@ where:
 ### Condition Coverage
 
 TODO
+
+## Debugging sonar-scanner
+
+The following options are useful for debugging:
+
+```text
+-Dsonar.log.level=TRACE (or DEBUG)
+-Dsonar.verbose=true
+```
