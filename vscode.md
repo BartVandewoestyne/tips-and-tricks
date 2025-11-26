@@ -124,6 +124,10 @@ Note: Apparently, for the language server, I also had to do `sudo gem install re
 
 * [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 
+### Utilities
+
+* [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff)
+
 ## Issues I have or had
 
 * On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".  
