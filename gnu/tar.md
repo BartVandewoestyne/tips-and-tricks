@@ -19,3 +19,11 @@ Create an xz-compressed archive (`.tar.xz`):
 ```text
 tar -cJvf myarchive.tar.xz folder/
 ```
+
+## Viewing contents of archives
+
+```text
+tar -tvf myfile.tar.gz
+```
+
+The order shown here is the order they were originally added to the archive.
