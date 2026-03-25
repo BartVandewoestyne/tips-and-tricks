@@ -1318,6 +1318,8 @@ General:
 
 * [Git Team Workflows Best Practices: Merge or Rebase?](https://www.atlassian.com/git/articles/git-team-workflows-merge-or-rebase)
 
+* [Comparing Git workflows: What you should know](https://www.atlassian.com/git/tutorials/comparing-workflows)
+
 ## TODO
 
 * Check out [git worktree](https://git-scm.com/docs/git-worktree).
