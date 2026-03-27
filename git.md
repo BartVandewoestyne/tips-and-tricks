@@ -1320,6 +1320,8 @@ General:
 
 * [Comparing Git workflows: What you should know](https://www.atlassian.com/git/tutorials/comparing-workflows)
 
+* [GitLab Docs - Branching strategies](https://docs.gitlab.com/user/project/repository/branches/strategies/)
+
 ## TODO
 
 * Check out [git worktree](https://git-scm.com/docs/git-worktree).
