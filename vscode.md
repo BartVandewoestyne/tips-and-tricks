@@ -31,6 +31,10 @@ See
 * <https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Visual-Studio-Code>
 * <https://code.visualstudio.com/docs/sourcecontrol/overview>
 
+## GitHub CoPilot
+
+See [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview) for documentation on GitHub Copilot in VS Code.
+
 ## Interesting extensions
 
 ### Live Share
@@ -127,6 +131,8 @@ Note: Apparently, for the language server, I also had to do `sudo gem install re
 ### Utilities
 
 * [Partial Diff](https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff)
+* [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)  
+  (Note that there's no need to install this extension separately.  Simply login to GitHub Copilot in VS Code.)
 
 ## Issues I have or had
 
