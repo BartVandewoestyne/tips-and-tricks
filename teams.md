@@ -8,6 +8,8 @@ Official documentation:
 * [Use Markdown formatting in Teams](https://support.microsoft.com/en-us/office/use-markdown-formatting-in-teams-4d10bd65-55e2-4b2d-a1f3-2bebdcd2c772)  
 To type a code block in a Teams message, use three backticks followed by a space.  Then you start having your code block.  To exit the code block, press Enter twice.  See also [MS Teams has changed the shortcut for code block](https://www.reddit.com/r/sysadmin/comments/q7xcqb/ms_teams_has_changed_the_shortcut_for_code_block/?utm_source=share&utm_medium=web2x&context=3).
 
+After inserting a Plain Text window, you 'Show Formatting Options', then select your text and use Bold (Ctrl+B), Italic (Ctrl+I), Underline (Ctrl+U) or Strikethrough (Ctrl+Alt+X).
+
 Markdown formatting that currently does *not* work for me:
 
 | Name | Action | Example | Workaround |
