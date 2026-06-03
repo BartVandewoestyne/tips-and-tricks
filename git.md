@@ -1326,3 +1326,10 @@ General:
 
 * Check out [git worktree](https://git-scm.com/docs/git-worktree).
 * `man gitrevisions` is an interesting read
+* How to deal with vendor branches in git?
+**
+** https://david.rothlis.net/vendor-branch/
+** https://www.atlassian.com/git/tutorials/git-subtree
+** https://apenwarr.ca/log/20090430
+** https://blog.tfnico.com/2020/07/git-tools-for-keeping-patches-on-top-of.html
+** https://fanf.livejournal.com/128282.html
