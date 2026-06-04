@@ -24,6 +24,12 @@ TODO
 
 ## Debugging
 
+### Validate shell script syntax and check for parsing errors
+
+```bash
+bash -n script.sh
+```
+
 ### Exit immediately
 
 Make the script exit immediately if any command returns a non-zero exit status (i.e., if a command fails):
