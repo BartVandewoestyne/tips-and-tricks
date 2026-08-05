@@ -13,8 +13,10 @@ apt show <pkg>          # show information about the given package
 ```bash
 sudo apt update         # update list of available packages
 sudo apt upgrade        # upgrade the system by installing/upgrading packages
-sudo apt install <pkg>  # install packages
-sudo apt remove <pkg>   # remove packages
+sudo apt install <pkg>  # install package
+sudo apt remove <pkg>   # remove package
+sudo apt purge <pkg>    # purge package (any config files are deleted too)
+sudo apt autoremove     # remove packages that are no longer needed
 sudo apt search <term>  # search in package descriptions
 ```
 
