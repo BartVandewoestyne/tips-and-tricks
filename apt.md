@@ -11,13 +11,13 @@ apt show <pkg>          # show information about the given package
 ### Superuser required
 
 ```bash
-sudo apt update         # update list of available packages
-sudo apt upgrade        # upgrade the system by installing/upgrading packages
-sudo apt install <pkg>  # install package
-sudo apt remove <pkg>   # remove package
-sudo apt purge <pkg>    # purge package (any config files are deleted too)
-sudo apt autoremove     # remove packages that are no longer needed
-sudo apt search <term>  # search in package descriptions
+sudo apt update               # update list of available packages
+sudo apt upgrade              # upgrade the system by installing/upgrading packages
+sudo apt install <pkg>        # install package
+sudo apt remove <pkg>         # remove package
+sudo apt purge <pkg>          # purge package (any config files are deleted too)
+sudo apt autoremove --purge   # purge packages that are no longer needed
+sudo apt search <term>        # search in package descriptions
 ```
 
 ## Advanced commands
