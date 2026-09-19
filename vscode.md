@@ -134,6 +134,11 @@ Note: Apparently, for the language server, I also had to do `sudo gem install re
 * [GitHub Copilot Chat](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)  
   (Note that there's no need to install this extension separately.  Simply login to GitHub Copilot in VS Code.)
 
+### Recommended by others
+
+* [Error Lens](https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens)
+* [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+
 ## Issues I have or had
 
 * On Ubuntu 20.04.5 LTS the 'Go Back' functionality is not working when I press "Ctrl+Shift+-".  
