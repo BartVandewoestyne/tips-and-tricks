@@ -12,6 +12,29 @@ If GlobalProtect is not working, it is best to do some basic troubleshooting:
 * Is the IP address reachable?
 * Checking local routes.
 
+Some other tips for debugging:
+
+* The PanGUI is some web application, so you can right-click in it and press on Inspect.  If you then look at the network tab, you can see whether requests are sent out or not.  If you then for example notice a 240 s delay for your first request to login.microsoftonline.com, then pinging login.microsoftonline.com shows the issue:
+```
+bverstuyft@ID-BVER-48KSKR3:~$ ping login.microsoftonline.com
+PING login.microsoftonline.com(2603:1027:1:108::9 (2603:1027:1:108::9)) 56 data bytes
+^C
+--- login.microsoftonline.com ping statistics ---
+122 packets transmitted, 0 received, 100% packet loss, time 123896ms
+
+bverstuyft@ID-BVER-48KSKR3:~$ ping -4 login.microsoftonline.com
+PING  (20.190.181.1) 56(84) bytes of data.
+64 bytes from 20.190.181.1 (20.190.181.1): icmp_seq=1 ttl=110 time=46.9 ms
+64 bytes from 20.190.181.1 (20.190.181.1): icmp_seq=2 ttl=110 time=45.7 ms
+64 bytes from 20.190.181.1 (20.190.181.1): icmp_seq=3 ttl=110 time=46.2 ms
+^C
+---  ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 45.668/46.253/46.914/0.511 ms
+bverstuyft@ID-BVER-48KSKR3:~$
+```
+In the above, the domain was not reachable with ipv6, but it was with ipv4.  That explains the 240 s delay: first, the ipv6 is tried, after that the ipv4.
+
 ## Relevant files
 
 After GlobalProtect first runs, the app creates a GlobalProtect user folder $HOME/.GlobalProtect to save user registry configuration and other CLI related settings:
