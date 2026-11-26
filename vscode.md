@@ -113,6 +113,10 @@ This one installs the C/C++, C/C++ Themes, CMake, CMake Tools extensions.
 * [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
   (See also [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers))
 
+### Python
+
+* [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+
 ### Ruby
 
 * [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp)
